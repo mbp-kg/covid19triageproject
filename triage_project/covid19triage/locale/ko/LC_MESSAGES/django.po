@@ -81,7 +81,7 @@ msgstr "사이트 보기"
 
 #: covid19triage/templates/covid19triage/base.html:45
 msgid "Documentation"
-msgid ""
+msgstr ""
 
 #: covid19triage/templates/covid19triage/base.html:49
 msgid "Change password"
