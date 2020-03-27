@@ -18,4 +18,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
+    path('contactinfo', views.ContactInformationView.as_view()),
 ]

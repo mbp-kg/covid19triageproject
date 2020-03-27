@@ -1,0 +1,125 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-27 04:49+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: covid19triage/forms.py:12
+#: covid19triage/templates/covid19triage/index.html:26
+msgid "First Name"
+msgstr ""
+
+#: covid19triage/forms.py:13
+msgid "Please enter your first or given name."
+msgstr ""
+
+#: covid19triage/forms.py:19
+#: covid19triage/templates/covid19triage/index.html:33
+msgid "Last Name"
+msgstr ""
+
+#: covid19triage/forms.py:20
+msgid "Please enter your last or family name."
+msgstr ""
+
+#: covid19triage/forms.py:26
+#: covid19triage/templates/covid19triage/index.html:40
+msgid "Phone Number"
+msgstr ""
+
+#: covid19triage/forms.py:27
+msgid "Please enter a phone number where we can reach you."
+msgstr ""
+
+#: covid19triage/forms.py:33
+#: covid19triage/templates/covid19triage/index.html:45
+msgid "E-mail address"
+msgstr ""
+
+#: covid19triage/forms.py:34
+msgid "Please enter your e-mail address."
+msgstr ""
+
+#: covid19triage/models.py:11
+msgid "First name"
+msgstr ""
+
+#: covid19triage/models.py:15
+msgid "Last name"
+msgstr ""
+
+#: covid19triage/models.py:19
+msgid "Phone number"
+msgstr ""
+
+#: covid19triage/models.py:23
+msgid "Email address"
+msgstr ""
+
+#: covid19triage/templates/covid19triage/base.html:35
+msgid "Welcome,"
+msgstr ""
+
+#: covid19triage/templates/covid19triage/base.html:40
+msgid "View site"
+msgstr ""
+
+#: covid19triage/templates/covid19triage/base.html:45
+msgid "Documentation"
+msgstr ""
+
+#: covid19triage/templates/covid19triage/base.html:49
+msgid "Change password"
+msgstr ""
+
+#: covid19triage/templates/covid19triage/base.html:51
+msgid "Log out"
+msgstr ""
+
+#: covid19triage/templates/covid19triage/base.html:61
+msgid "Home"
+msgstr ""
+
+#: covid19triage/templates/covid19triage/contactinfo.html:7
+#: covid19triage/templates/covid19triage/index.html:7
+msgid "Please correct the error below."
+msgstr ""
+
+#: covid19triage/templates/covid19triage/contactinfo.html:7
+#: covid19triage/templates/covid19triage/index.html:7
+msgid "Please correct the errors below."
+msgstr ""
+
+#: covid19triage/templates/covid19triage/contactinfo.html:20
+#: covid19triage/templates/covid19triage/index.html:20
+msgid "Contact Information"
+msgstr ""
+
+#: covid19triage/templates/covid19triage/contactinfo.html:40
+#: covid19triage/templates/covid19triage/index.html:52
+msgctxt "Next button label"
+msgid "Next »"
+msgstr ""
+
+#: covid19triage/templates/covid19triage/index.html:30
+msgctxt "placeholder for first name"
+msgid "John"
+msgstr ""
+
+#: covid19triage/templates/covid19triage/index.html:37
+msgctxt "placeholder for last name"
+msgid "Doe"
+msgstr ""
