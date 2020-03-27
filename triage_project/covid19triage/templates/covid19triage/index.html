@@ -1,0 +1,51 @@
+{% extends "covid19triage/base.html" %}
+{% load i18n static %}
+
+{% block content %}
+{% if form.errors and not form.non_field_errors %}
+<p class="errornote">
+{% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+</p>
+{% endif %}
+
+{% if form.non_field_errors %}
+{% for error in form.non_field_errors %}
+<p class="errornote">
+    {{ error }}
+</p>
+{% endfor %}
+{% endif %}
+
+<div id="content-main">
+    <h1>Контактные данные</h1>
+    <form action="patient.html" method="get">
+      <label>
+        Имя
+        <input
+          type="text"
+          name="firstname"
+	  placeholder="Асан" />
+      </label>
+      <label>
+        Фамилия
+        <input
+	  type="text"
+	  name="lastname"
+	  placeholder="Асанович" />
+      </label>
+      <label>
+        Номер телефона
+        <input type="text" name="phone"
+	  placeholder="0 (555) 555-555" />
+      </label>
+      <label>
+        Эл. почты
+        <input
+	  type="text"
+	  name="email"
+	  placeholder="example@example.com" />
+      </label>
+      <input type="submit" value="Next »" />
+    </form>
+</div>
+{% endblock %}
