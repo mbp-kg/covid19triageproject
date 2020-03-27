@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: covid19triageproject 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-27 04:49+0000\n"
-"PO-Revision-Date: 2020-03-27 04:49+0000\n"
+"PO-Revision-Date: 2020-03-27 11:09+0000\n"
 "Last-Translator: Troy Farrell <troy.farrell@mbp.kg>\n"
 "Language-Team: Troy Farrell <troy.farrell@mbp.kg>\n"
 "Language: ko\n"
@@ -21,106 +21,107 @@ msgstr ""
 #: covid19triage/forms.py:12
 #: covid19triage/templates/covid19triage/index.html:26
 msgid "First Name"
-msgstr ""
+msgstr "이름"
+
 
 #: covid19triage/forms.py:13
 msgid "Please enter your first or given name."
-msgstr ""
+msgstr "이름을 적어주세요"
 
 #: covid19triage/forms.py:19
 #: covid19triage/templates/covid19triage/index.html:33
 msgid "Last Name"
-msgstr ""
+msgstr "성"
 
 #: covid19triage/forms.py:20
 msgid "Please enter your last or family name."
-msgstr ""
+msgstr "성을 적어주세요"
 
 #: covid19triage/forms.py:26
 #: covid19triage/templates/covid19triage/index.html:40
 msgid "Phone Number"
-msgstr ""
+msgstr "전화번호"
 
 #: covid19triage/forms.py:27
 msgid "Please enter a phone number where we can reach you."
-msgstr ""
+msgstr "연락이 가능한 전화번호를 남겨주세요"
 
 #: covid19triage/forms.py:33
 #: covid19triage/templates/covid19triage/index.html:45
 msgid "E-mail address"
-msgstr ""
+msgstr "이메일 주소"
 
 #: covid19triage/forms.py:34
 msgid "Please enter your e-mail address."
-msgstr ""
+msgstr "이메일 주소를 입력해주세요"
 
 #: covid19triage/models.py:11
 msgid "First name"
-msgstr ""
+msgstr "이름"
 
 #: covid19triage/models.py:15
 msgid "Last name"
-msgstr ""
+msgstr "성"
 
 #: covid19triage/models.py:19
 msgid "Phone number"
-msgstr ""
+msgstr "전화번호"
 
 #: covid19triage/models.py:23
 msgid "Email address"
-msgstr ""
+msgstr "이메일 주소"
 
 #: covid19triage/templates/covid19triage/base.html:35
 msgid "Welcome,"
-msgstr ""
+msgstr "환영합니다"
 
 #: covid19triage/templates/covid19triage/base.html:40
 msgid "View site"
-msgstr ""
+msgstr "사이트 보기"
 
 #: covid19triage/templates/covid19triage/base.html:45
 msgid "Documentation"
-msgstr ""
+msgid ""
 
 #: covid19triage/templates/covid19triage/base.html:49
 msgid "Change password"
-msgstr ""
+msgstr "비밀번호 변경"
 
 #: covid19triage/templates/covid19triage/base.html:51
 msgid "Log out"
-msgstr ""
+msgstr "로그아웃"
 
 #: covid19triage/templates/covid19triage/base.html:61
 msgid "Home"
-msgstr ""
+msgstr "홈"
 
 #: covid19triage/templates/covid19triage/contactinfo.html:7
 #: covid19triage/templates/covid19triage/index.html:7
 msgid "Please correct the error below."
-msgstr ""
+msgstr "아래 오류사항을 확인하십시요"
 
 #: covid19triage/templates/covid19triage/contactinfo.html:7
 #: covid19triage/templates/covid19triage/index.html:7
 msgid "Please correct the errors below."
-msgstr ""
+msgstr "아래 오류사항을 확인하십시요"
 
 #: covid19triage/templates/covid19triage/contactinfo.html:20
 #: covid19triage/templates/covid19triage/index.html:20
 msgid "Contact Information"
-msgstr ""
+msgstr "연락처"
 
 #: covid19triage/templates/covid19triage/contactinfo.html:40
 #: covid19triage/templates/covid19triage/index.html:52
 msgctxt "Next button label"
 msgid "Next »"
-msgstr ""
+msgstr "다음 »"
 
 #: covid19triage/templates/covid19triage/index.html:30
 msgctxt "placeholder for first name"
 msgid "John"
-msgstr ""
+msgstr "길동"
 
 #: covid19triage/templates/covid19triage/index.html:37
 msgctxt "placeholder for last name"
 msgid "Doe"
-msgstr ""
+msgstr "홍"
