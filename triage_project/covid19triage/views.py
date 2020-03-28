@@ -6,6 +6,8 @@ from django.utils.translation import pgettext, pgettext_lazy
 from django.views.generic.edit import FormView
 
 from .forms import ContactInformationForm
+from .forms import PatientFactorsForm
+from .forms import PatientInformationForm
 
 
 def _make_title(pagetitle: str) -> str:
@@ -34,3 +36,31 @@ class ContactInformationView(FormView):
     }
     form_class = ContactInformationForm
     template_name = "covid19triage/contactinfo.html"
+
+
+class PatientFactorsView(FormView):
+    """
+    Display the patient factors form
+    """
+    pagetitle = pgettext_lazy("page title", "Symptoms and Risk Factors")
+    pageheader = pgettext_lazy("page header", "Symptoms and Risk Factors")
+    extra_context = {
+        "pagetitle": _make_title(pagetitle),
+        "title": pageheader,
+    }
+    form_class = PatientFactorsForm
+    template_name = "covid19triage/patientfactors.html"
+
+
+class PatientInformationView(FormView):
+    """
+    Display the patient information form
+    """
+    pagetitle = pgettext_lazy("page title", "Patient Information")
+    pageheader = pgettext_lazy("page header", "Patient Information")
+    extra_context = {
+        "pagetitle": _make_title(pagetitle),
+        "title": pageheader,
+    }
+    form_class = PatientInformationForm
+    template_name = "covid19triage/patientinfo.html"

@@ -1,0 +1,43 @@
+{% extends "covid19triage/base.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "covid19triage/css/forms.css" %}">
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url "covid19triage:index" %}">{% trans "Home" %}</a> &rsaquo; {{ title }}
+</div>
+{% endblock %}
+
+{% block content %}
+{% if form.errors and not form.non_field_errors %}
+<p class="errornote">
+{% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+</p>
+{% endif %}
+
+{% if form.non_field_errors %}
+{% for error in form.non_field_errors %}
+<p class="errornote">
+    {{ error }}
+</p>
+{% endfor %}
+{% endif %}
+
+  <div id="content-main">
+    <form action="{% url "covid19triage:patientfactors" %}" method="post">
+      {% csrf_token %}
+      <fieldset class="module aligned">
+        <div class="form-row">
+            {{ form.symptoms.errors }}
+            {{ form.symptoms.label_tag }} {{ form.symptoms }}
+        </div>
+        <div class="submit-row">
+          <input type="submit" value="{% trans "Next »" context "Next button label" %}" class="default" />
+        </div>
+      </fieldset>
+    </form>
+  </div>
+{% endblock %}
