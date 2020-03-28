@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import gettext, gettext_lazy as _
-from django.utils.translation import pgettext, pgettext_lazy as _p
+from django.utils.translation import pgettext, pgettext_lazy
 
 from .models import ContactPerson
 
@@ -8,18 +8,20 @@ class ContactInformationForm(forms.ModelForm):
     """
     Contact Information
     """
+    placeholder_firstname = pgettext_lazy("placeholder for first name", "John")
     firstname = forms.CharField(
         label=_("First Name"),
         help_text=_("Please enter your first or given name."),
         widget=forms.TextInput(
-            attrs={"placeholder": _p("placeholder for first name", "John")},
+            attrs={"placeholder": placeholder_firstname},
         ),
     )
+    placeholder_lastname = pgettext_lazy("placeholder for last name", "Doe")
     lastname = forms.CharField(
         label=_("Last Name"),
         help_text=_("Please enter your last or family name."),
         widget=forms.TextInput(
-            attrs={"placeholder": _p("placeholder for last name", "Doe")},
+            attrs={"placeholder": placeholder_lastname},
         ),
     )
     phonenumber = forms.CharField(

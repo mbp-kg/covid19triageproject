@@ -1,6 +1,16 @@
 {% extends "covid19triage/base.html" %}
 {% load i18n static %}
 
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "covid19triage/css/forms.css" %}">
+{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url "covid19triage:index" %}">{% trans "Home" %}</a> &rsaquo; {{ title }}
+</div>
+{% endblock %}
+
 {% block content %}
 {% if form.errors and not form.non_field_errors %}
 <p class="errornote">
@@ -16,29 +26,30 @@
 {% endfor %}
 {% endif %}
 
-<div id="content-main">
-    <h1>{% trans "Contact Information" %}Контактные данные</h1>
-    <form action="patient.html" method="get">
+  <div id="content-main">
+    <form action="{% url "covid19triage:patientinfo" %}" method="post">
       {% csrf_token %}
-      <label class="form-row">
-        {{ form.firstname.errors }}
-        {{ form.firstname.label_tag }} {{ form.firstname }}
-      </label>
-      <label class="form-row">
-        {{ form.lastname.errors }}
-        {{ form.lastname.label_tag }} {{ form.lastname }}
-      </label>
-      <label class="form-row">
-        {{ form.phonenumber.errors }}
-        {{ form.phonenumber.label_tag }} {{ form.phonenumber }}
-      </label>
-      <label class="form-row">
-        {{ form.emailaddress.errors }}
-        {{ form.emailaddress.label_tag }} {{ form.emailaddress }}
-      </label>
-      <div class="submit-row">
-        <input type="submit" value="{% trans "Next »" context "Next button label" %}" />
-      </div>
+      <fieldset class="module aligned">
+        <div class="form-row">
+            {{ form.firstname.errors }}
+            {{ form.firstname.label_tag }} {{ form.firstname }}
+        </div>
+        <div class="form-row">
+          {{ form.lastname.errors }}
+          {{ form.lastname.label_tag }} {{ form.lastname }}
+        </div>
+        <div class="form-row">
+          {{ form.phonenumber.errors }}
+          {{ form.phonenumber.label_tag }} {{ form.phonenumber }}
+        </div>
+        <div class="form-row">
+          {{ form.emailaddress.errors }}
+          {{ form.emailaddress.label_tag }} {{ form.emailaddress }}
+        </div>
+        <div class="submit-row">
+          <input type="submit" value="{% trans "Next »" context "Next button label" %}" class="default" />
+        </div>
+      </fieldset>
     </form>
-</div>
+  </div>
 {% endblock %}

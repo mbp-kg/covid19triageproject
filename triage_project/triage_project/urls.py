@@ -21,5 +21,5 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ] + i18n_patterns(
-    path('', include('covid19triage.urls')),
+    path("", include(("covid19triage.urls", "covid19triage"), namespace="covid19triage")),
 )

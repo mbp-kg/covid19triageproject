@@ -1,6 +1,12 @@
 {% extends "covid19triage/base.html" %}
 {% load i18n static %}
 
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "covid19triage/css/languages.css" %}">
+{% endblock %}
+
+{% block bodyclass %}languages{% endblock %}
+
 {% block content %}
 {% if form.errors and not form.non_field_errors %}
 <p class="errornote">
@@ -17,35 +23,18 @@
 {% endif %}
 
 <div id="content-main">
-    <h1>Контактные данные</h1>
-    <form action="patient.html" method="get">
-      <label>
-        Имя
-        <input
-          type="text"
-          name="firstname"
-	  placeholder="Асан" />
-      </label>
-      <label>
-        Фамилия
-        <input
-	  type="text"
-	  name="lastname"
-	  placeholder="Асанович" />
-      </label>
-      <label>
-        Номер телефона
-        <input type="text" name="phone"
-	  placeholder="0 (555) 555-555" />
-      </label>
-      <label>
-        Эл. почты
-        <input
-	  type="text"
-	  name="email"
-	  placeholder="example@example.com" />
-      </label>
-      <input type="submit" value="Next »" />
-    </form>
+    {% get_available_languages as languages %}
+    {% get_current_language as currentlanguage %}
+    {% for language in languages %}
+      {% if language.0 != currentlanguage %}
+        {% language language.0 %}
+          <a href="{% url "covid19triage:index" %}">{{ language.0 | language_name_local }}{% endlanguage %} — {{ language.0 | language_name_translated }}</a>
+      {% endif %}
+    {% endfor %}
+  <div class="begin">
+    <a class="next" href="{% url "covid19triage:contactinfo" %}">
+      {% trans "Continue in English" context "Continue in $CURRENT_LANGUAGE: продолжайте на русском" %}
+    </a>
+  </div>
 </div>
 {% endblock %}

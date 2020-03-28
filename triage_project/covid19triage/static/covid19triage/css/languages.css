@@ -1,0 +1,36 @@
+#content-main {
+  background: #fff;
+  border: none;
+  margin-bottom: 30px;
+}
+
+#content-main h1 {
+  background: #79aec8;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0px;
+  padding: 8px;
+  text-align: left;
+}
+#content-main a {
+    border-bottom: 1px solid #eee;
+    display: block;
+    font-size: 13px;
+    padding: 10px;
+}
+#content-main .begin {
+    background-color: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    margin: 0px 0px 20px 0px;
+    padding: 12px 14px;
+    text-align: right;
+}
+#content-main .begin a {
+    background-color: #609ab6;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    width: 12em;
+}

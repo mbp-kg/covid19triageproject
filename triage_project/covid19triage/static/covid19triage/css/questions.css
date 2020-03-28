@@ -1,0 +1,9 @@
+.questions #container {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 56em;
+    min-width: 300px;
+    margin: 10px auto;
+}
