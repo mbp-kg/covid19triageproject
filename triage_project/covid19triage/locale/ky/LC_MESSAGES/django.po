@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: covid19triageproject 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-27 04:49+0000\n"
-"PO-Revision-Date: 2020-03-27 10:43+0000\n"
+"PO-Revision-Date: 2020-03-28 18:18+0000\n"
 "Last-Translator: Troy Farrell <troy.farrell@mbp.kg>\n"
 "Language-Team: Troy Farrell <troy.farrell@mbp.kg>\n"
 "Language: ky\n"
@@ -18,109 +18,134 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: covid19triage/forms.py:12
-#: covid19triage/templates/covid19triage/index.html:26
-msgid "First Name"
-msgstr "аты"
-
-#: covid19triage/forms.py:13
-msgid "Please enter your first or given name."
-msgstr "атыңызды жазыңыз"
-
-#: covid19triage/forms.py:19
-#: covid19triage/templates/covid19triage/index.html:33
-msgid "Last Name"
-msgstr "фамилиясы"
-
-#: covid19triage/forms.py:20
-msgid "Please enter your last or family name."
-msgstr "фамилияңызды жазыңыз"
-
-#: covid19triage/forms.py:26
-#: covid19triage/templates/covid19triage/index.html:40
-msgid "Phone Number"
-msgstr "телефон номери"
-
-#: covid19triage/forms.py:27
-msgid "Please enter a phone number where we can reach you."
-msgstr "байланышуу үчүн телефон номериңизди жазыңыз"
-
-#: covid19triage/forms.py:33
-#: covid19triage/templates/covid19triage/index.html:45
-msgid "E-mail address"
-msgstr "электрондук почтанын дареги"
-
-#: covid19triage/forms.py:34
-msgid "Please enter your e-mail address."
-msgstr "электрондук почтаңыздын дарегин жазыңыз"
-
-#: covid19triage/models.py:11
-msgid "First name"
-msgstr "аты"
-
-#: covid19triage/models.py:15
-msgid "Last name"
-msgstr "фамилиясы"
-
-#: covid19triage/models.py:19
-msgid "Phone number"
-msgstr "телефон номери"
-
-#: covid19triage/models.py:23
-msgid "Email address"
-msgstr "электрондук почтанын дареги"
-
-#: covid19triage/templates/covid19triage/base.html:35
-msgid "Welcome,"
-msgstr "кош келиңиздер"
-
-#: covid19triage/templates/covid19triage/base.html:40
-msgid "View site"
-msgstr "сайтты кароо"
-
-#: covid19triage/templates/covid19triage/base.html:45
-msgid "Documentation"
-msgstr "документация"
-
-#: covid19triage/templates/covid19triage/base.html:49
-msgid "Change password"
-msgstr "паролду өзгөртүү"
-
-#: covid19triage/templates/covid19triage/base.html:51
-msgid "Log out"
-msgstr "чыгуу"
-
-#: covid19triage/templates/covid19triage/base.html:61
-msgid "Home"
-msgstr "башкы бетке"
-
-#: covid19triage/templates/covid19triage/contactinfo.html:7
-#: covid19triage/templates/covid19triage/index.html:7
-msgid "Please correct the error below."
-msgstr "төмөндөгү катаны оңдоп коюңуз"
-
-#: covid19triage/templates/covid19triage/contactinfo.html:7
-#: covid19triage/templates/covid19triage/index.html:7
-msgid "Please correct the errors below."
-msgstr "төмөндөгү каталарды оңдоп коюңуз"
-
-#: covid19triage/templates/covid19triage/contactinfo.html:20
-#: covid19triage/templates/covid19triage/index.html:20
-msgid "Contact Information"
-msgstr "байланыш үчүн маалымат"
-
-#: covid19triage/templates/covid19triage/contactinfo.html:40
-#: covid19triage/templates/covid19triage/index.html:52
-msgctxt "Next button label"
-msgid "Next »"
-msgstr "кийинки »"
-
-#: covid19triage/templates/covid19triage/index.html:30
+#: forms.py:11
 msgctxt "placeholder for first name"
 msgid "John"
 msgstr "Асан"
 
-#: covid19triage/templates/covid19triage/index.html:37
+#: forms.py:13
+msgid "First Name"
+msgstr "Аты"
+
+#: forms.py:14
+msgid "Please enter your first or given name."
+msgstr "Атыңызды жазыңыз."
+
+#: forms.py:19
 msgctxt "placeholder for last name"
 msgid "Doe"
 msgstr "Асанович"
+
+#: forms.py:21
+msgid "Last Name"
+msgstr "фамилиясы"
+
+#: forms.py:22
+msgid "Please enter your last or family name."
+msgstr "Фамилияңызды жазыңыз."
+
+#: forms.py:28
+msgid "Phone Number"
+msgstr "Телефон номери"
+
+#: forms.py:29
+msgid "Please enter a phone number where we can reach you."
+msgstr "Байланышуу үчүн телефон номериңизди жазыңыз."
+
+#: forms.py:35
+msgid "E-mail address"
+msgstr "Электрондук почтанын дареги"
+
+#: forms.py:36
+msgid "Please enter your e-mail address."
+msgstr "Электрондук почтаңыздын дарегин жазыңыз."
+
+#: models.py:11
+msgid "First name"
+msgstr "Аты"
+
+#: models.py:15
+msgid "Last name"
+msgstr "фамилиясы"
+
+#: models.py:19
+msgid "Phone number"
+msgstr "Телефон номери"
+
+#: models.py:23
+msgid "Email address"
+msgstr "Электрондук почтанын дареги"
+
+#: templates/covid19triage/base.html:35
+msgid "Welcome,"
+msgstr "Кош келиңиздер"
+
+#: templates/covid19triage/base.html:40
+msgid "View site"
+msgstr "Сайтты кароо"
+
+#: templates/covid19triage/base.html:45
+msgid "Documentation"
+msgstr "Документация"
+
+#: templates/covid19triage/base.html:49
+msgid "Change password"
+msgstr "Паролду өзгөртүү"
+
+#: templates/covid19triage/base.html:51
+msgid "Log out"
+msgstr "Чыгуу"
+
+#: templates/covid19triage/base.html:61
+#: templates/covid19triage/contactinfo.html:10
+msgid "Home"
+msgstr "Башкы бетке"
+
+#: templates/covid19triage/contactinfo.html:17
+#: templates/covid19triage/index.html:13
+msgid "Please correct the error below."
+msgstr "Төмөндөгү катаны оңдоп коюңуз."
+
+#: templates/covid19triage/contactinfo.html:17
+#: templates/covid19triage/index.html:13
+msgid "Please correct the errors below."
+msgstr "Төмөндөгү каталарды оңдоп коюңуз."
+
+#: templates/covid19triage/contactinfo.html:50
+msgctxt "Next button label"
+msgid "Next »"
+msgstr "Кийинки »"
+
+#: templates/covid19triage/index.html:36
+msgctxt "Continue in $CURRENT_LANGUAGE: продолжайте на русском"
+msgid "Continue in English"
+msgstr "Продолжайте на киргизком"
+
+#: views.py:12
+msgctxt "page title"
+msgid "COVID-19 Triage"
+msgstr "COVID-19 Triage"
+
+#: views.py:17
+msgctxt "page title"
+msgid "Language"
+msgstr "Тил"
+
+#: views.py:18
+msgctxt "page header"
+msgid "Language"
+msgstr "Тил"
+
+#: views.py:29
+#, fuzzy
+#| msgid "Contact Information"
+msgctxt "page title"
+msgid "Contact Information"
+msgstr "Байланыш үчүн маалымат"
+
+#: views.py:30
+#, fuzzy
+#| msgid "Contact Information"
+msgctxt "page header"
+msgid "Contact Information"
+msgstr "Байланыш үчүн маалымат"
