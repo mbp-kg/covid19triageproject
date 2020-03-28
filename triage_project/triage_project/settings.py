@@ -14,6 +14,8 @@ import os
 
 from django.utils.translation import gettext_lazy as _
 
+from .kyrgyz import add_kyrgyz_lang_info
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -118,6 +120,7 @@ LANGUAGES = [
     ("ky", _("Kyrgyz")),
     ("ru", _("Russian")),
 ]
+add_kyrgyz_lang_info()
 
 TIME_ZONE = 'UTC'
 
