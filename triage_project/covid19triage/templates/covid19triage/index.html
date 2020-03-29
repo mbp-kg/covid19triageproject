@@ -27,8 +27,9 @@
     {% get_current_language as currentlanguage %}
     {% for language in languages %}
       {% if language.0 != currentlanguage %}
-        {% language language.0 %}
-          <a href="{% url "covid19triage:index" %}">{{ language.0 | language_name_local }}{% endlanguage %} — {{ language.0 | language_name_translated }}</a>
+        <a href="{% language language.0 %}{% url "covid19triage:index" %}{% endlanguage %}">
+          {{ language.0 | language_name_local }} ({{ language.0 | language_name_translated }})
+        </a>
       {% endif %}
     {% endfor %}
   <div class="begin">
