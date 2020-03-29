@@ -128,6 +128,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Sessions
+
+SESSION_COOKIE_AGE = 28 * 86400 # 4 weeks
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = "Strict"
+SESSION_COOKIE_SECURE = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
