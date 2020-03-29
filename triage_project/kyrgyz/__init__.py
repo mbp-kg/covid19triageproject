@@ -9,3 +9,5 @@ def add_kyrgyz_lang_info():
         "name": "Kyrgyz",
         "name_local": "кыргызча",
     }
+
+add_kyrgyz_lang_info()

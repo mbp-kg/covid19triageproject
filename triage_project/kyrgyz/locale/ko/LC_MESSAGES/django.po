@@ -1,0 +1,22 @@
+#
+# Copyright (C) 2020 MBP, LLC
+# This file is distributed under the same license as the PACKAGE package.
+# Troy Farrell <troy.farrell@mbp.kg>, 2020.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: kyrgyz 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-29 12:49+0000\n"
+"PO-Revision-Date: 2020-03-29 12:49+0000\n"
+"Last-Translator: Troy Farrell <troy.farrell@mbp.kg>\n"
+"Language-Team: Troy Farrell <troy.farrell@mbp.kg>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "Kyrgyz"
+msgstr "키르기즈어"
