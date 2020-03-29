@@ -44,7 +44,12 @@ class ContactInformationForm(forms.ModelForm):
 
     class Meta:
         model = ContactPerson
-        fields = "__all__"
+        fields = [
+            "firstname",
+            "lastname",
+            "phonenumber",
+            "emailaddress",
+        ]
 
 
 class PatientFactorsForm(forms.ModelForm):

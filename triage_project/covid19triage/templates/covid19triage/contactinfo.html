@@ -27,7 +27,7 @@
 {% endif %}
 
   <div id="content-main">
-    <form action="{% url "covid19triage:patientinfo" %}" method="post">
+    <form method="post">
       {% csrf_token %}
       <fieldset class="module aligned">
         <div class="form-row">

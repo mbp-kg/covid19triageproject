@@ -23,6 +23,15 @@ class ContactPerson(models.Model):
         verbose_name=_("Email address"),
         blank=True,
     )
+    ctime = models.DateTimeField(
+        auto_now_add=True,
+    )
+    mtime = models.DateTimeField(
+        auto_now=True,
+    )
+
+    def __str__(self):
+        return "{}, {}".format(self.lastname, self.firstname)
 
 
 class Patient(models.Model):

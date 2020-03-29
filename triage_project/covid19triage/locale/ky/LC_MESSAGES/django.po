@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: covid19triageproject 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-03-27 04:49+0000\n"
-"PO-Revision-Date: 2020-03-28 18:18+0000\n"
+"PO-Revision-Date: 2020-03-29 15:34+0000\n"
 "Last-Translator: Troy Farrell <troy.farrell@mbp.kg>\n"
 "Language-Team: Troy Farrell <troy.farrell@mbp.kg>\n"
 "Language: ky\n"
@@ -18,53 +18,89 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:11
+#: forms.py:14 forms.py:85
 msgctxt "placeholder for first name"
 msgid "John"
 msgstr "Асан"
 
-#: forms.py:13
+#: forms.py:16 forms.py:87
 msgid "First Name"
 msgstr "Аты"
 
-#: forms.py:14
+#: forms.py:17
 msgid "Please enter your first or given name."
 msgstr "Атыңызды жазыңыз."
 
-#: forms.py:19
+#: forms.py:22 forms.py:93
 msgctxt "placeholder for last name"
 msgid "Doe"
 msgstr "Асанович"
 
-#: forms.py:21
+#: forms.py:24 forms.py:95
 msgid "Last Name"
 msgstr "фамилиясы"
 
-#: forms.py:22
+#: forms.py:25
 msgid "Please enter your last or family name."
 msgstr "Фамилияңызды жазыңыз."
 
-#: forms.py:28
+#: forms.py:31
 msgid "Phone Number"
 msgstr "Телефон номери"
 
-#: forms.py:29
+#: forms.py:32
 msgid "Please enter a phone number where we can reach you."
 msgstr "Байланышуу үчүн телефон номериңизди жазыңыз."
 
-#: forms.py:35
+#: forms.py:38
 msgid "E-mail address"
 msgstr "Электрондук почтанын дареги"
 
-#: forms.py:36
+#: forms.py:39
 msgid "Please enter your e-mail address."
 msgstr "Электрондук почтаңыздын дарегин жазыңыз."
 
-#: models.py:11
+#: forms.py:62
+msgid "Symptoms"
+msgstr ""
+
+#: forms.py:63
+msgid "Do you have any of the following symptoms?"
+msgstr ""
+
+#: forms.py:66
+msgid "How would you describe your cough?"
+msgstr ""
+
+#: forms.py:67
+msgid "Is it intense?"
+msgstr ""
+
+#: forms.py:81
+msgid "Are you answering for yourself?"
+msgstr ""
+
+#: forms.py:82 models.py:52
+msgid "Who is the patient?"
+msgstr ""
+
+#: forms.py:88
+msgid "Please enter the patientʼs first or given name."
+msgstr ""
+
+#: forms.py:96
+msgid "Please enter the patientʼs last or family name."
+msgstr ""
+
+#: forms.py:103
+msgid "Please enter the patientʼs medical gender."
+msgstr ""
+
+#: models.py:11 models.py:58
 msgid "First name"
 msgstr "Аты"
 
-#: models.py:15
+#: models.py:15 models.py:62
 msgid "Last name"
 msgstr "фамилиясы"
 
@@ -75,6 +111,86 @@ msgstr "Телефон номери"
 #: models.py:23
 msgid "Email address"
 msgstr "Электрондук почтанын дареги"
+
+#: models.py:43
+msgid "For myself"
+msgstr ""
+
+#: models.py:44
+msgid "For someone else"
+msgstr ""
+
+#: models.py:47
+msgid "Female"
+msgstr ""
+
+#: models.py:48
+msgid "Male"
+msgstr ""
+
+#: models.py:53
+msgid "Is the contact person answering for herself or himself?"
+msgstr ""
+
+#: models.py:66
+msgid "Gender"
+msgstr ""
+
+#: models.py:77
+msgid "No cough"
+msgstr ""
+
+#: models.py:78
+msgid "Light cough"
+msgstr ""
+
+#: models.py:79
+msgid "Heavy cough"
+msgstr ""
+
+#: models.py:83
+msgid "Patient"
+msgstr ""
+
+#: models.py:89
+msgid "Description of cough"
+msgstr ""
+
+#: models.py:93
+msgid "Contact with a sick person"
+msgstr ""
+
+#: models.py:103
+msgid "Version"
+msgstr ""
+
+#: models.py:108
+msgid "PatientFactors"
+msgstr ""
+
+#: models.py:117
+msgid "Version of the PatientFactors questions"
+msgstr ""
+
+#: models.py:120
+msgid "Description of the changes in this version"
+msgstr ""
+
+#: models.py:130
+msgid "Temperature at or above 38°C (100.4°F)"
+msgstr ""
+
+#: models.py:131
+msgid "Cough"
+msgstr ""
+
+#: models.py:132
+msgid "Shortness of breath"
+msgstr ""
+
+#: models.py:133
+msgid "None of these"
+msgstr ""
 
 #: templates/covid19triage/base.html:35
 msgid "Welcome,"
@@ -98,54 +214,53 @@ msgstr "Чыгуу"
 
 #: templates/covid19triage/base.html:61
 #: templates/covid19triage/contactinfo.html:10
+#: templates/covid19triage/patientfactors.html:10
+#: templates/covid19triage/patientinfo.html:10
 msgid "Home"
 msgstr "Башкы бетке"
 
 #: templates/covid19triage/contactinfo.html:17
 #: templates/covid19triage/index.html:13
+#: templates/covid19triage/patientfactors.html:17
+#: templates/covid19triage/patientinfo.html:17
 msgid "Please correct the error below."
 msgstr "Төмөндөгү катаны оңдоп коюңуз."
 
 #: templates/covid19triage/contactinfo.html:17
 #: templates/covid19triage/index.html:13
+#: templates/covid19triage/patientfactors.html:17
+#: templates/covid19triage/patientinfo.html:17
 msgid "Please correct the errors below."
 msgstr "Төмөндөгү каталарды оңдоп коюңуз."
 
 #: templates/covid19triage/contactinfo.html:50
+#: templates/covid19triage/patientfactors.html:38
+#: templates/covid19triage/patientinfo.html:50
 msgctxt "Next button label"
 msgid "Next »"
 msgstr "Кийинки »"
 
-#: templates/covid19triage/index.html:36
+#: templates/covid19triage/index.html:37
 msgctxt "Continue in $CURRENT_LANGUAGE: продолжайте на русском"
 msgid "Continue in English"
 msgstr "Продолжайте на киргизком"
 
-#: views.py:12
-msgctxt "page title"
+#: views.py:15
 msgid "COVID-19 Triage"
 msgstr "COVID-19 Triage"
 
-#: views.py:17
-msgctxt "page title"
+#: views.py:20
 msgid "Language"
 msgstr "Тил"
 
-#: views.py:18
-msgctxt "page header"
-msgid "Language"
-msgstr "Тил"
-
-#: views.py:29
-#, fuzzy
-#| msgid "Contact Information"
-msgctxt "page title"
+#: views.py:31
 msgid "Contact Information"
 msgstr "Байланыш үчүн маалымат"
 
-#: views.py:30
-#, fuzzy
-#| msgid "Contact Information"
-msgctxt "page header"
-msgid "Contact Information"
-msgstr "Байланыш үчүн маалымат"
+#: views.py:49
+msgid "Symptoms and Risk Factors"
+msgstr ""
+
+#: views.py:62
+msgid "Patient Information"
+msgstr ""
