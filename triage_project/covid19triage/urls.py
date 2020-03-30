@@ -21,4 +21,5 @@ urlpatterns = [
     path("contactinfo", views.ContactInformationView.as_view(), name="contactinfo"),
     path("patientinfo", views.PatientInformationView.as_view(), name="patientinfo"),
     path("patientfactors", views.PatientFactorsView.as_view(), name="patientfactors"),
+    path("result", views.result, name="result"),
 ]

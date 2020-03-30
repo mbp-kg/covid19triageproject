@@ -87,8 +87,13 @@ class PatientFactors(models.Model):
 
     class Cough(models.TextChoices):
         NONE = "none", _("No cough")
-        LIGHT = "light", _("Light cough")
-        HEAVY = "heavy", _("Heavy cough")
+        WET = "wet", _("Wet cough")
+        DRY = "dry", _("Dry cough")
+
+    class ShortnessOfBreath(models.TextChoices):
+        NONE = "none", _("No shortness of breath")
+        MODERATE = "moderate", _("Moderate shortness of breath")
+        SEVERE = "severe", _("Severe shortness of breath")
 
     patient = models.ForeignKey(
         Patient,
@@ -96,13 +101,33 @@ class PatientFactors(models.Model):
         on_delete=models.PROTECT,
     )
     symptoms = models.ManyToManyField("Symptom")
+    temperature = models.DecimalField(
+        decimal_places=1,
+        max_digits=4,
+        verbose_name=_("Patientʼs highest temperature within 24 hours"),
+    )
     cough = models.CharField(
         max_length=20,
         verbose_name=_("Description of cough"),
         choices=Cough.choices,
     )
+    shortnessofbreath = models.CharField(
+        max_length=20,
+        verbose_name=_("Description of shortness of breath"),
+        choices=ShortnessOfBreath.choices,
+    )
+    pregnant = models.BooleanField(
+        verbose_name=_("Patient is pregnant or expecting to become pregnant")
+    )
     contact = models.BooleanField(
         verbose_name=_("Contact with a sick person"),
+    )
+    smokeorvape = models.BooleanField(
+        verbose_name=_("The patient smokes or vapes"),
+    )
+    risks = models.ManyToManyField("Risk")
+    cancer = models.BooleanField(
+        verbose_name=_("The patient is being treated for cancer"),
     )
     ctime = models.DateTimeField(
         auto_now_add=True,
@@ -133,6 +158,29 @@ class PatientFactorsVersion(models.Model):
     )
 
 
+class Risk(models.Model):
+    """
+    Risks for of patients possibly experiencing COVID-19
+    """
+
+    class Possible(models.TextChoices):
+        RESPIRATORY = "respiratory", _("Respiratory condition, e.g., COPD, asthma")
+        HEART = "heart", _("Heart condition")
+        DIABETES = "diabetes", _("Diabetes")
+        CHRONIC_CONDITION = "chronic condition", _("Other chronic condition, e.g., kidney failure, liver failure")
+        IMMUNOCOMPROMISED = "immunocompromised", _("Immunocompromised")
+        NONE = "none", _("None of these")
+
+    name = models.CharField(
+        max_length=30,
+        primary_key=True,
+        choices=Possible.choices
+    )
+
+    def __str__(self):
+        return self.name
+
+
 class Symptom(models.Model):
     """
     Symptoms of COVID-19
@@ -146,9 +194,13 @@ class Symptom(models.Model):
 
     name = models.CharField(
         max_length=20,
-        unique=True,
+        primary_key=True,
         choices=Possible.choices
     )
 
     def __str__(self):
         return self.name
+
+
+def get_current_pfv():
+    return PatientFactorsVersion.objects.get(pk=1)

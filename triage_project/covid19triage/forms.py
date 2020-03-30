@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from django.utils.translation import gettext, gettext_lazy as _
 from django.utils.translation import pgettext, pgettext_lazy
@@ -5,7 +6,10 @@ from django.utils.translation import pgettext, pgettext_lazy
 from .models import ContactPerson
 from .models import Patient
 from .models import PatientFactors
+from .models import Risk
 from .models import Symptom
+from .widgets import KnownNullBooleanSelect
+
 
 class ContactInformationForm(forms.ModelForm):
     """
@@ -59,18 +63,61 @@ class PatientFactorsForm(forms.ModelForm):
     symptoms = forms.MultipleChoiceField(
         choices=Symptom.Possible.choices,
         widget=forms.CheckboxSelectMultiple(),
-        label=_("Symptoms"),
-        help_text=_("Do you have any of the following symptoms?"),
+        label=_("Do you have any of the following symptoms?"),
+    )
+    temperature = forms.DecimalField(
+        decimal_places=1,
+        max_digits=4,
+        max_value=110.0,
+        min_value=30.0,
+        label=_("Patientʼs highest temperature within 24 hours"),
+        required=False,
     )
     cough = forms.ChoiceField(
         label=_("How would you describe your cough?"),
         help_text=_("Is it intense?"),
         choices=PatientFactors.Cough.choices,
     )
+    shortnessofbreath = forms.ChoiceField(
+        label=_("How would you describe your shortness of breath?"),
+        help_text=_("Is it severe?"),
+        choices=PatientFactors.ShortnessOfBreath.choices,
+    )
+    pregnant = forms.BooleanField(
+        label=_("Are you pregnant or expecting to become pregnant?"),
+        required=False,
+    )
+    contact = forms.NullBooleanField(
+        label=_("Have you been in contact with someone who is sick?"),
+        widget=KnownNullBooleanSelect(),
+    )
+    smokeorvape = forms.BooleanField(
+        label=_("Do you smoke or vape or use e-cigarettes?"),
+        required=False,
+    )
+    risks = forms.MultipleChoiceField(
+        choices=Risk.Possible.choices,
+        widget=forms.CheckboxSelectMultiple(),
+        label=_("Do you have any of the following conditions?"),
+    )
+    cancer = forms.BooleanField(
+        label=_("Are you currently under treatment for cancer?"),
+        required=False,
+    )
 
     class Meta:
         model = PatientFactors
-        fields = ["symptoms", "cough", "contact"]
+        fields = [
+            "symptoms",
+            "temperature",
+            "cough",
+            "shortnessofbreath",
+            "pregnant",
+            "contact",
+            "smokeorvape",
+            "risks",
+            "cancer",
+        ]
 
 
 class PatientInformationForm(forms.ModelForm):

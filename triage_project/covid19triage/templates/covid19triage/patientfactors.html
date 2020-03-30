@@ -34,6 +34,38 @@
             {{ form.symptoms.errors }}
             {{ form.symptoms.label_tag }} {{ form.symptoms }}
         </div>
+        <div class="form-row">
+            {{ form.temperature.errors }}
+            {{ form.temperature.label_tag }} {{ form.temperature }}
+        </div>
+        <div class="form-row">
+            {{ form.cough.errors }}
+            {{ form.cough.label_tag }} {{ form.cough }}
+        </div>
+        <div class="form-row">
+            {{ form.shortnessofbreath.errors }}
+            {{ form.shortnessofbreath.label_tag }} {{ form.shortnessofbreath }}
+        </div>
+        <div class="form-row">
+            {{ form.pregnant.errors }}
+            {{ form.pregnant.label_tag }} {{ form.pregnant }}
+        </div>
+        <div class="form-row">
+            {{ form.contact.errors }}
+            {{ form.contact.label_tag }} {{ form.contact }}
+        </div>
+        <div class="form-row">
+            {{ form.smokeorvape.errors }}
+            {{ form.smokeorvape.label_tag }} {{ form.smokeorvape }}
+        </div>
+        <div class="form-row">
+            {{ form.risks.errors }}
+            {{ form.risks.label_tag }} {{ form.risks }}
+        </div>
+        <div class="form-row">
+            {{ form.cancer.errors }}
+            {{ form.cancer.label_tag }} {{ form.cancer }}
+        </div>
         <div class="submit-row">
           <input type="submit" value="{% trans "Next »" context "Next button label" %}" class="default" />
         </div>

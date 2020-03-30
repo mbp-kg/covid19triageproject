@@ -12,6 +12,31 @@ def add_patientfactorversion(apps, schemaeditor):
     version1.save()
 
 
+def add_risks(apps, schemaeditor):
+    "Add patient risks"
+    RiskModel = apps.get_model("covid19triage", "Risk")
+
+    respiratory = RiskModel()
+    respiratory.name = "respiratory"
+    respiratory.save()
+
+    heart = RiskModel()
+    heart.name = "heart"
+    heart.save()
+
+    diabetes = RiskModel()
+    diabetes.name = "diabetes"
+    diabetes.save()
+
+    chroniccondition = RiskModel()
+    chroniccondition.name = "chronic condition"
+    chroniccondition.save()
+
+    immunocompromised = RiskModel()
+    immunocompromised.name = "immunocompromised"
+    immunocompromised.save()
+
+
 def add_symptoms(apps, schemaeditor):
     "Add symptoms"
     SymptomModel = apps.get_model("covid19triage", "Symptom")
@@ -35,5 +60,6 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(add_patientfactorversion),
+        migrations.RunPython(add_risks),
         migrations.RunPython(add_symptoms),
     ]
