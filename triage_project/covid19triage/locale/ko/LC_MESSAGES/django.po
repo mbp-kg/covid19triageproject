@@ -113,32 +113,40 @@ msgid "Who is the patient?"
 msgstr "문진표 대상자가 누구입니까?"
 
 #: forms.py:134
+# This text only says "Date of Birth" because "Patientʼs" is not a helpful
+# modifier in the Korean text.
 msgid "Patientʼs First Name"
-msgstr "상대방의 이름"
+msgstr "이름"
 
 #: forms.py:135
 msgid "Please enter the patientʼs first or given name."
 msgstr "대상자의 이름을 입력하세요"
 
 #: forms.py:142
+# This text only says "Date of Birth" because "Patientʼs" is not a helpful
+# modifier in the Korean text.
 msgid "Patientʼs Last Name"
-msgstr "상대방의 성"
+msgstr "성"
 
 #: forms.py:143
 msgid "Please enter the patientʼs last or family name."
 msgstr "대상자의 성을 입력하세요"
 
 #: forms.py:149
+# This text only says "Date of Birth" because "Patientʼs" is not a helpful
+# modifier in the Korean text.
 msgid "Patientʼs Gender"
-msgstr "상대방의 성별"
+msgstr "성별"
 
 #: forms.py:150
 msgid "Please enter the patientʼs medical gender."
 msgstr "대상자의 성별을 입력하세요"
 
 #: forms.py:154
+# This text only says "Date of Birth" because "Patientʼs" is not a helpful
+# modifier in the Korean text.
 msgid "Patientʼs Date of Birth"
-msgstr "상대방의 생년월일"
+msgstr "생년월일"
 
 #: forms.py:155
 msgid "Please enter the patientʼs date of birth."
