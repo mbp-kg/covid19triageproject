@@ -105,6 +105,7 @@ class PatientFactors(models.Model):
         decimal_places=1,
         max_digits=4,
         verbose_name=_("Patientʼs highest temperature within 24 hours"),
+        null=True,
     )
     cough = models.CharField(
         max_length=20,
