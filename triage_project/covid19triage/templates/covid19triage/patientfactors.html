@@ -31,38 +31,47 @@
       {% csrf_token %}
       <fieldset class="module aligned">
         <div class="form-row">
-            {{ form.symptoms.errors }}
-            {{ form.symptoms.label_tag }} {{ form.symptoms }}
+          <label class="second-person" id="symptoms-second-person">{% trans "Do you have any of the following symptoms?" %}</label>
+          {{ form.symptoms.errors }}
+          {{ form.symptoms.label_tag }} {{ form.symptoms }}
         </div>
         <div class="form-row">
+          <label class="second-person" id="temperature-second-person">{% trans "Your highest temperature within 24 hours" %}</label>
             {{ form.temperature.errors }}
             {{ form.temperature.label_tag }} {{ form.temperature }}
         </div>
         <div class="form-row">
+          <label class="second-person" id="cough-second-person">{% trans "How would you describe your cough?" %}</label>
             {{ form.cough.errors }}
             {{ form.cough.label_tag }} {{ form.cough }}
         </div>
         <div class="form-row">
+          <label class="second-person" id="shortnessofbreath-second-person">{% trans "How would you describe your shortness of breath?" %}</label>
             {{ form.shortnessofbreath.errors }}
             {{ form.shortnessofbreath.label_tag }} {{ form.shortnessofbreath }}
         </div>
         <div class="form-row">
+          <label class="second-person" id="pregnant-second-person">{% trans "Are you pregnant or expecting to become pregnant?" %}</label>
             {{ form.pregnant.errors }}
             {{ form.pregnant.label_tag }} {{ form.pregnant }}
         </div>
         <div class="form-row">
+          <label class="second-person" id="contact-second-person">{% trans "Have you been in contact with someone who is sick?" %}</label>
             {{ form.contact.errors }}
             {{ form.contact.label_tag }} {{ form.contact }}
         </div>
         <div class="form-row">
+          <label class="second-person" id="smokeorvape-second-person">{% trans "Do you smoke or vape or use e-cigarettes?" %}</label>
             {{ form.smokeorvape.errors }}
             {{ form.smokeorvape.label_tag }} {{ form.smokeorvape }}
         </div>
         <div class="form-row">
+          <label class="second-person" id="risks-second-person">{% trans "Do you have any of the following conditions?" %}</label>
             {{ form.risks.errors }}
             {{ form.risks.label_tag }} {{ form.risks }}
         </div>
         <div class="form-row">
+          <label class="second-person" id="cancer-second-person">{% trans "Are you currently under treatment for cancer?" %}</label>
             {{ form.cancer.errors }}
             {{ form.cancer.label_tag }} {{ form.cancer }}
         </div>

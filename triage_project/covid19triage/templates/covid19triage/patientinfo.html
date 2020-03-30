@@ -35,18 +35,22 @@
             {{ form.forwhom.label_tag }} {{ form.forwhom }}
         </div>
         <div class="form-row">
+          <label class="second-person" id="firstname-second-person">{% trans "Your First Name" %}</label>
             {{ form.firstname.errors }}
             {{ form.firstname.label_tag }} {{ form.firstname }}
         </div>
         <div class="form-row">
+          <label class="second-person" id="lastname-second-person">{% trans "Your Last Name" %}</label>
           {{ form.lastname.errors }}
           {{ form.lastname.label_tag }} {{ form.lastname }}
         </div>
         <div class="form-row">
+          <label class="second-person" id="gender-second-person">{% trans "Your Gender" %}</label>
           {{ form.gender.errors }}
           {{ form.gender.label_tag }} {{ form.gender }}
         </div>
         <div class="form-row">
+          <label class="second-person" id="dob-second-person">{% trans "Your Date of Birth" %}</label>
           {{ form.dob.errors }}
           {{ form.dob.label_tag }} {{ form.dob }}
         </div>

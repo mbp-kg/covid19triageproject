@@ -63,7 +63,7 @@ class PatientFactorsForm(forms.ModelForm):
     symptoms = forms.MultipleChoiceField(
         choices=Symptom.Possible.choices,
         widget=forms.CheckboxSelectMultiple(),
-        label=_("Do you have any of the following symptoms?"),
+        label=_("Does the patient have any of the following symptoms?"),
     )
     temperature = forms.DecimalField(
         decimal_places=1,
@@ -74,34 +74,34 @@ class PatientFactorsForm(forms.ModelForm):
         required=False,
     )
     cough = forms.ChoiceField(
-        label=_("How would you describe your cough?"),
+        label=_("How would the patient describe the patientʼs cough?"),
         help_text=_("Is it intense?"),
         choices=PatientFactors.Cough.choices,
     )
     shortnessofbreath = forms.ChoiceField(
-        label=_("How would you describe your shortness of breath?"),
+        label=_("How would the patient describe the patientʼs shortness of breath?"),
         help_text=_("Is it severe?"),
         choices=PatientFactors.ShortnessOfBreath.choices,
     )
     pregnant = forms.BooleanField(
-        label=_("Are you pregnant or expecting to become pregnant?"),
+        label=_("Is the patient pregnant or expecting to become pregnant?"),
         required=False,
     )
     contact = forms.NullBooleanField(
-        label=_("Have you been in contact with someone who is sick?"),
+        label=_("Has the patient been in contact with someone who is sick?"),
         widget=KnownNullBooleanSelect(),
     )
     smokeorvape = forms.BooleanField(
-        label=_("Do you smoke or vape or use e-cigarettes?"),
+        label=_("Does the patient smoke or vape or use e-cigarettes?"),
         required=False,
     )
     risks = forms.MultipleChoiceField(
         choices=Risk.Possible.choices,
         widget=forms.CheckboxSelectMultiple(),
-        label=_("Do you have any of the following conditions?"),
+        label=_("Does the patient have any of the following conditions?"),
     )
     cancer = forms.BooleanField(
-        label=_("Are you currently under treatment for cancer?"),
+        label=_("Is the patient currently under treatment for cancer?"),
         required=False,
     )
 
@@ -131,7 +131,7 @@ class PatientInformationForm(forms.ModelForm):
     )
     placeholder_firstname = pgettext_lazy("placeholder for first name", "John")
     firstname = forms.CharField(
-        label=_("First Name"),
+        label=_("Patientʼs First Name"),
         help_text=_("Please enter the patientʼs first or given name."),
         widget=forms.TextInput(
             attrs={"placeholder": placeholder_firstname},
@@ -139,19 +139,19 @@ class PatientInformationForm(forms.ModelForm):
     )
     placeholder_lastname = pgettext_lazy("placeholder for last name", "Doe")
     lastname = forms.CharField(
-        label=_("Last Name"),
+        label=_("Patientʼs Last Name"),
         help_text=_("Please enter the patientʼs last or family name."),
         widget=forms.TextInput(
             attrs={"placeholder": placeholder_lastname},
         ),
     )
     gender = forms.ChoiceField(
-        label=_("Gender"),
+        label=_("Patientʼs Gender"),
         help_text=_("Please enter the patientʼs medical gender."),
         choices=Patient.MedicalGender.choices,
     )
     dob = forms.DateField(
-        label=_("Date of Birth"),
+        label=_("Patientʼs Date of Birth"),
         help_text=_("Please enter the patientʼs date of birth."),
         widget=forms.DateInput(
             attrs={"type": "date"},
