@@ -27,7 +27,7 @@
 {% endif %}
 
   <div id="content-main">
-    <form action="{% url "covid19triage:patientfactors" %}" method="post">
+    <form method="post">
       {% csrf_token %}
       <fieldset class="module aligned">
         <div class="form-row">
@@ -45,6 +45,10 @@
         <div class="form-row">
           {{ form.gender.errors }}
           {{ form.gender.label_tag }} {{ form.gender }}
+        </div>
+        <div class="form-row">
+          {{ form.dob.errors }}
+          {{ form.dob.label_tag }} {{ form.dob }}
         </div>
         <div class="submit-row">
           <input type="submit" value="{% trans "Next »" context "Next button label" %}" class="default" />

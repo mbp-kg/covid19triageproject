@@ -99,11 +99,24 @@ class PatientInformationForm(forms.ModelForm):
         ),
     )
     gender = forms.ChoiceField(
-        label=("Gender"),
+        label=_("Gender"),
         help_text=_("Please enter the patientʼs medical gender."),
         choices=Patient.MedicalGender.choices,
+    )
+    dob = forms.DateField(
+        label=_("Date of Birth"),
+        help_text=_("Please enter the patientʼs date of birth."),
+        widget=forms.DateInput(
+            attrs={"type": "date"},
+        )
     )
 
     class Meta:
         model = Patient
-        fields = "__all__"
+        fields = [
+            "forwhom",
+            "firstname",
+            "lastname",
+            "gender",
+            "dob",
+        ]

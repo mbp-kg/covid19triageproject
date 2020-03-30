@@ -65,3 +65,8 @@ class PatientInformationView(FormView):
     }
     form_class = PatientInformationForm
     template_name = "covid19triage/patientinfo.html"
+
+    def form_valid(self, form):
+        patientinfo = form.save()
+        self.request.session["patientinfo"] = patientinfo.pk
+        return redirect("covid19triage:patientfactors")

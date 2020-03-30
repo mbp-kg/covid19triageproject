@@ -66,6 +66,18 @@ class Patient(models.Model):
         verbose_name=_("Gender"),
         choices=MedicalGender.choices,
     )
+    dob = models.DateField(
+        verbose_name=_("Date of Birth"),
+    )
+    ctime = models.DateTimeField(
+        auto_now_add=True,
+    )
+    mtime = models.DateTimeField(
+        auto_now=True,
+    )
+
+    def __str__(self):
+        return "{}, {}".format(self.lastname, self.firstname)
 
 
 class PatientFactors(models.Model):
