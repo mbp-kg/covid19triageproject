@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "covid19triage.apps.Covid19TriageConfig",
     "kyrgyz.apps.KyrgyzConfig",
+    "workinghours.apps.WorkingHoursConfig",
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 STATIC_URL = '/static/'
 
 STATIC_ROOT = "/opt/triage.mbp.kg/htdocs"
+
+# Messages
+
+MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"

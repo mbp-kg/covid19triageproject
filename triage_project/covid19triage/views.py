@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from django.contrib.messages.api import info
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -6,6 +7,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.views.generic.edit import FormView
+from workinghours.api import is_open
 
 from .forms import ContactInformationForm
 from .forms import PatientFactorsForm
@@ -17,31 +19,68 @@ from .models import Risk
 from .models import Symptom
 from .models import get_current_pfv
 
-def _make_title(pagetitle: str) -> str:
+from .scoring import calculate_score
+
+
+def _make_pagetitle(pagetitle: str) -> str:
     prefix = _("COVID-19 Triage")
     return "{} — {}".format(prefix, pagetitle)
 
 
 def index(request):
-    pagetitle = _("Language")
+    if is_open(timezone.now()):
+        info(request, _("Eldik Family Medicine Clinic is currently open."))
+    else:
+        info(request, _("Eldik Family Medicine Clinic is currently closed."))
+    title = _("Language")
     return render(request, "covid19triage/index.html", {
-        "pagetitle": _make_title(pagetitle),
-        "title": pagetitle,
+        "pagetitle": _make_pagetitle(title),
+        "title": title,
     })
 
 
+def intro(request):
+    title = _("Welcome")
+    context = {
+        "pagetitle": _make_pagetitle(title),
+        "title": title,
+    }
+    return render(request, "covid19triage/intro.html", context)
+
+
 def result(request):
-    return render(request, "covid19triage/result.html", {})
+    contactinfoid = request.session.get("contactinfoid")
+    if contactinfoid is None:
+        return redirect("covid19triage:contactinfo")
+    patientid = request.session.get("patientid")
+    if patientid is None:
+        return redirect("covid19triage:patientinfo")
+    patientfactorsid = request.session.get("patientfactorsid")
+    if patientfactorsid is None:
+        return redirect("covid19triage:patientfactors")
+
+    patient = Patient.objects.get(pk=patientid)
+    patientfactors = PatientFactors.objects.get(pk=patientfactorsid)
+    score = calculate_score(patient, patientfactors)
+
+    context = {
+        "open": is_open(timezone.now()),
+        "pagetitle": _make_pagetitle("Result"),
+        "score": score,
+        "title": title,
+    }
+
+    return render(request, "covid19triage/result.html", context)
 
 
 class ContactInformationView(FormView):
     """
     Display the contact information form
     """
-    pagetitle = _("Contact Information")
+    title = _("Contact Information")
     extra_context = {
-        "pagetitle": _make_title(pagetitle),
-        "title": pagetitle,
+        "pagetitle": _make_pagetitle(title),
+        "title": title,
     }
     form_class = ContactInformationForm
     template_name = "covid19triage/contactinfo.html"
@@ -55,10 +94,10 @@ class PatientFactorsView(FormView):
     """
     Display the patient factors form
     """
-    pagetitle = _("Symptoms and Risk Factors")
+    title = _("Symptoms and Risk Factors")
     extra_context = {
-        "pagetitle": _make_title(pagetitle),
-        "title": pagetitle,
+        "pagetitle": _make_pagetitle(title),
+        "title": title,
     }
     form_class = PatientFactorsForm
     template_name = "covid19triage/patientfactors.html"
@@ -79,10 +118,10 @@ class PatientInformationView(FormView):
     """
     Display the patient information form
     """
-    pagetitle = _("Patient Information")
+    title = _("Patient Information")
     extra_context = {
-        "pagetitle": _make_title(pagetitle),
-        "title": pagetitle,
+        "pagetitle": _make_pagetitle(title),
+        "title": title,
     }
     form_class = PatientInformationForm
     template_name = "covid19triage/patientinfo.html"

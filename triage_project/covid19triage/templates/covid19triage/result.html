@@ -1,0 +1,72 @@
+{% extends "covid19triage/base.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "covid19triage/css/result.css" %}">
+{% endblock %}
+
+{% block bodyclass %}result{% endblock %}
+
+{% block content %}
+  <div id="content-main">
+    {% if score < 5 %}
+      {% blocktrans %}
+        <p>
+          Based on your answers, you do not need to consult with a doctor at this time.
+        </p>
+        <p>
+          Eldik Clinic recommends everyone to follow the following rules for prevention COVID-19:
+        </p>
+        <ul>
+          <li>Avoid travel</li>
+          <li>practice social distancing of at least 1.5 meters</li>
+          <li>wash your hands frequently; use alcohol-based antiseptics when you cannot wash</li>
+          <li>disinfect surfaces often</li>
+        </ul>
+        <p>
+          Inform your doctor if you notice your health worsening with any of the following symptoms:
+          <ul>
+            <li>temperature above 38°C (100.4°F)</li>
+            <li>coughing</li>
+            <li>difficulty breathing / shortness of breath</li>
+          </ul>
+        </p>
+        <p>
+          Thank you for your attention to yourself and to the health of the people around you.
+        </p>
+      {% endblocktrans %}
+    {% elif score <= 10 %}
+      {% blocktrans %}
+        <p>
+          Based on your answers, you are at high risk for developing severe symptoms and you need to consult a doctor by phone.
+        </p>
+        <p>
+          Please select a time to consult with a doctor.  We conduct appointments in the clinic while conducting telephone consultations with doctors for your convenience and to prevent new infections.
+        </p>
+        <p>
+          Thank you for your attention to yourself and to the health of the people around you.
+        </p>
+        <p>
+          Please click below to be in line for our telephone consultation.
+        </p>
+        <p>
+          The consultant will call back to conduct a state assessment and to complete the consultation will give further instructions.
+        </p>
+      {% endblocktrans %}
+    {% else %}
+      {% blocktrans %}
+        <p>
+          Based on your answers, you are strongly recommended to contact a doctor for further examination or call 103 if your condition worsens.
+        </p>
+        <p>
+          Thank you for your attention to yourself and to the health of the people around you.
+        </p>
+      {% endblocktrans %}
+    {% endif %}
+  <div class="begin">
+    <a class="next" href="{% url "covid19triage:contactinfo" %}">
+      {% trans "Continue in English" context "Continue in $CURRENT_LANGUAGE: продолжайте на русском" %}
+    </a>
+  </div>
+</div>
+{% endblock %}

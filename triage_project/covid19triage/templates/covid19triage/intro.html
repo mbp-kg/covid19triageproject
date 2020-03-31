@@ -1,0 +1,27 @@
+{% extends "covid19triage/base.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "covid19triage/css/languages.css" %}">
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+  {% blocktrans %}
+    <p>
+      In response to the growing number of novel coronavirus (COVID-19) cases, Eldik family medicine Clinic is offering COVID-19 Doctor Consultations to help direct you to the most appropriate care. Our telephonic doctor consultations are available Monday thru Friday 9:00 – 5:00.
+    </p>
+    <p>
+      To determine if you qualify for a COVID-19 Doctor Consultation, please complete this online, non-diagnostic assessment to review your symptoms and risk factors. The assessment will take about seven minutes to complete and, based on your responses, you will be provided with recommended next steps.
+    </p>
+    <p>
+      Eldik family medicine Clinic has a long history of battling disease and caring for patients through uneasy times. We are prepared to respond to global pandemics and are equipped to evaluate and screen patients to ensure the health and safety of our community.
+    </p>
+  {% endblocktrans %}
+  <div class="begin">
+    <a class="next" href="{% url "covid19triage:contactinfo" %}">
+      {% trans "Next" %}
+    </a>
+  </div>
+</div>
+{% endblock %}

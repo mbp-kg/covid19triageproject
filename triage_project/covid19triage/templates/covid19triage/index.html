@@ -8,20 +8,6 @@
 {% block bodyclass %}languages{% endblock %}
 
 {% block content %}
-{% if form.errors and not form.non_field_errors %}
-<p class="errornote">
-{% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
-</p>
-{% endif %}
-
-{% if form.non_field_errors %}
-{% for error in form.non_field_errors %}
-<p class="errornote">
-    {{ error }}
-</p>
-{% endfor %}
-{% endif %}
-
 <div id="content-main">
     {% get_available_languages as languages %}
     {% get_current_language as currentlanguage %}
@@ -33,9 +19,17 @@
       {% endif %}
     {% endfor %}
   <div class="begin">
-    <a class="next" href="{% url "covid19triage:contactinfo" %}">
+    <a class="next" href="{% url "covid19triage:intro" %}">
       {% trans "Continue in English" context "Continue in $CURRENT_LANGUAGE: продолжайте на русском" %}
     </a>
   </div>
+  <p>{% trans "Please call for an ambulance (103 in Kyrgyzstan) immediately if you experience any of the following:" %}</p>
+  <ul>
+    <li>{% trans "Cyanosis of the face and the nasolabial triangle" %}</li>
+    <li>{% trans "Seizures" %}</li>
+    <li>{% trans "Symptoms of stroke (asymmetry of the face, paralysis of extremities, impaired speech)" %}</li>
+    <li>{% trans "Disorientation or fainting" %}</li>
+    <li>{% trans "Symptoms of angina (chest pain which radiates to the left arm, shoulder or lower jaw)" %}</li>
+  </ul>
 </div>
 {% endblock %}
