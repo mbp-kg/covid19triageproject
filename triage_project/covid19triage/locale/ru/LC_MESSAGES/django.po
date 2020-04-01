@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: covid19triageproject 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-01 07:46+0000\n"
+"POT-Creation-Date: 2020-04-01 10:32+0000\n"
 "PO-Revision-Date: 2020-03-29 15:34+0000\n"
 "Last-Translator: Troy Farrell <troy.farrell@mbp.kg>\n"
 "Language-Team: Troy Farrell <troy.farrell@mbp.kg>\n"
@@ -19,130 +19,130 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:18 forms.py:133
+#: forms.py:19 forms.py:144
 msgctxt "placeholder for first name"
 msgid "John"
 msgstr "Иван"
 
-#: forms.py:20
+#: forms.py:21
 msgid "First Name"
 msgstr "Имя"
 
-#: forms.py:21
+#: forms.py:22
 msgid "Please enter your first or given name."
 msgstr "Пожалуйста, введите имя."
 
-#: forms.py:26 forms.py:141
+#: forms.py:27 forms.py:152
 msgctxt "placeholder for last name"
 msgid "Doe"
 msgstr "Иванов"
 
-#: forms.py:28
+#: forms.py:29
 msgid "Last Name"
 msgstr "Фамилия"
 
-#: forms.py:29
+#: forms.py:30
 msgid "Please enter your last or family name."
 msgstr "Пожалуйста, введите фамилию."
 
-#: forms.py:35
+#: forms.py:36
 msgid "Phone Number"
 msgstr "Номер телефона"
 
-#: forms.py:36
+#: forms.py:37
 msgid "Please enter a phone number where we can reach you."
 msgstr ""
 "Пожалуйста, введите номер телефона, по которому мы сможем связаться с вами."
 
-#: forms.py:42
+#: forms.py:43
 msgid "E-mail address"
 msgstr "Адрес электронной почты"
 
-#: forms.py:43
+#: forms.py:44
 msgid "Please enter your e-mail address."
 msgstr "Пожалуйста, введитье адрес электронной почты."
 
-#: forms.py:49
+#: forms.py:50
 msgid "Are you answering for yourself?"
 msgstr "Вы отвечаете/заполняете для себя?"
 
-#: forms.py:50 models.py:34
+#: forms.py:51 models.py:34
 msgid "Who is the patient?"
 msgstr "Кто пациент?"
 
-#: forms.py:72
+#: forms.py:73
 msgid "Does the patient have any of the following symptoms?"
 msgstr "У пациента есть один из перечисленных симптомов?"
 
-#: forms.py:79 models.py:114
+#: forms.py:81 models.py:117
 msgid "Patientʼs highest temperature within 24 hours"
 msgstr "Самая высокая температура пациента в течение последних 24 часов"
 
-#: forms.py:83
+#: forms.py:85
 msgid "How would the patient describe the patientʼs cough?"
 msgstr "Как бы пациент описал свой кашель?"
 
-#: forms.py:84
+#: forms.py:86
 msgid "Is it intense?"
 msgstr "Это интенсивно?"
 
-#: forms.py:88
+#: forms.py:90
 msgid "How would the patient describe the patientʼs shortness of breath?"
 msgstr "Как бы пациент описал свою одышку?"
 
-#: forms.py:89
+#: forms.py:91
 msgid "Is it severe?"
 msgstr "Это остро?"
 
-#: forms.py:93
+#: forms.py:95
 msgid "Is the patient pregnant or expecting to become pregnant?"
 msgstr "Пациентка беременна или планирует беременность?"
 
-#: forms.py:97
+#: forms.py:99
 msgid "Has the patient been in contact with someone who is sick?"
 msgstr "Был ли пациент в контакте с заболевшим человеком?"
 
-#: forms.py:101
+#: forms.py:103
 msgid "Does the patient smoke or vape or use e-cigarettes?"
 msgstr "Пациент курит сигареты или вейп или использует электронные сигареты?"
 
-#: forms.py:107
+#: forms.py:109
 msgid "Does the patient have any of the following conditions?"
 msgstr "У пациента есть один из перечисленных симптомов?"
 
-#: forms.py:110
+#: forms.py:113
 msgid "Is the patient currently under treatment for cancer?"
 msgstr "Пациент в настоящее время лечится от рака?"
 
-#: forms.py:135
+#: forms.py:146
 msgid "Patientʼs First Name"
 msgstr "Имя"
 
-#: forms.py:136
+#: forms.py:147
 msgid "Please enter the patientʼs first or given name."
 msgstr "Пожалуйста, введите имя пациента."
 
-#: forms.py:143
+#: forms.py:154
 msgid "Patientʼs Last Name"
 msgstr "Фамилия"
 
-#: forms.py:144
+#: forms.py:155
 msgid "Please enter the patientʼs last or family name."
 msgstr "Пожалуйста, введите фамилию пациента"
 
-#: forms.py:150
+#: forms.py:161
 msgid "Patientʼs Gender"
 msgstr "Пол пациента"
 
-#: forms.py:151
+#: forms.py:162
 msgid "Please enter the patientʼs medical gender."
 msgstr "Пожалуйста, введите пол пациента"
 
-#: forms.py:155
+#: forms.py:166
 msgid "Patientʼs Date of Birth"
 msgstr "Пожалуйста, введите дату рождения пациента"
 
-#: forms.py:156
+#: forms.py:167
 msgid "Please enter the patientʼs date of birth."
 msgstr "Пожалуйста, введите дату рождения пациента"
 
@@ -218,79 +218,75 @@ msgstr "Тяжёлая одышка"
 msgid "Patient"
 msgstr "Пациент"
 
-#: models.py:119
+#: models.py:122
 msgid "Description of cough"
 msgstr "Описание кашля"
 
-#: models.py:124
+#: models.py:127
 msgid "Description of shortness of breath"
 msgstr "Описание одышки"
 
-#: models.py:128
+#: models.py:131
 msgid "Patient is pregnant or expecting to become pregnant"
 msgstr "Пациентка беременна или планирует беременность?"
 
-#: models.py:131
+#: models.py:134
 msgid "Contact with a sick person"
 msgstr "Контакт с больным/заболевшим человеком"
 
-#: models.py:134
+#: models.py:137
 msgid "The patient smokes or vapes"
 msgstr "Пациент курит сигареты или электронные сигареты"
 
-#: models.py:138
+#: models.py:144
 msgid "The patient is being treated for cancer"
 msgstr "Пациент получает лечение от рака"
 
-#: models.py:148
+#: models.py:154
 msgid "Version"
 msgstr "Версия"
 
-#: models.py:153
+#: models.py:159
 msgid "PatientFactors"
 msgstr "ПациентФакторы"
 
-#: models.py:162
+#: models.py:168
 msgid "Version of the PatientFactors questions"
 msgstr "Версия вопросов ПациентФакторы"
 
-#: models.py:165
+#: models.py:171
 msgid "Description of the changes in this version"
 msgstr "Описание изменений в этой версии"
 
-#: models.py:175
+#: models.py:181
 msgid "Respiratory condition, e.g., COPD, asthma"
 msgstr "Заболевания дыхательной системы: ХОБЛ, астма и т.д"
 
-#: models.py:176
+#: models.py:182
 msgid "Heart condition"
 msgstr "Сердечно-сосудистые заболевания"
 
-#: models.py:177
+#: models.py:183
 msgid "Diabetes"
 msgstr "Сахарный диабет"
 
-#: models.py:178
+#: models.py:184
 msgid "Other chronic condition, e.g., kidney failure, liver failure"
 msgstr "Другие хронические заболевания: почечная/печеночная недостаточность"
 
-#: models.py:179
+#: models.py:185
 msgid "Immunocompromised"
 msgstr "Иммунодефицитные состояния"
 
-#: models.py:180 models.py:201
-msgid "None of these"
-msgstr "Ничего из этих"
-
-#: models.py:198
+#: models.py:203
 msgid "Temperature at or above 38°C (100.4°F)"
 msgstr "Температура 38°C  и выше"
 
-#: models.py:199
+#: models.py:204
 msgid "Cough"
 msgstr "Кашель"
 
-#: models.py:200
+#: models.py:205
 msgid "Shortness of breath"
 msgstr "Одышка"
 
@@ -400,7 +396,7 @@ msgstr ""
 "безопасности нашего общества.    </p>\n"
 " "
 
-#: templates/covid19triage/intro.html:23 templates/covid19triage/result.html:58
+#: templates/covid19triage/intro.html:23 templates/covid19triage/result.html:59
 msgid "Next"
 msgstr "Далее"
 
@@ -456,7 +452,7 @@ msgstr "Ваш пол"
 msgid "Your Date of Birth"
 msgstr "Ваша дата рождения"
 
-#: templates/covid19triage/result.html:13
+#: templates/covid19triage/result.html:14
 msgid ""
 "\n"
 "        <p>\n"
@@ -516,7 +512,7 @@ msgstr ""
 "вас          людей.        </p>\n"
 " "
 
-#: templates/covid19triage/result.html:39
+#: templates/covid19triage/result.html:40
 msgid ""
 "\n"
 "        <p>\n"
@@ -556,7 +552,7 @@ msgstr ""
 "<p>        Консультант перезвонит для проведения оценки состояния и к "
 "завершению        консультации даст дальнейшие инструкции.        </p> "
 
-#: templates/covid19triage/result.html:62
+#: templates/covid19triage/result.html:63
 msgid ""
 "\n"
 "        <p>\n"
@@ -603,31 +599,31 @@ msgstr "Добро пожаловать"
 
 #: views.py:53
 msgid "Result"
-msgstr ""
+msgstr "Результат"
 
-#: views.py:82
+#: views.py:87
 msgid "Contact Information"
 msgstr "Контактные данные"
 
-#: views.py:99
+#: views.py:104
 msgid "Symptoms and Risk Factors"
 msgstr "Симптомы и факторы риска"
 
-#: views.py:139
+#: views.py:144
 msgid "Patient Information"
 msgstr "Информация пациента"
 
-#: widgets.py:9
+#: widgets.py:10
 msgctxt "empty option for select button"
 msgid "-----"
 msgstr "-----"
 
-#: widgets.py:10
+#: widgets.py:12
 msgctxt "true option for select button"
 msgid "Yes"
 msgstr "Да"
 
-#: widgets.py:11
+#: widgets.py:13
 msgctxt "false option for select button"
 msgid "No"
 msgstr "Нет"
