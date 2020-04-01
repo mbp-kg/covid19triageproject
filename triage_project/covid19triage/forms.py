@@ -111,6 +111,14 @@ class PatientFactorsForm(forms.ModelForm):
         required=False,
     )
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Dynamically require temperature
+        if "data" in kwargs and kwargs["data"]:
+            symptoms = kwargs["data"].get("symptoms")
+            if Symptom.Possible.FEVER in symptoms:
+                self.fields["temperature"].required = True
+
     class Meta:
         model = PatientFactors
         fields = [

@@ -47,7 +47,6 @@ def calculate_score(patient: Patient, patientfactors: PatientFactors) -> int:
     if patientfactors.smokeorvape:
         scores["smoking"] += weight["smoking"]
 
-    temperature = _normalize_temperature(patientfactors.temperature)
     # Ignore the value of patientfactors.temperature if the patient does not
     # check the box saying that he/she has a fever.  This input will be hidden
     # in JavaScript.
@@ -55,12 +54,11 @@ def calculate_score(patient: Patient, patientfactors: PatientFactors) -> int:
         pk=Symptom.Possible.FEVER
     ).exists()
     if hasfever:
-
+        temperature = _normalize_temperature(patientfactors.temperature)
         if temperature > decimal.Decimal(39.0):
             scores["fever39"] += weight["fever39"]
         elif temperature > decimal.Decimal(38.0):
             scores["fever38"] += weight["fever38"]
-
     if patientfactors.cough in [
         PatientFactors.Cough.WET,
         PatientFactors.Cough.DRY,
