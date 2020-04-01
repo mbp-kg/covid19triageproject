@@ -107,7 +107,10 @@ class PatientFactors(models.Model):
         verbose_name=_("Patient"),
         on_delete=models.PROTECT,
     )
-    symptoms = models.ManyToManyField("Symptom")
+    symptoms = models.ManyToManyField(
+        "Symptom",
+        blank=True,
+    )
     temperature = models.DecimalField(
         decimal_places=1,
         max_digits=4,
@@ -133,7 +136,10 @@ class PatientFactors(models.Model):
     smokeorvape = models.BooleanField(
         verbose_name=_("The patient smokes or vapes"),
     )
-    risks = models.ManyToManyField("Risk")
+    risks = models.ManyToManyField(
+        "Risk",
+        blank=True,
+    )
     cancer = models.BooleanField(
         verbose_name=_("The patient is being treated for cancer"),
     )
@@ -177,7 +183,6 @@ class Risk(models.Model):
         DIABETES = "diabetes", _("Diabetes")
         CHRONIC_CONDITION = "chronic condition", _("Other chronic condition, e.g., kidney failure, liver failure")
         IMMUNOCOMPROMISED = "immunocompromised", _("Immunocompromised")
-        NONE = "none", _("None of these")
 
     name = models.CharField(
         max_length=30,
@@ -198,7 +203,6 @@ class Symptom(models.Model):
         FEVER = "fever", _("Temperature at or above 38°C (100.4°F)")
         COUGH = "cough", _("Cough")
         SHORTNESS_OF_BREATH = "shortness of breath", _("Shortness of breath")
-        NONE = "none", _("None of these")
 
     name = models.CharField(
         max_length=20,

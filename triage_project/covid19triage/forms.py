@@ -3,6 +3,7 @@ from django import forms
 from django.utils.translation import gettext, gettext_lazy as _
 from django.utils.translation import pgettext, pgettext_lazy
 
+from .fields import StrictBooleanField
 from .models import ContactPerson
 from .models import Patient
 from .models import PatientFactors
@@ -70,6 +71,7 @@ class PatientFactorsForm(forms.ModelForm):
         choices=Symptom.Possible.choices,
         widget=forms.CheckboxSelectMultiple(),
         label=_("Does the patient have any of the following symptoms?"),
+        required=False,
     )
     temperature = forms.DecimalField(
         decimal_places=1,
@@ -93,7 +95,7 @@ class PatientFactorsForm(forms.ModelForm):
         label=_("Is the patient pregnant or expecting to become pregnant?"),
         required=False,
     )
-    contact = forms.NullBooleanField(
+    contact = StrictBooleanField(
         label=_("Has the patient been in contact with someone who is sick?"),
         widget=KnownNullBooleanSelect(),
     )
@@ -105,6 +107,7 @@ class PatientFactorsForm(forms.ModelForm):
         choices=Risk.Possible.choices,
         widget=forms.CheckboxSelectMultiple(),
         label=_("Does the patient have any of the following conditions?"),
+        required=False,
     )
     cancer = forms.BooleanField(
         label=_("Is the patient currently under treatment for cancer?"),
@@ -116,7 +119,7 @@ class PatientFactorsForm(forms.ModelForm):
         # Dynamically require temperature
         if "data" in kwargs and kwargs["data"]:
             symptoms = kwargs["data"].get("symptoms")
-            if Symptom.Possible.FEVER in symptoms:
+            if symptoms is not None and Symptom.Possible.FEVER in symptoms:
                 self.fields["temperature"].required = True
 
     class Meta:
