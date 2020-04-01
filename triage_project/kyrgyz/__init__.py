@@ -7,7 +7,7 @@ def add_kyrgyz_lang_info():
         "bidi": False,
         "code": "ky",
         "name": "Kyrgyz",
-        "name_local": "кыргызча",
+        "name_local": "Кыргызча",
     }
 
 add_kyrgyz_lang_info()
