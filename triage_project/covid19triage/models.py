@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext, gettext_lazy as _
 
 
@@ -6,6 +7,11 @@ class ContactPerson(models.Model):
     """
     A person with contact information
     """
+
+    class ForWhom(models.TextChoices):
+        SELF = "self", _("For myself")
+        OTHER = "other", _("For someone else")
+
     firstname = models.CharField(
         max_length=200,
         verbose_name=_("First name"),
@@ -23,6 +29,12 @@ class ContactPerson(models.Model):
         verbose_name=_("Email address"),
         blank=True,
     )
+    forwhom = models.CharField(
+        max_length=5,
+        verbose_name=_("Who is the patient?"),
+        help_text=_("Is the contact person answering for herself or himself?"),
+        choices=ForWhom.choices,
+    )
     ctime = models.DateTimeField(
         auto_now_add=True,
     )
@@ -39,20 +51,10 @@ class Patient(models.Model):
     A potential patient
     """
 
-    class ForWhom(models.TextChoices):
-        SELF = "self", _("For myself")
-        OTHER = "other", _("For someone else")
-
     class MedicalGender(models.TextChoices):
         FEMALE = "f", _("Female")
         MALE = "m", _("Male")
 
-    forwhom = models.CharField(
-        max_length=5,
-        verbose_name=_("Who is the patient?"),
-        help_text=_("Is the contact person answering for herself or himself?"),
-        choices=ForWhom.choices,
-    )
     firstname = models.CharField(
         max_length=200,
         verbose_name=_("First name"),
@@ -78,6 +80,11 @@ class Patient(models.Model):
 
     def __str__(self):
         return "{}, {}".format(self.lastname, self.firstname)
+
+    def ageindays(self, todaytz=None):
+        if todaytz is None:
+            todaytz = timezone.now().date()
+        return (todaytz - self.dob).days
 
 
 class PatientFactors(models.Model):

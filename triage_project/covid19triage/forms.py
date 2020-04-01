@@ -45,6 +45,11 @@ class ContactInformationForm(forms.ModelForm):
             attrs={"placeholder": "example@example.com"},
         ),
     )
+    forwhom = forms.ChoiceField(
+        label=_("Are you answering for yourself?"),
+        help_text=_("Who is the patient?"),
+        choices=ContactPerson.ForWhom.choices,
+    )
 
     class Meta:
         model = ContactPerson
@@ -53,6 +58,7 @@ class ContactInformationForm(forms.ModelForm):
             "lastname",
             "phonenumber",
             "emailaddress",
+            "forwhom",
         ]
 
 
@@ -124,11 +130,6 @@ class PatientInformationForm(forms.ModelForm):
     """
     Patient Information
     """
-    forwhom = forms.ChoiceField(
-        label=_("Are you answering for yourself?"),
-        help_text=_("Who is the patient?"),
-        choices=Patient.ForWhom.choices,
-    )
     placeholder_firstname = pgettext_lazy("placeholder for first name", "John")
     firstname = forms.CharField(
         label=_("Patientʼs First Name"),
@@ -161,7 +162,6 @@ class PatientInformationForm(forms.ModelForm):
     class Meta:
         model = Patient
         fields = [
-            "forwhom",
             "firstname",
             "lastname",
             "gender",

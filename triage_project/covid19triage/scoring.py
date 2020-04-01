@@ -1,4 +1,4 @@
-from django.utils import timezone
+import decimal
 
 from .models import Patient
 from .models import PatientFactors
@@ -38,21 +38,28 @@ def calculate_score(patient: Patient, patientfactors: PatientFactors) -> int:
         "contact": 0,
     }
 
-    today = timezone.now().date()
     agetwo = 365.25 * 2
     agesixtyfive = 365.25 * 65
-    age = (today - patient.dob).days
+    age = patient.ageindays()
     if age < agetwo or age > agesixtyfive:
         scores["age"] += weight["age"]
 
     if patientfactors.smokeorvape:
         scores["smoking"] += weight["smoking"]
 
-    # FIXME: Convert F to C
-    if patientfactors.temperature > 39.0:
-        scores["fever39"] += weight["fever39"]
-    elif patientfactors.temperature > 38.0:
-        scores["fever38"] += weight["fever38"]
+    temperature = _normalize_temperature(patientfactors.temperature)
+    # Ignore the value of patientfactors.temperature if the patient does not
+    # check the box saying that he/she has a fever.  This input will be hidden
+    # in JavaScript.
+    hasfever = patientfactors.symptoms.filter(
+        pk=Symptom.Possible.FEVER
+    ).exists()
+    if hasfever:
+
+        if temperature > decimal.Decimal(39.0):
+            scores["fever39"] += weight["fever39"]
+        elif temperature > decimal.Decimal(38.0):
+            scores["fever38"] += weight["fever38"]
 
     if patientfactors.cough in [
         PatientFactors.Cough.WET,
@@ -100,3 +107,13 @@ def calculate_score(patient: Patient, patientfactors: PatientFactors) -> int:
         scores["contact"] += weight["contact"]
 
     return sum(scores.values())
+
+def _normalize_temperature(temperature: decimal.Decimal):
+    c = decimal.getcontext()
+    # Decrease decimal precision
+    c.prec = 4
+    if temperature > decimal.Decimal(80):
+        ratio = decimal.Decimal(5, c) / decimal.Decimal(9, c)
+        tempc = (temperature - decimal.Decimal(32, c)) * ratio
+        return tempc
+    return temperature

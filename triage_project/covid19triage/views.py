@@ -13,6 +13,7 @@ from .forms import ContactInformationForm
 from .forms import PatientFactorsForm
 from .forms import PatientInformationForm
 
+from .models import ContactPerson
 from .models import Patient
 from .models import PatientFactors
 from .models import Risk
@@ -49,6 +50,7 @@ def intro(request):
 
 
 def result(request):
+    title = _("Result")
     contactinfoid = request.session.get("contactinfoid")
     if contactinfoid is None:
         return redirect("covid19triage:contactinfo")
@@ -65,7 +67,7 @@ def result(request):
 
     context = {
         "open": is_open(timezone.now()),
-        "pagetitle": _make_pagetitle("Result"),
+        "pagetitle": _make_pagetitle(title),
         "score": score,
         "title": title,
     }
@@ -97,10 +99,26 @@ class PatientFactorsView(FormView):
     title = _("Symptoms and Risk Factors")
     extra_context = {
         "pagetitle": _make_pagetitle(title),
+        "secondperson": False,
         "title": title,
     }
     form_class = PatientFactorsForm
     template_name = "covid19triage/patientfactors.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        contactinfoid = self.request.session.get("contactinfoid")
+        contactinfo = ContactPerson.objects.get(pk=contactinfoid)
+        if contactinfo.forwhom == ContactPerson.ForWhom.SELF:
+            context["secondperson"] = True
+
+        patientid = self.request.session.get("patientid")
+        patient = Patient.objects.get(pk=patientid)
+        if patient.gender == Patient.MedicalGender.FEMALE:
+            context["askaboutpregnancy"] = True
+
+        return context
 
     def form_valid(self, form):
         patient = Patient.objects.get(pk=self.request.session.get("patientid"))
@@ -121,10 +139,30 @@ class PatientInformationView(FormView):
     title = _("Patient Information")
     extra_context = {
         "pagetitle": _make_pagetitle(title),
+        "secondperson": False,
         "title": title,
     }
     form_class = PatientInformationForm
     template_name = "covid19triage/patientinfo.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        contactinfoid = self.request.session.get("contactinfoid")
+        contactperson = ContactPerson.objects.get(pk=contactinfoid)
+        if contactperson.forwhom == ContactPerson.ForWhom.SELF:
+            context["secondperson"] = True
+        return context
+
+    def get_initial(self):
+        initial = super().get_initial()
+        contactinfoid = self.request.session.get("contactinfoid")
+        if contactinfoid:
+            contactperson = ContactPerson.objects.get(pk=contactinfoid)
+            if contactperson and contactperson.forwhom == ContactPerson.ForWhom.SELF:
+                initial["firstname"] = contactperson.firstname
+                initial["lastname"] = contactperson.lastname
+        return initial
+
 
     def form_valid(self, form):
         patient = form.save()

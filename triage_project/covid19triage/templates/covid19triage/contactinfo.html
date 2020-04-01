@@ -46,6 +46,10 @@
           {{ form.emailaddress.errors }}
           {{ form.emailaddress.label_tag }} {{ form.emailaddress }}
         </div>
+        <div class="form-row">
+            {{ form.forwhom.errors }}
+            {{ form.forwhom.label_tag }} {{ form.forwhom }}
+        </div>
         <div class="submit-row">
           <input type="submit" value="{% trans "Next »" context "Next button label" %}" class="default" />
         </div>

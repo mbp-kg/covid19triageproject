@@ -990,8 +990,3 @@ table#change-history tbody th {
 .next:after {
     content: " »";
 }
-
-/* Labels showing second person text */
-#content .aligned .second-person {
-    display: none;
-}

@@ -1,8 +1,10 @@
 {% extends "covid19triage/base.html" %}
-{% load i18n static %}
+{% load i18n static labeltagwithcontents %}
 
 {% block extrastyle %}
 <link rel="stylesheet" type="text/css" href="{% static "covid19triage/css/forms.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "covid19triage/css/patientfactors.css" %}">
+<script type="text/javascript" src="{% static "covid19triage/js/patientfactors.js" %}"></script>
 {% endblock %}
 
 {% block breadcrumbs %}
@@ -31,49 +33,117 @@
       {% csrf_token %}
       <fieldset class="module aligned">
         <div class="form-row">
-          <label class="second-person" id="symptoms-second-person">{% trans "Do you have any of the following symptoms?" %}</label>
           {{ form.symptoms.errors }}
-          {{ form.symptoms.label_tag }} {{ form.symptoms }}
+
+          {% if secondperson %}
+            {% trans "Do you have any of the following symptoms?" as symptoms_label %}
+            {{ form.symptoms|labeltagwithcontents:symptoms_label }}
+          {% else %}
+            {{ form.symptoms.label_tag }}
+          {% endif %}
+
+          {{ form.symptoms }}
+        </div>
+        <div class="form-row temperature">
+          {{ form.temperature.errors }}
+
+          {% if secondperson %}
+            {% trans "Your highest temperature within 24 hours" as temperature_label %}
+            {{ form.temperature|labeltagwithcontents:temperature_label }}
+          {% else %}
+            {{ form.temperature.label_tag }}
+          {% endif %}
+
+          {{ form.temperature }}
         </div>
         <div class="form-row">
-          <label class="second-person" id="temperature-second-person">{% trans "Your highest temperature within 24 hours" %}</label>
-            {{ form.temperature.errors }}
-            {{ form.temperature.label_tag }} {{ form.temperature }}
+          {{ form.cough.errors }}
+
+          {% if secondperson %}
+            {% trans "How would you describe your cough?" as cough_label %}
+            {{ form.cough|labeltagwithcontents:cough_label }}
+          {% else %}
+            {{ form.cough.label_tag }}
+          {% endif %}
+
+          {{ form.cough }}
         </div>
         <div class="form-row">
-          <label class="second-person" id="cough-second-person">{% trans "How would you describe your cough?" %}</label>
-            {{ form.cough.errors }}
-            {{ form.cough.label_tag }} {{ form.cough }}
+          {{ form.shortnessofbreath.errors }}
+
+          {% if secondperson %}
+            {% trans "How would you describe your shortness of breath?" as shortnessofbreath_label %}
+            {{ form.shortnessofbreath|labeltagwithcontents:shortnessofbreath_label }}
+          {% else %}
+            {{ form.shortnessofbreath.label_tag }}
+          {% endif %}
+
+          {{ form.shortnessofbreath }}
         </div>
-        <div class="form-row">
-          <label class="second-person" id="shortnessofbreath-second-person">{% trans "How would you describe your shortness of breath?" %}</label>
-            {{ form.shortnessofbreath.errors }}
-            {{ form.shortnessofbreath.label_tag }} {{ form.shortnessofbreath }}
-        </div>
-        <div class="form-row">
-          <label class="second-person" id="pregnant-second-person">{% trans "Are you pregnant or expecting to become pregnant?" %}</label>
+        {% if askaboutpregnancy %}
+          <div class="form-row">
             {{ form.pregnant.errors }}
-            {{ form.pregnant.label_tag }} {{ form.pregnant }}
+
+            {% if secondperson %}
+              {% trans "Are you pregnant or expecting to become pregnant?" as pregnant_label %}
+              {{ form.pregnant|labeltagwithcontents:pregnant_label }}
+            {% else %}
+              {{ form.pregnant.label_tag }}
+            {% endif %}
+
+            {{ form.pregnant }}
+          </div>
+        {% endif %}
+        <div class="form-row">
+          {{ form.contact.errors }}
+
+          {% if secondperson %}
+            {% trans "Have you been in contact with someone who is sick?" as contact_label %}
+            {{ form.contact|labeltagwithcontents:contact_label }}
+          {% else %}
+            {{ form.contact.label_tag }}
+          {% endif %}
+
+          {{ form.contact }}
         </div>
         <div class="form-row">
-          <label class="second-person" id="contact-second-person">{% trans "Have you been in contact with someone who is sick?" %}</label>
-            {{ form.contact.errors }}
-            {{ form.contact.label_tag }} {{ form.contact }}
+
+          {{ form.smokeorvape.errors }}
+
+          {% if secondperson %}
+            {% trans "Do you smoke or vape or use e-cigarettes?" as smokeorvape_label %}
+            {{ form.smokeorvape|labeltagwithcontents:smokeorvape_label }}
+          {% else %}
+            {{ form.smokeorvape.label_tag }}
+          {% endif %}
+
+          {{ form.smokeorvape }}
         </div>
         <div class="form-row">
-          <label class="second-person" id="smokeorvape-second-person">{% trans "Do you smoke or vape or use e-cigarettes?" %}</label>
-            {{ form.smokeorvape.errors }}
-            {{ form.smokeorvape.label_tag }} {{ form.smokeorvape }}
+
+          {{ form.risks.errors }}
+
+          {% if secondperson %}
+            {% trans "Do you have any of the following conditions?" as risks_label %}
+            {{ form.risks|labeltagwithcontents:risks_label }}
+          {% else %}
+            {{ form.risks.label_tag }}
+          {% endif %}
+
+          {{ form.risks }}
         </div>
         <div class="form-row">
-          <label class="second-person" id="risks-second-person">{% trans "Do you have any of the following conditions?" %}</label>
-            {{ form.risks.errors }}
-            {{ form.risks.label_tag }} {{ form.risks }}
-        </div>
-        <div class="form-row">
-          <label class="second-person" id="cancer-second-person">{% trans "Are you currently under treatment for cancer?" %}</label>
-            {{ form.cancer.errors }}
-            {{ form.cancer.label_tag }} {{ form.cancer }}
+
+          {{ form.cancer.errors }}
+
+          {% if secondperson %}
+            {% trans "Are you currently under treatment for cancer?" as cancer_label %}
+            {{ form.cancer|labeltagwithcontents:cancer_label }}
+          {% else %}
+          {{ form.cancer.label_tag }}
+            {% endif %}
+
+          {{ form.cancer }}
         </div>
         <div class="submit-row">
           <input type="submit" value="{% trans "Next »" context "Next button label" %}" class="default" />
