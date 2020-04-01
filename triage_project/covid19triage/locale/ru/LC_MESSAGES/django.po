@@ -35,7 +35,7 @@ msgstr "Пожалуйста, введите имя."
 #: forms.py:26 forms.py:141
 msgctxt "placeholder for last name"
 msgid "Doe"
-msgstr "Иванович"
+msgstr "Иванов"
 
 #: forms.py:28
 msgid "Last Name"
@@ -333,7 +333,7 @@ msgstr "Звоните немедленно в 103 (скорая помощь), 
 
 #: templates/covid19triage/index.html:28
 msgid "Cyanosis of the face and the nasolabial triangle"
-msgstr "Цианоз(синюшность лица и носогубного теругольника)"
+msgstr "Цианоз(синюшность лица и носогубного треугольника)"
 
 #: templates/covid19triage/index.html:29
 msgid "Seizures"
@@ -343,7 +343,7 @@ msgstr "Судороги"
 msgid ""
 "Symptoms of stroke (asymmetry of the face, paralysis of extremities, "
 "impaired speech)"
-msgstr "Признаки инсульта(ассиметрия лица, паралич конечностей, нарушене речи)"
+msgstr "Признаки инсульта(асимметрия лица, паралич конечностей, нарушене речи)"
 
 #: templates/covid19triage/index.html:31
 msgid "Disorientation or fainting"

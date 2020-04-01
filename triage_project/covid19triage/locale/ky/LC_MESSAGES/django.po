@@ -34,7 +34,7 @@ msgstr "Атыңызды жазыңыз."
 #: forms.py:26 forms.py:141
 msgctxt "placeholder for last name"
 msgid "Doe"
-msgstr "Асанович"
+msgstr "Асанов"
 
 #: forms.py:28
 msgid "Last Name"
