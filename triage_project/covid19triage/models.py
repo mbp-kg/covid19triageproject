@@ -42,6 +42,11 @@ class Patient(models.Model):
         FEMALE = "f", _("Female")
         MALE = "m", _("Male")
 
+    contactperson = models.ForeignKey(
+        ContactPerson,
+        verbose_name=_("ContactPerson"),
+        on_delete=models.PROTECT,
+    )
     firstname = models.CharField(max_length=200, verbose_name=_("First name"),)
     lastname = models.CharField(max_length=200, verbose_name=_("Last name"),)
     gender = models.CharField(

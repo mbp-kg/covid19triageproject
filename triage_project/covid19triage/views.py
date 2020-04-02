@@ -172,6 +172,12 @@ class PatientInformationView(FormView):
         return initial
 
     def form_valid(self, form):
-        patient = form.save()
+        contactinfoid = self.request.session.get("contactinfoid")
+        contactperson = ContactPerson.objects.get(pk=contactinfoid)
+
+        patient = form.save(commit=False)
+        patient.contactperson = contactperson
+        patient.save()
+
         self.request.session["patientid"] = patient.pk
         return redirect("covid19triage:patientfactors")
