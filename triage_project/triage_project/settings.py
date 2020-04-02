@@ -25,13 +25,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = None
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "localhost",
     "triage.mbp.kg",
 ]
-
 
 # Application definition
 
@@ -128,6 +127,15 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# Security
+
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_SECONDS = 63072000
+SECURE_SSL_REDIRECT = True
+SECURE_REFERRER_POLICY = "same-origin"
 
 # Sessions
 
