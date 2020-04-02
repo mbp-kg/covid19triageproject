@@ -44,7 +44,7 @@ class Patient(models.Model):
 
     contactperson = models.ForeignKey(
         ContactPerson,
-        verbose_name=_("ContactPerson"),
+        verbose_name=_("Contact Person"),
         on_delete=models.PROTECT,
     )
     firstname = models.CharField(max_length=200, verbose_name=_("First name"),)
