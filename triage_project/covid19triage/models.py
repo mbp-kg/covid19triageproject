@@ -102,6 +102,11 @@ class PatientFactors(models.Model):
         MODERATE = "moderate", _("Moderate shortness of breath")
         SEVERE = "severe", _("Severe shortness of breath")
 
+    class ShortnessOfBreathV2(models.TextChoices):
+        NONE = "none", _("No shortness of breath")
+        MILD = "mild", _("Mild shortness of breath")
+        SEVERE = "severe", _("Severe shortness of breath")
+
     patient = models.ForeignKey(
         Patient,
         verbose_name=_("Patient"),
@@ -125,7 +130,7 @@ class PatientFactors(models.Model):
     shortnessofbreath = models.CharField(
         max_length=20,
         verbose_name=_("Description of shortness of breath"),
-        choices=ShortnessOfBreath.choices,
+        choices=ShortnessOfBreathV2.choices,
     )
     pregnant = models.BooleanField(
         verbose_name=_("Patient is pregnant or expecting to become pregnant")
@@ -215,4 +220,4 @@ class Symptom(models.Model):
 
 
 def get_current_pfv():
-    return PatientFactorsVersion.objects.get(pk=1)
+    return PatientFactorsVersion.objects.get(pk=2)

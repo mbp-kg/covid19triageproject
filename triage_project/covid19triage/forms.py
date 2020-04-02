@@ -89,7 +89,7 @@ class PatientFactorsForm(forms.ModelForm):
     shortnessofbreath = forms.ChoiceField(
         label=_("How would the patient describe the patientʼs shortness of breath?"),
         help_text=_("Is it severe?"),
-        choices=PatientFactors.ShortnessOfBreath.choices,
+        choices=PatientFactors.ShortnessOfBreathV2.choices,
     )
     pregnant = forms.BooleanField(
         label=_("Is the patient pregnant or expecting to become pregnant?"),

@@ -16,6 +16,8 @@ def calculate_score(patient: Patient, patientfactors: PatientFactors) -> int:
         "cough": 3,
         "shortnessofbreathmoderate": 2,
         "shortnessofbreathsevere": 5,
+        "shortnessofbreathv2mild": 2,
+        "shortnessofbreathv2severe": 5,
         "chroniclung": 5,
         "chronicheart": 3,
         "chronicother": 3,
@@ -78,6 +80,16 @@ def calculate_score(patient: Patient, patientfactors: PatientFactors) -> int:
             == PatientFactors.ShortnessOfBreath.SEVERE
         ):
             scores["shortnessofbreath"] += weight["shortnessofbreathsevere"]
+        elif (
+            patientfactors.shortnessofbreath
+            == PatientFactors.ShortnessOfBreathV2.MILD
+        ):
+            scores["shortnessofbreath"] += weight["shortnessofbreathv2mild"]
+        elif (
+            patientfactors.shortnessofbreath
+            == PatientFactors.ShortnessOfBreathV2.SEVERE
+        ):
+            scores["shortnessofbreath"] += weight["shortnessofbreathv2severe"]
 
     if patientfactors.risks.filter(pk=Risk.Possible.RESPIRATORY).exists():
         scores["chroniclung"] += weight["chroniclung"]
