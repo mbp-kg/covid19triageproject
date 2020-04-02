@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from django.db import migrations, models
+from django.db import migrations
 
 
 def add_patientfactorversion(apps, schemaeditor):
@@ -20,4 +20,17 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(add_patientfactorversion),
+        migrations.AlterField(
+            model_name="patientfactors",
+            name="shortnessofbreath",
+            field=models.CharField(
+                choices=[
+                    ("none", "No shortness of breath"),
+                    ("mild", "Mild shortness of breath"),
+                    ("severe", "Severe shortness of breath"),
+                ],
+                max_length=20,
+                verbose_name="Description of shortness of breath",
+            ),
+        ),
     ]
