@@ -118,6 +118,7 @@ def calculate_score(patient: Patient, patientfactors: PatientFactors) -> int:
 
     return sum(scores.values())
 
+
 def _normalize_temperature(temperature: decimal.Decimal):
     c = decimal.getcontext()
     # Decrease decimal precision

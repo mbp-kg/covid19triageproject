@@ -16,35 +16,28 @@ class ContactInformationForm(forms.ModelForm):
     """
     Contact Information
     """
+
     placeholder_firstname = pgettext_lazy("placeholder for first name", "John")
     firstname = forms.CharField(
         label=_("First Name"),
         help_text=_("Please enter your first or given name."),
-        widget=forms.TextInput(
-            attrs={"placeholder": placeholder_firstname},
-        ),
+        widget=forms.TextInput(attrs={"placeholder": placeholder_firstname},),
     )
     placeholder_lastname = pgettext_lazy("placeholder for last name", "Doe")
     lastname = forms.CharField(
         label=_("Last Name"),
         help_text=_("Please enter your last or family name."),
-        widget=forms.TextInput(
-            attrs={"placeholder": placeholder_lastname},
-        ),
+        widget=forms.TextInput(attrs={"placeholder": placeholder_lastname},),
     )
     phonenumber = forms.CharField(
         label=_("Phone Number"),
         help_text=_("Please enter a phone number where we can reach you."),
-        widget=forms.TextInput(
-            attrs={"placeholder": "0 (555) 555-555"},
-        ),
+        widget=forms.TextInput(attrs={"placeholder": "0 (555) 555-555"},),
     )
     emailaddress = forms.CharField(
         label=_("E-mail address"),
         help_text=_("Please enter your e-mail address."),
-        widget=forms.TextInput(
-            attrs={"placeholder": "example@example.com"},
-        ),
+        widget=forms.TextInput(attrs={"placeholder": "example@example.com"},),
     )
     forwhom = forms.ChoiceField(
         label=_("Are you answering for yourself?"),
@@ -67,6 +60,7 @@ class PatientFactorsForm(forms.ModelForm):
     """
     Patient symptoms and risk factors
     """
+
     symptoms = forms.MultipleChoiceField(
         choices=Symptom.Possible.choices,
         widget=forms.CheckboxSelectMultiple(),
@@ -87,7 +81,9 @@ class PatientFactorsForm(forms.ModelForm):
         choices=PatientFactors.Cough.choices,
     )
     shortnessofbreath = forms.ChoiceField(
-        label=_("How would the patient describe the patientʼs shortness of breath?"),
+        label=_(
+            "How would the patient describe the patientʼs shortness of breath?"
+        ),
         help_text=_("Is it severe?"),
         choices=PatientFactors.ShortnessOfBreathV2.choices,
     )
@@ -141,21 +137,18 @@ class PatientInformationForm(forms.ModelForm):
     """
     Patient Information
     """
+
     placeholder_firstname = pgettext_lazy("placeholder for first name", "John")
     firstname = forms.CharField(
         label=_("Patientʼs First Name"),
         help_text=_("Please enter the patientʼs first or given name."),
-        widget=forms.TextInput(
-            attrs={"placeholder": placeholder_firstname},
-        ),
+        widget=forms.TextInput(attrs={"placeholder": placeholder_firstname},),
     )
     placeholder_lastname = pgettext_lazy("placeholder for last name", "Doe")
     lastname = forms.CharField(
         label=_("Patientʼs Last Name"),
         help_text=_("Please enter the patientʼs last or family name."),
-        widget=forms.TextInput(
-            attrs={"placeholder": placeholder_lastname},
-        ),
+        widget=forms.TextInput(attrs={"placeholder": placeholder_lastname},),
     )
     gender = forms.ChoiceField(
         label=_("Patientʼs Gender"),
@@ -165,9 +158,7 @@ class PatientInformationForm(forms.ModelForm):
     dob = forms.DateField(
         label=_("Patientʼs Date of Birth"),
         help_text=_("Please enter the patientʼs date of birth."),
-        widget=forms.DateInput(
-            attrs={"type": "date"},
-        )
+        widget=forms.DateInput(attrs={"type": "date"},),
     )
 
     class Meta:

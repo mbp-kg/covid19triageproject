@@ -12,22 +12,13 @@ class ContactPerson(models.Model):
         SELF = "self", _("For myself")
         OTHER = "other", _("For someone else")
 
-    firstname = models.CharField(
-        max_length=200,
-        verbose_name=_("First name"),
-    )
-    lastname = models.CharField(
-        max_length=200,
-        verbose_name=_("Last name"),
-    )
+    firstname = models.CharField(max_length=200, verbose_name=_("First name"),)
+    lastname = models.CharField(max_length=200, verbose_name=_("Last name"),)
     phonenumber = models.CharField(
-        max_length=30,
-        verbose_name=_("Phone number"),
+        max_length=30, verbose_name=_("Phone number"),
     )
     emailaddress = models.CharField(
-        max_length=200,
-        verbose_name=_("Email address"),
-        blank=True,
+        max_length=200, verbose_name=_("Email address"), blank=True,
     )
     forwhom = models.CharField(
         max_length=5,
@@ -35,12 +26,8 @@ class ContactPerson(models.Model):
         help_text=_("Is the contact person answering for herself or himself?"),
         choices=ForWhom.choices,
     )
-    ctime = models.DateTimeField(
-        auto_now_add=True,
-    )
-    mtime = models.DateTimeField(
-        auto_now=True,
-    )
+    ctime = models.DateTimeField(auto_now_add=True,)
+    mtime = models.DateTimeField(auto_now=True,)
 
     def __str__(self):
         return "{}, {}".format(self.lastname, self.firstname)
@@ -55,28 +42,14 @@ class Patient(models.Model):
         FEMALE = "f", _("Female")
         MALE = "m", _("Male")
 
-    firstname = models.CharField(
-        max_length=200,
-        verbose_name=_("First name"),
-    )
-    lastname = models.CharField(
-        max_length=200,
-        verbose_name=_("Last name"),
-    )
+    firstname = models.CharField(max_length=200, verbose_name=_("First name"),)
+    lastname = models.CharField(max_length=200, verbose_name=_("Last name"),)
     gender = models.CharField(
-        max_length=1,
-        verbose_name=_("Gender"),
-        choices=MedicalGender.choices,
+        max_length=1, verbose_name=_("Gender"), choices=MedicalGender.choices,
     )
-    dob = models.DateField(
-        verbose_name=_("Date of Birth"),
-    )
-    ctime = models.DateTimeField(
-        auto_now_add=True,
-    )
-    mtime = models.DateTimeField(
-        auto_now=True,
-    )
+    dob = models.DateField(verbose_name=_("Date of Birth"),)
+    ctime = models.DateTimeField(auto_now_add=True,)
+    mtime = models.DateTimeField(auto_now=True,)
 
     def __str__(self):
         return "{}, {}".format(self.lastname, self.firstname)
@@ -108,14 +81,9 @@ class PatientFactors(models.Model):
         SEVERE = "severe", _("Severe shortness of breath")
 
     patient = models.ForeignKey(
-        Patient,
-        verbose_name=_("Patient"),
-        on_delete=models.PROTECT,
+        Patient, verbose_name=_("Patient"), on_delete=models.PROTECT,
     )
-    symptoms = models.ManyToManyField(
-        "Symptom",
-        blank=True,
-    )
+    symptoms = models.ManyToManyField("Symptom", blank=True,)
     temperature = models.DecimalField(
         decimal_places=1,
         max_digits=4,
@@ -141,19 +109,12 @@ class PatientFactors(models.Model):
     smokeorvape = models.BooleanField(
         verbose_name=_("The patient smokes or vapes"),
     )
-    risks = models.ManyToManyField(
-        "Risk",
-        blank=True,
-    )
+    risks = models.ManyToManyField("Risk", blank=True,)
     cancer = models.BooleanField(
         verbose_name=_("The patient is being treated for cancer"),
     )
-    ctime = models.DateTimeField(
-        auto_now_add=True,
-    )
-    mtime = models.DateTimeField(
-        auto_now=True,
-    )
+    ctime = models.DateTimeField(auto_now_add=True,)
+    mtime = models.DateTimeField(auto_now=True,)
     version = models.ForeignKey(
         "PatientFactorsVersion",
         verbose_name=_("Version"),
@@ -168,9 +129,9 @@ class PatientFactorsVersion(models.Model):
     """
     Versions of the Patient Factors questions
     """
+
     version = models.IntegerField(
-        unique=True,
-        verbose_name=_("Version of the PatientFactors questions"),
+        unique=True, verbose_name=_("Version of the PatientFactors questions"),
     )
     description = models.TextField(
         verbose_name=_("Description of the changes in this version"),
@@ -183,16 +144,20 @@ class Risk(models.Model):
     """
 
     class Possible(models.TextChoices):
-        RESPIRATORY = "respiratory", _("Respiratory condition, e.g., COPD, asthma")
+        RESPIRATORY = (
+            "respiratory",
+            _("Respiratory condition, e.g., COPD, asthma"),
+        )
         HEART = "heart", _("Heart condition")
         DIABETES = "diabetes", _("Diabetes")
-        CHRONIC_CONDITION = "chronic condition", _("Other chronic condition, e.g., kidney failure, liver failure")
+        CHRONIC_CONDITION = (
+            "chronic condition",
+            _("Other chronic condition, e.g., kidney failure, liver failure"),
+        )
         IMMUNOCOMPROMISED = "immunocompromised", _("Immunocompromised")
 
     name = models.CharField(
-        max_length=30,
-        primary_key=True,
-        choices=Possible.choices
+        max_length=30, primary_key=True, choices=Possible.choices
     )
 
     def __str__(self):
@@ -210,9 +175,7 @@ class Symptom(models.Model):
         SHORTNESS_OF_BREATH = "shortness of breath", _("Shortness of breath")
 
     name = models.CharField(
-        max_length=20,
-        primary_key=True,
-        choices=Possible.choices
+        max_length=20, primary_key=True, choices=Possible.choices
     )
 
     def __str__(self):

@@ -34,10 +34,11 @@ def index(request):
     else:
         info(request, _("Eldik Family Medicine Clinic is currently closed."))
     title = _("Language")
-    return render(request, "covid19triage/index.html", {
-        "pagetitle": _make_pagetitle(title),
-        "title": title,
-    })
+    return render(
+        request,
+        "covid19triage/index.html",
+        {"pagetitle": _make_pagetitle(title), "title": title,},
+    )
 
 
 def intro(request):
@@ -79,6 +80,7 @@ class ContactInformationView(FormView):
     """
     Display the contact information form
     """
+
     title = _("Contact Information")
     extra_context = {
         "pagetitle": _make_pagetitle(title),
@@ -92,10 +94,12 @@ class ContactInformationView(FormView):
         self.request.session["contactinfoid"] = contactinfo.pk
         return redirect("covid19triage:patientinfo")
 
+
 class PatientFactorsView(FormView):
     """
     Display the patient factors form
     """
+
     title = _("Symptoms and Risk Factors")
     extra_context = {
         "pagetitle": _make_pagetitle(title),
@@ -136,6 +140,7 @@ class PatientInformationView(FormView):
     """
     Display the patient information form
     """
+
     title = _("Patient Information")
     extra_context = {
         "pagetitle": _make_pagetitle(title),
@@ -158,11 +163,13 @@ class PatientInformationView(FormView):
         contactinfoid = self.request.session.get("contactinfoid")
         if contactinfoid:
             contactperson = ContactPerson.objects.get(pk=contactinfoid)
-            if contactperson and contactperson.forwhom == ContactPerson.ForWhom.SELF:
+            if (
+                contactperson
+                and contactperson.forwhom == ContactPerson.ForWhom.SELF
+            ):
                 initial["firstname"] = contactperson.firstname
                 initial["lastname"] = contactperson.lastname
         return initial
-
 
     def form_valid(self, form):
         patient = form.save()
