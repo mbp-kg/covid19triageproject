@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 from django.db import migrations
+from django.db import models
 
 
 def add_patientfactorversion(apps, schemaeditor):
