@@ -3,24 +3,23 @@ from django.contrib.messages.api import info
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render
-from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.views.generic.edit import FormView
 from workinghours.api import is_open
 
-from .forms import ContactInformationForm
-from .forms import PatientFactorsForm
-from .forms import PatientInformationForm
+from ..forms import ContactInformationForm
+from ..forms import PatientFactorsForm
+from ..forms import PatientInformationForm
 
-from .models import ContactPerson
-from .models import Patient
-from .models import PatientFactors
-from .models import Risk
-from .models import Symptom
-from .models import get_current_pfv
+from ..models import ContactPerson
+from ..models import Patient
+from ..models import PatientFactors
+from ..models import Risk
+from ..models import Symptom
+from ..models import get_current_pfv
 
-from .scoring import calculate_score
+from ..scoring import calculate_score
 
 
 def _make_pagetitle(pagetitle: str) -> str:
