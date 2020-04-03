@@ -24,7 +24,7 @@ from .scoring import calculate_score
 
 
 def _make_pagetitle(pagetitle: str) -> str:
-    prefix = _("COVID-19 Triage")
+    prefix = _("COVID-19 Assessment")
     return "{} — {}".format(prefix, pagetitle)
 
 
