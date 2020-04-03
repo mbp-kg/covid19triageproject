@@ -57,7 +57,7 @@ class Patient(models.Model):
     mtime = models.DateTimeField(auto_now=True,)
 
     def __str__(self):
-        return "{}, {}".format(self.lastname, self.firstname)
+        return ", ".join([self.lastname, self.firstname])
 
     def ageindays(self, todaytz=None):
         if todaytz is None:
