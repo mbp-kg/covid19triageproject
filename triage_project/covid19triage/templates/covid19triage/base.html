@@ -29,6 +29,25 @@
         {% block branding %}{% endblock %}
         </div>
         {% block nav-global %}{% endblock %}
+        {% block usertools %}
+        {% if user.is_authenticated %}
+          <div id="user-tools">
+              {% block welcome-msg %}
+                  {% trans 'Welcome,' %}
+                  <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+              {% endblock %}
+              {% block userlinks %}
+                {% if perms.covid19triage.view_patientfactors and perms.covid19triage.view_patient %}
+                  <a href="{% url "covid19triage:doctorsindex" %}">{% trans "Patient Assessments" %}</a>
+                {% endif %}
+                {% if user.is_staff and user.has_usable_password %}
+                  <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
+                {% endif %}
+                <a href="{% url 'covid19triage:logout' %}">{% trans 'Log out' %}</a>
+              {% endblock %}
+          </div>
+        {% endif %}
+        {% endblock %}
     </div>
     <!-- END Header -->
     {% block breadcrumbs %}

@@ -1,3 +1,5 @@
+import decimal
+
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext, gettext_lazy as _
@@ -125,6 +127,56 @@ class PatientFactors(models.Model):
         verbose_name=_("Version"),
         on_delete=models.PROTECT,
     )
+
+    def __str__(self):
+        items = []
+        symptoms = ", ".join([str(s) for s in self.symptoms.all()])
+        if symptoms:
+            items.append(symptoms)
+        temp = (
+            str(self.normalized_temperature()) if self.temperature else ""
+        )
+        if temp:
+            items.append(temp)
+        cough = (
+            "cough: " + self.cough
+            if self.cough != PatientFactors.Cough.NONE
+            else ""
+        )
+        if cough:
+            items.append(cough)
+        sob = (
+            "shortness of breath: " + self.shortnessofbreath
+            if self.shortnessofbreath
+            != PatientFactors.ShortnessOfBreath.NONE
+            and self.shortnessofbreath
+            != PatientFactors.ShortnessOfBreathV2.NONE
+            else ""
+        )
+        if sob:
+            items.append(sob)
+        if self.pregnant:
+            items.append("pregnant or expecting to become")
+        if self.contact:
+            items.append("contact with sick")
+        if self.smokeorvape:
+            items.append("smoker")
+        risks = ", ".join([str(s) for s in self.risks.all()])
+        if risks:
+            items.append(risks)
+        if self.cancer:
+            items.append("being treated for cancer")
+        return "{}: {}".format(str(self.patient), ", ".join(items),)
+
+    def normalized_temperature(self):
+        c = decimal.getcontext()
+        # Decrease decimal precision
+        c.prec = 4
+        if self.temperature > decimal.Decimal(80, c):
+            ratio = decimal.Decimal(5, c) / decimal.Decimal(9, c)
+            tempc = (self.temperature - decimal.Decimal(32, c)) * ratio
+            return tempc
+        return self.temperature
 
     class Meta:
         verbose_name_plural = _("PatientFactors")

@@ -1,0 +1,16 @@
+{% extends "covid19triage/base.html" %}
+{% load i18n static %}
+
+{% block content %}
+  <div class="app-covid19triage module">
+    <table>
+      <tbody>
+        {% for pf in object_list %}
+          <tr class="model-patientfactor">
+            <th>{{ pf.patient }}</th>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
