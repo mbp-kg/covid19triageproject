@@ -14,33 +14,62 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
+from django.utils.translation import gettext_lazy as _
+
 from .views import doctors
 from .views import public
+
 
 urlpatterns = [
     path("", public.index, name="index"),
     path(
-        "contactinfo",
+        _("contactinfo"),
         public.ContactInformationView.as_view(),
         name="contactinfo",
     ),
     path(
-        "doctors",
-        doctors.PatientAssessmentsView.as_view(),
+        _("doctors"),
+        doctors.AssessmentListView.as_view(),
         name="doctorsindex",
     ),
-    path("intro", public.intro, name="intro"),
-    path("login", doctors.login, name="login"),
-    path("logout", doctors.logout, name="logout"),
     path(
-        "patientinfo",
+        _("doctors/assessments"),
+        doctors.AssessmentListView.as_view(filter="active"),
+        name="activeassessments",
+    ),
+    path(
+        _("doctors/assessments/completed"),
+        doctors.AssessmentListView.as_view(filter="completed"),
+        name="completedassessments",
+    ),
+    path(
+        _("doctors/assessments/my"),
+        doctors.AssessmentListView.as_view(filter="my"),
+        name="myassessments",
+    ),
+    path(
+        _("doctors/assessments/my/active"),
+        doctors.AssessmentListView.as_view(filter="myactive"),
+        name="myactiveassessments",
+    ),
+    path(
+        _("doctors/assessments/unclaimed"),
+        doctors.AssessmentListView.as_view(filter="unclaimed"),
+        name="unclaimedassessments",
+    ),
+    path("doctors/updatescores", doctors.updatescores, name="updatescores"),
+    path(_("intro"), public.intro, name="intro"),
+    path(_("login"), doctors.login, name="login"),
+    path(_("logout"), doctors.logout, name="logout"),
+    path(
+        _("patientinfo"),
         public.PatientInformationView.as_view(),
         name="patientinfo",
     ),
     path(
-        "patientfactors",
+        _("patientfactors"),
         public.PatientFactorsView.as_view(),
         name="patientfactors",
     ),
-    path("result", public.result, name="result"),
+    path(_("result"), public.result, name="result"),
 ]

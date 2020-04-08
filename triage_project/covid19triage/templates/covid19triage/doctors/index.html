@@ -1,0 +1,40 @@
+{% extends "covid19triage/base.html" %}
+{% load i18n static %}
+
+{% block content %}
+  <ul>
+    <li><a href="{% url "covid19triage:myactiveassessments" %}">{% trans "My Active Assessments" %}</a></li>
+    <li><a href="{% url "covid19triage:myassessments" %}">{% trans "My Assessments" %}</a></li>
+    <li><a href="{% url "covid19triage:unclaimedassessments" %}">{% trans "Unclaimed Assessments" %}</a></li>
+    <li><a href="{% url "covid19triage:activeassessments" %}">{% trans "Active Assessments" %}</a></li>
+    <li><a href="{% url "covid19triage:completedassessments" %}">{% trans "Completed Assessments" %}</a></li>
+  </ul>
+  <div class="app-covid19triage module">
+    <table>
+      <caption>
+        {% trans "Open Assessments" %}
+      </caption>
+      <thead>
+        <th>{% trans "Patient" %}</th>
+        <th>{% trans "Score" %}</th>
+        <th>{% trans "Status" %}</th>
+        <th>{% trans "Owner" %}</th>
+        <th>{% trans "Created" context "date and time patient complete questions" %}</th>
+        <th>{% trans "Updated" context "date and time a doctor last updated the assessment" %}</th>
+      <tbody>
+        {% for assessment in object_list %}
+          <tr class="model-assessment">
+            <th>{{ assessment.patientfactors.patient }}</th>
+            <th>{{ assessment.score }}</th>
+            <td>{{ assessment.status }}</td>
+            <td>{% if assessment.owner %}
+              {% firstof assessment.owner.get_short_name assessment.owner.get_username %}
+            {% endif %}</td>
+            <th>{{ assessment.ctime|timesince }}</th>
+            <th>{{ assessment.updated|timesince }}</th>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

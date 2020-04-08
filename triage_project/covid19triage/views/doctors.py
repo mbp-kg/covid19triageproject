@@ -4,17 +4,20 @@ from django.contrib.admin.forms import AdminAuthenticationForm
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
+from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.views import LogoutView
 from django.shortcuts import redirect
 from django.shortcuts import render
+from django.http import HttpResponse
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.views.generic.list import ListView
 from workinghours.api import is_open
 
-from ..models import PatientFactors
+from ..models import Assessment
+from ..scoring import calculate_score
 
 
 def login(request):
@@ -46,17 +49,72 @@ def logout(request):
     return LogoutView.as_view(**defaults)(request)
 
 
-class PatientAssessmentsView(MultiplePermissionsRequiredMixin, ListView):
-    model = PatientFactors
+class AssessmentListView(MultiplePermissionsRequiredMixin, ListView):
+    filter = "active"
+    model = Assessment
     permissions = {
         "all": (
+            "covid19triage.view_assessment",
             "covid19triage.view_patient",
             "covid19triage.view_patientfactors",
         ),
     }
+    template_name = "covid19triage/doctors/index.html"
+    titlebyfilter = {
+        "active": _("Active Assessments"),
+        "my": _("My Assessments"),
+        "completed": _("Completed Assessments"),
+        "unclaimed": _("Unclaimed Assessments"),
+    }
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        title = _("Patient Assessments")
+        title = self.titlebyfilter.get(kwargs.get("filter"), _("Assessments"))
+        context["pagetitle"] = title
         context["title"] = title
         return context
+
+    def get_queryset(self):
+        if self.filter == "active":
+            qs = (
+                Assessment.objects.exclude(status=Assessment.Status.TESTING)
+                .exclude(status=Assessment.Status.NOFURTHERACTION)
+                .exclude(status=Assessment.Status.REFERREDFORTREATMENT)
+            )
+        elif self.filter == "completed":
+            qs = Assessment.objects.filter(
+                status__in=[
+                    Assessment.Status.TESTING,
+                    Assessment.Status.NOFURTHERACTION,
+                    Assessment.Status.REFERREDFORTREATMENT,
+                ]
+            )
+        elif self.filter == "my":
+            qs = Assessment.objects.filter(owner=self.request.user)
+        elif self.filter == "myactive":
+            qs = Assessment.objects.filter(owner=self.request.user).exclude(
+                status__in=[
+                    Assessment.Status.TESTING,
+                    Assessment.Status.NOFURTHERACTION,
+                    Assessment.Status.REFERREDFORTREATMENT,
+                ]
+            )
+        elif self.filter == "unclaimed":
+            qs = Assessment.objects.filter(owner=None)
+        else:
+            qs = Assessment.objects.all()
+        return qs
+
+
+# Hacky update for scores, since the Fake model objects cannot be used to
+# calculate scores in migrations.
+@user_passes_test(lambda u: u.is_superuser)
+def updatescores(request):
+    for a in Assessment.objects.filter(score=-1):
+        pf = a.patientfactors
+        p = pf.patient
+        s = calculate_score(p, pf)
+        a.score = s
+        a.version += 1
+        a.save()
+    return HttpResponse("OK")
