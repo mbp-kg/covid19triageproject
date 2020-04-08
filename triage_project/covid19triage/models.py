@@ -125,7 +125,7 @@ class ContactPerson(models.Model):
     mtime = models.DateTimeField(auto_now=True,)
 
     def __str__(self):
-        return "{}, {}".format(self.lastname, self.firstname)
+        return ", ".join([self.lastname, self.firstname])
 
 
 class Patient(models.Model):
@@ -226,9 +226,7 @@ class PatientFactors(models.Model):
         symptoms = ", ".join([str(s) for s in self.symptoms.all()])
         if symptoms:
             items.append(symptoms)
-        temp = (
-            str(self.normalized_temperature()) if self.temperature else ""
-        )
+        temp = str(self.normalized_temperature()) if self.temperature else ""
         if temp:
             items.append(temp)
         cough = (
@@ -240,8 +238,7 @@ class PatientFactors(models.Model):
             items.append(cough)
         sob = (
             "shortness of breath: " + self.shortnessofbreath
-            if self.shortnessofbreath
-            != PatientFactors.ShortnessOfBreath.NONE
+            if self.shortnessofbreath != PatientFactors.ShortnessOfBreath.NONE
             and self.shortnessofbreath
             != PatientFactors.ShortnessOfBreathV2.NONE
             else ""
