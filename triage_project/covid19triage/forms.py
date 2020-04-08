@@ -4,12 +4,33 @@ from django.utils.translation import gettext, gettext_lazy as _
 from django.utils.translation import pgettext, pgettext_lazy
 
 from .fields import StrictBooleanField
+from .models import Assessment
 from .models import ContactPerson
 from .models import Patient
 from .models import PatientFactors
 from .models import Risk
 from .models import Symptom
 from .widgets import KnownNullBooleanSelect
+
+
+class AssessmentForm(forms.ModelForm):
+    """
+    A doctor's assessment
+    """
+
+    status = forms.ChoiceField(
+        choices=Assessment.Status.choices,
+        label=_("Status"),
+        help_text=_("Optionally change the status of this assessment"),
+    )
+    version = forms.IntegerField(widget=forms.HiddenInput(),)
+
+    class Meta:
+        fields = (
+            "status",
+            "version",
+        )
+        model = Assessment
 
 
 class ContactInformationForm(forms.ModelForm):

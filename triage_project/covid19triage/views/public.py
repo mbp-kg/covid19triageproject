@@ -12,6 +12,7 @@ from ..forms import ContactInformationForm
 from ..forms import PatientFactorsForm
 from ..forms import PatientInformationForm
 
+from ..models import Assessment
 from ..models import ContactPerson
 from ..models import Patient
 from ..models import PatientFactors
@@ -132,6 +133,12 @@ class PatientFactorsView(FormView):
         patientfactors.save()
         form.save_m2m()
         self.request.session["patientfactorsid"] = patientfactors.pk
+
+        assessment = Assessment()
+        assessment.patientfactors = patientfactors
+        assessment.score = calculate_score(patient, patientfactors)
+        assessment.save()
+
         return redirect("covid19triage:result")
 
 

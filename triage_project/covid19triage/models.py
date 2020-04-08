@@ -1,8 +1,101 @@
+import datetime
 import decimal
 
+from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext, gettext_lazy as _
+
+
+class Assessment(models.Model):
+    """
+    A patientʼs assessment
+    """
+
+    # Status states
+    # 1. New assessments begin in the UNCLAIMED state.
+    # 2. If the assessment is a test of the software, the state will be changed
+    #    to TESTING.  If the assessment is reviewed by a doctor and no further
+    #    action is required, the state will be changed to NOFURTHERACTION.  If
+    #    the assessment requires contact with the patient, a doctor may claim
+    #    the assessment and attempt to contact the patient by changing the
+    #    state to CLAIMED.
+    # 3. If the doctor contacts the patient and refers the patient for
+    #    treatment, the doctor should change the state to REFERREDFORTREATMENT.
+    #    If the patient needs no further care, the doctor should change the
+    #    state to NOFURTHERACTION.  If the doctor is unable to make contact
+    #    with the patient, the doctor should change the state of
+    #    AWAITINGCONTACT.  Finally, if a doctor is unable to handle an
+    #    assessment, the doctor should return the state to UNCLAIMED.
+    class Status(models.TextChoices):
+        TESTING = "testing", _("Complete – testing")
+        NOFURTHERACTION = (
+            "no further action",
+            _("Complete – No further action"),
+        )
+        REFERREDFORTREATMENT = (
+            "referred for treatment",
+            _("Complete – Patient referred for treatment"),
+        )
+        AWAITINGPATIENT = (
+            "awaiting patient",
+            _("Active – Awaiting patient contact"),
+        )
+        CLAIMED = "claimed", _("Active – Claimed")
+        UNCLAIMED = "unclaimed", _("Active – Unclaimed")
+
+    status = models.CharField(
+        max_length=30,
+        verbose_name=_("Status"),
+        help_text=_("Status of the assessment"),
+        choices=Status.choices,
+        default=Status.UNCLAIMED,
+    )
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.PROTECT, null=True,
+    )
+    patientfactors = models.ForeignKey(
+        "PatientFactors", on_delete=models.PROTECT,
+    )
+    ctime = models.DateTimeField(auto_now_add=True,)
+    mtime = models.DateTimeField(auto_now=True,)
+    version = models.IntegerField(
+        verbose_name=_("Version"),
+        help_text=_("Version is incremented with each change."),
+        default=0,
+    )
+    score = models.IntegerField(verbose_name=_("Score"), default=-1,)
+
+    def updated(self) -> datetime.datetime:
+        lastassessmentlog = (
+            AssessmentLog.objects.filter(assessment=self)
+            .order_by("-mtime")
+            .first()
+        )
+        if lastassessmentlog is not None:
+            return max(lastassessmentlog.mtime, self.mtime)
+        else:
+            return self.mtime
+
+    def __str__(self):
+        return "{}: {}, {}".format(self.patientfactors.patient, self.score, self.status)
+
+
+class AssessmentLog(models.Model):
+    """
+    A log of actions taken regarding an assessment
+
+    These actions might include changing the status of the assessment
+    A doctor's opinion of a PatientFactors (symptoms and risk factors)
+    """
+
+    assessment = models.ForeignKey(Assessment, on_delete=models.PROTECT,)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
+    )
+    comments = models.TextField(verbose_name=_("Comments"),)
+    ctime = models.DateTimeField(auto_now_add=True,)
+    mtime = models.DateTimeField(auto_now=True,)
 
 
 class ContactPerson(models.Model):
