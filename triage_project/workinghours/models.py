@@ -7,7 +7,12 @@ class Timezone(models.Model):
     The timezone to use for working hours
     """
 
-    tz = models.CharField(primary_key=True, max_length=200, verbose_name=_("Timezone"),)
+    tz = models.CharField(
+        primary_key=True, max_length=200, verbose_name=_("Timezone"),
+    )
+
+    def __str__(self):
+        return self.tz
 
 
 class WorkDay(models.Model):
@@ -27,5 +32,12 @@ class WorkDay(models.Model):
     openfrom = models.TimeField(verbose_name=_("Open from"),)
     closedafter = models.TimeField(verbose_name=_("Closed after"),)
     dayofweek = models.CharField(
-        max_length=20, choices=DaysOfTheWeek.choices, verbose_name=_("Day of the week"),
+        max_length=20,
+        choices=DaysOfTheWeek.choices,
+        verbose_name=_("Day of the week"),
     )
+
+    def __str__(self):
+        return "{}: {}–{}".format(
+            self.dayofweek, self.openfrom, self.closedafter
+        )
