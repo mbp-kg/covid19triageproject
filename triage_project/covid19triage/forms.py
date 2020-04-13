@@ -8,6 +8,7 @@ from .models import Assessment
 from .models import ContactPerson
 from .models import Patient
 from .models import PatientFactors
+from .models import ProposedDateTime
 from .models import Risk
 from .models import Symptom
 from .widgets import KnownNullBooleanSelect
@@ -189,4 +190,27 @@ class PatientInformationForm(forms.ModelForm):
             "lastname",
             "gender",
             "dob",
+        ]
+
+
+class ProposedDateTimeForm(forms.ModelForm):
+    "Patient suggests a time for a consultation"
+    date = forms.DateField(
+        label=_("Best date to call"),
+        help_text=_("Please suggest the best date for the doctor to call."),
+        widget=forms.DateInput(attrs={"type": "date"},),
+    )
+    time = forms.TimeField(
+        label=_("Best time to call"),
+        help_text=_("Please suggest the best time for the doctor to call."),
+        widget=forms.TimeInput(
+            attrs={"type": "time", "min": "09:00", "max": "17:00"}
+        ),
+    )
+
+    class Meta:
+        model = ProposedDateTime
+        fields = [
+            "date",
+            "time",
         ]

@@ -285,6 +285,18 @@ class PatientFactorsVersion(models.Model):
     )
 
 
+class ProposedDateTime(models.Model):
+    """
+    Text from the patient, suggesting a date and time for an assessment
+    """
+
+    assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
+    date = models.DateField()
+    time = models.TimeField()
+    ctime = models.DateTimeField(auto_now_add=True,)
+    mtime = models.DateTimeField(auto_now=True,)
+
+
 class Risk(models.Model):
     """
     Risks for of patients possibly experiencing COVID-19

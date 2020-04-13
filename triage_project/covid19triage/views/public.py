@@ -12,11 +12,13 @@ from workinghours.api import is_open
 from ..forms import ContactInformationForm
 from ..forms import PatientFactorsForm
 from ..forms import PatientInformationForm
+from ..forms import ProposedDateTimeForm
 
 from ..models import Assessment
 from ..models import ContactPerson
 from ..models import Patient
 from ..models import PatientFactors
+from ..models import ProposedDateTime
 from ..models import Risk
 from ..models import Symptom
 from ..models import get_current_pfv
@@ -113,6 +115,7 @@ class PatientFactorsView(FormView):
         assessment.patientfactors = patientfactors
         assessment.score = calculate_score(patient, patientfactors)
         assessment.save()
+        self.request.session["assessmentid"] = assessment.pk
 
         return redirect("covid19triage:result")
 
@@ -164,6 +167,36 @@ class PatientInformationView(FormView):
         return redirect("covid19triage:patientfactors")
 
 
+class ProposedDateTimeView(FormView):
+    "Allow the contact person to propose a date and time for a consultation"
+
+    title = _("Result")
+    extra_context = {
+        "pagetitle": _make_pagetitle(title),
+        "title": title,
+    }
+    form_class = ProposedDateTimeForm
+    template_name = "covid19triage/result.html"
+
+    def form_valid(self, form):
+        assessmentid = self.request.session.get("assessmentid")
+        assessment = Assessment.objects.get(pk=assessmentid)
+        proposeddatetime = form.save(commit=False)
+        proposeddatetime.assessment = assessment
+        proposeddatetime.save()
+        self.request.session["proposeddatetimeid"] = proposeddatetime.pk
+
+        return redirect("covid19triage:result")
+
+    def get_context_data(self, **kwargs):
+        _add_open_closed_message(self.request)
+        context = super().get_context_data(**kwargs)
+        assessmentid = self.request.session.get("assessmentid")
+        assessment = Assessment.objects.get(pk=assessmentid)
+        context["score"] = assessment.score
+        return context
+
+
 class ResultView(View):
     "Show the result and, possibly, a form for suggesting a date and time"
 
@@ -178,16 +211,36 @@ class ResultView(View):
         patientfactorsid = request.session.get("patientfactorsid")
         if patientfactorsid is None:
             return redirect("covid19triage:patientfactors")
-
-        patient = Patient.objects.get(pk=patientid)
-        patientfactors = PatientFactors.objects.get(pk=patientfactorsid)
-        score = calculate_score(patient, patientfactors)
+        assessmentid = request.session.get("assessmentid")
+        if assessmentid is None:
+            patient = Patient.objects.get(pk=patientid)
+            patientfactors = PatientFactors.objects.get(pk=patientfactorsid)
+            score = calculate_score(patient, patientfactors)
+        else:
+            assessment = Assessment.objects.get(pk=assessmentid)
+            score = assessment.score
+        proposeddatetimeid = request.session.get("proposeddatetimeid")
+        if proposeddatetimeid is not None:
+            info(
+                self.request,
+                _("Your suggested date and time have been saved."),
+            )
+            proposeddatetime = ProposedDateTime.objects.get(
+                pk=proposeddatetimeid
+            )
+            form = ProposedDateTimeForm(instance=proposeddatetime)
+        else:
+            form = ProposedDateTimeForm()
 
         context = {
-            "open": is_open(timezone.now()),
+            "form": form,
             "pagetitle": _make_pagetitle(title),
             "score": score,
             "title": title,
         }
 
         return render(request, "covid19triage/result.html", context)
+
+    def post(self, request, *args, **kwargs):
+        view = ProposedDateTimeView.as_view()
+        return view(request, *args, **kwargs)

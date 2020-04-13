@@ -41,23 +41,33 @@
           Based on your answers, you are at slight risk for developing serious symptoms and you need to consult a doctor by phone.
         </p>
         <p>
-          Please select a time to consult with a doctor.  We conduct appointments in the clinic while conducting telephone consultations with doctors for your convenience and to prevent new infections.
+          Please suggest a date and time to consult with a doctor.  The consultant will call you back to conduct a state assessment and to give you further instructions.
+        </p>
+        <p>
+          We conduct appointments in the clinic while conducting telephone consultations with doctors for your convenience and to prevent new infections.
         </p>
         <p>
           Thank you for your attention to yourself and to the health of the people around you.
         </p>
-        <p>
-          Please click below to be in line for our telephone consultation.
-        </p>
-        <p>
-          The consultant will call back to conduct a state assessment and to complete the consultation will give further instructions.
-        </p>
       {% endblocktrans %}
-      <div class="begin">
-        <a class="next" href="{% url "covid19triage:index" %}">
-          {% trans "Next" %}
-        </a>
-      </div>
+      <form method="post">
+        {% csrf_token %}
+        <fieldset class="module aligned">
+          <div class="form-row">
+            {{ form.date.errors }}
+            {{ form.date.label_tag }}
+            {{ form.date }}
+          </div>
+          <div class="form-row">
+            {{ form.time.errors }}
+            {{ form.time.label_tag }}
+            {{ form.time }}
+          </div>
+          <div class="submit-row">
+            <input type="submit" value="{% trans "Next »" context "Next button label" %}" class="default" />
+          </div>
+        </fieldset>
+      </form>
     {% else %}
       {% blocktrans %}
         <p>
