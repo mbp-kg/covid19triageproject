@@ -71,5 +71,5 @@ urlpatterns = [
         public.PatientFactorsView.as_view(),
         name="patientfactors",
     ),
-    path(_("result"), public.result, name="result"),
+    path(_("result"), public.ResultView.as_view(), name="result",),
 ]

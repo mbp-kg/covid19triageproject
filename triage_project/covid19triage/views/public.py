@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from django.views import View
 from django.views.generic.edit import FormView
 from workinghours.api import is_open
 
@@ -48,32 +49,6 @@ def intro(request):
         "title": title,
     }
     return render(request, "covid19triage/intro.html", context)
-
-
-def result(request):
-    title = _("Result")
-    contactinfoid = request.session.get("contactinfoid")
-    if contactinfoid is None:
-        return redirect("covid19triage:contactinfo")
-    patientid = request.session.get("patientid")
-    if patientid is None:
-        return redirect("covid19triage:patientinfo")
-    patientfactorsid = request.session.get("patientfactorsid")
-    if patientfactorsid is None:
-        return redirect("covid19triage:patientfactors")
-
-    patient = Patient.objects.get(pk=patientid)
-    patientfactors = PatientFactors.objects.get(pk=patientfactorsid)
-    score = calculate_score(patient, patientfactors)
-
-    context = {
-        "open": is_open(timezone.now()),
-        "pagetitle": _make_pagetitle(title),
-        "score": score,
-        "title": title,
-    }
-
-    return render(request, "covid19triage/result.html", context)
 
 
 class ContactInformationView(FormView):
@@ -187,3 +162,32 @@ class PatientInformationView(FormView):
 
         self.request.session["patientid"] = patient.pk
         return redirect("covid19triage:patientfactors")
+
+
+class ResultView(View):
+    "Show the result and, possibly, a form for suggesting a date and time"
+
+    def get(self, request, *args, **kwargs):
+        title = _("Result")
+        contactinfoid = request.session.get("contactinfoid")
+        if contactinfoid is None:
+            return redirect("covid19triage:contactinfo")
+        patientid = request.session.get("patientid")
+        if patientid is None:
+            return redirect("covid19triage:patientinfo")
+        patientfactorsid = request.session.get("patientfactorsid")
+        if patientfactorsid is None:
+            return redirect("covid19triage:patientfactors")
+
+        patient = Patient.objects.get(pk=patientid)
+        patientfactors = PatientFactors.objects.get(pk=patientfactorsid)
+        score = calculate_score(patient, patientfactors)
+
+        context = {
+            "open": is_open(timezone.now()),
+            "pagetitle": _make_pagetitle(title),
+            "score": score,
+            "title": title,
+        }
+
+        return render(request, "covid19triage/result.html", context)
