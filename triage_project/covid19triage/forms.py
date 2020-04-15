@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from django import forms
+from django.contrib.auth import get_user_model
 from django.utils.translation import gettext, gettext_lazy as _
 from django.utils.translation import pgettext, pgettext_lazy
 
@@ -24,14 +25,26 @@ class AssessmentForm(forms.ModelForm):
         label=_("Status"),
         help_text=_("Optionally change the status of this assessment"),
     )
+    owner = forms.ModelChoiceField(get_user_model().objects.all())
     version = forms.IntegerField(widget=forms.HiddenInput(),)
 
     class Meta:
         fields = (
             "status",
+            "owner",
             "version",
         )
         model = Assessment
+
+        def clean_version(self):
+            newversion = self.cleaned_data.get("version", None)
+            if self.instance.version != newversion:
+                raise forms.ValidationError(
+                    _(
+                        "The assessment has changed since you loaded the page.  Please try again."
+                    )
+                )
+            return newversion
 
 
 class ContactInformationForm(forms.ModelForm):

@@ -38,7 +38,7 @@
               {% endblock %}
               {% block userlinks %}
                 {% if perms.covid19triage.view_patientfactors and perms.covid19triage.view_patient %}
-                  <a href="{% url "covid19triage:doctorsindex" %}">{% trans "Patient Assessments" %}</a>
+                  <a href="{% url "covid19triage:doctorsindex" %}">{% trans "Assessments" %}</a>
                 {% endif %}
                 {% if user.is_staff and user.has_usable_password %}
                   <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /

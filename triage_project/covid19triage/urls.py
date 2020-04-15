@@ -57,6 +57,11 @@ urlpatterns = [
         doctors.AssessmentListView.as_view(filter="unclaimed"),
         name="unclaimedassessments",
     ),
+    path(
+        _("doctors/assessments/<int:pk>"),
+        doctors.AssessmentView.as_view(),
+        name="assessment",
+    ),
     path("doctors/updatescores", doctors.updatescores, name="updatescores"),
     path(_("intro"), public.intro, name="intro"),
     path(_("login"), doctors.login, name="login"),

@@ -13,10 +13,14 @@ from django.http import HttpResponse
 from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import ModelFormMixin
 from django.views.generic.list import ListView
 from workinghours.api import is_open
 
+from ..forms import AssessmentForm
 from ..models import Assessment
+from ..models import AssessmentLog
 from ..scoring import calculate_score
 
 
@@ -47,6 +51,74 @@ def logout(request):
         "template_name": "covid19triage/loggedout.html",
     }
     return LogoutView.as_view(**defaults)(request)
+
+
+class AssessmentView(MultiplePermissionsRequiredMixin, ModelFormMixin, DetailView):
+    """
+    Display an Assessment
+    """
+
+    extra_context = {
+      "pagetitle": _("Assessment"),
+      "title": _("Assessment"),
+    }
+    form_class = AssessmentForm
+    model = Assessment
+    permissions = {
+        "all": (
+            "covid19triage.view_assessment",
+            "covid19triage.view_patient",
+            "covid19triage.view_patientfactors",
+        ),
+    }
+    pk_url_kwarg = "pk"
+    template_name = "covid19triage/doctors/assessment.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        title = _("Assessment for {patient}").format(patient=str(self.object.patientfactors.patient))
+        context["pagetitle"] = context["title"] = title
+        return context
+
+    def form_valid(self, form):
+        oldassessment = Assessment.objects.get(
+            pk=int(self.kwargs.get("pk"))
+        )
+        newassessment = form.save(commit=False)
+        if oldassessment.version == newassessment.version:
+            newassessment.save()
+        loglines = []
+        if oldassessment.owner != newassessment.owner:
+            loglines.append(
+                "{user} changed the owner from {oldowner} to {newowner}".format(
+                    user=self.request.user.username,
+                    oldowner=oldassessment.owner,
+                    newowner=newassessment.owner,
+                )
+            )
+        if oldassessment.status != newassessment.status:
+            loglines.append(
+                "{user} changed the assessment status from {oldstatus} to {newstatus}".format(
+                    user=self.request.user.username,
+                    oldstatus=oldassessment.status,
+                    newstatus=newassessment.status,
+                )
+            )
+        if loglines:
+            alog = AssessmentLog()
+            alog.assessment = newassessment
+            alog.user = self.request.user
+            alog.comments = "\n".join(loglines)
+            alog.save()
+        return redirect(self.get_success_url())
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
 
 
 class AssessmentListView(MultiplePermissionsRequiredMixin, ListView):

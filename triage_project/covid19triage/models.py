@@ -3,6 +3,7 @@ import decimal
 
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext, gettext_lazy as _
 
@@ -66,6 +67,9 @@ class Assessment(models.Model):
     )
     score = models.IntegerField(verbose_name=_("Score"), default=-1,)
 
+    def get_absolute_url(self):
+        return reverse("covid19triage:assessment", kwargs={"pk": self.pk})
+
     def updated(self) -> datetime.datetime:
         lastassessmentlog = (
             AssessmentLog.objects.filter(assessment=self)
@@ -78,7 +82,9 @@ class Assessment(models.Model):
             return self.mtime
 
     def __str__(self):
-        return "{}: {}, {}".format(self.patientfactors.patient, self.score, self.status)
+        return "{}: {}, {}".format(
+            self.patientfactors.patient, self.score, self.status
+        )
 
 
 class AssessmentLog(models.Model):

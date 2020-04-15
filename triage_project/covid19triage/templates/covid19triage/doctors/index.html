@@ -24,17 +24,44 @@
       <tbody>
         {% for assessment in object_list %}
           <tr class="model-assessment">
-            <th>{{ assessment.patientfactors.patient }}</th>
-            <th>{{ assessment.score }}</th>
-            <td>{{ assessment.status }}</td>
-            <td>{% if assessment.owner %}
-              {% firstof assessment.owner.get_short_name assessment.owner.get_username %}
-            {% endif %}</td>
-            <th>{{ assessment.ctime|timesince }}</th>
-            <th>{{ assessment.updated|timesince }}</th>
+            <th>
+              <a href="{% url "covid19triage:assessment" pk=assessment.pk %}">
+                {{ assessment.patientfactors.patient }}
+              </a>
+            </th>
+            <th>
+              <a href="{% url "covid19triage:assessment" pk=assessment.pk %}">
+                {{ assessment.score }}
+              </a>
+            </th>
+            <td>
+              <a href="{% url "covid19triage:assessment" pk=assessment.pk %}">
+                {{ assessment.status }}
+              </a>
+            </td>
+            <td>
+              {% if assessment.owner %}
+                <a href="{% url "covid19triage:assessment" pk=assessment.pk %}">
+                  {% firstof assessment.owner.get_short_name assessment.owner.get_username %}
+                </a>
+              {% endif %}
+            </td>
+            <th>
+              <a href="{% url "covid19triage:assessment" pk=assessment.pk %}">
+                {{ assessment.ctime|timesince }}
+              </a>
+            </th>
+            <th>
+              <a href="{% url "covid19triage:assessment" pk=assessment.pk %}">
+                {{ assessment.updated|timesince }}
+              </a>
+            </th>
           </tr>
         {% endfor %}
       </tbody>
     </table>
+    {% if not object_list %}
+      {% trans "There are no matching assessments." %}
+    {% endif %}
   </div>
 {% endblock %}
