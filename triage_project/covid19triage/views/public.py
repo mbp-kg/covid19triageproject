@@ -26,16 +26,20 @@ from ..models import get_current_pfv
 from ..scoring import calculate_score
 
 
+def _add_open_closed_message(request):
+    if is_open(timezone.now()):
+        info(request, _("Eldik Family Medicine Clinic is currently open."))
+    else:
+        info(request, _("Eldik Family Medicine Clinic is currently closed."))
+
+
 def _make_pagetitle(pagetitle: str) -> str:
     prefix = _("COVID-19 Assessment")
     return "{} — {}".format(prefix, pagetitle)
 
 
 def index(request):
-    if is_open(timezone.now()):
-        info(request, _("Eldik Family Medicine Clinic is currently open."))
-    else:
-        info(request, _("Eldik Family Medicine Clinic is currently closed."))
+    _add_open_closed_message(request)
     title = _("Language")
     return render(
         request,
