@@ -24,26 +24,13 @@
           <span class="fake-input">{{ object.patientfactors.patient }}</span>
         </div>
         <div class="form-row">
+          <label>{% trans "Gender" %}:</label>
+          <span class="fake-input">{{ patients_gender }}</span>
+        </div>
+        <div class="form-row">
           <label>{% trans "Date of Birth" %}:</label>
           <span class="fake-input">{{ object.patientfactors.patient.dob }} ({{ object.patientfactors.patient.dob|timesince }})</span>
         </div>
-        {% if object.patientfactors.patient.contactperson.forwhom != "self" %}
-
-          <div class="form-row">
-            <label>{% trans "Contact Person" %}:</label>
-            <span class="fake-input">{{ object.patientfactors.patient.contactperson }}</span>
-          </div>
-        {% endif %}
-        <div class="form-row">
-          <label>{% trans "Phone number" %}:</label>
-          <span class="fake-input">{{ object.patientfactors.patient.contactperson.phonenumber }}</span>
-        </div>
-        {% if object.patientfactors.patient.contactperson.emailaddress %}
-          <div class="form-row">
-            <label>{% trans "Email address" %}:</label> 
-            <span class="fake-input">{{ object.patientfactors.patient.contactperson.emailaddress }}</span>
-          </div>
-        {% endif %}
         <div class="form-row">
           <label>{% trans "Score" %}:</label>
           <span class="fake-input">{{ object.score }}</span>
@@ -65,5 +52,116 @@
         </div>
       </fieldset>
     </form>
+    {% if object.score > 0 %}
+      <div class="module aligned">
+        <h2 class="subhead">{% trans "Symptoms and Risk Factors" %}</h2>
+        {% if factors.temperature %}
+          <div class="form-row">
+            <label>{% trans "Patientʼs highest temperature within 24 hours" %}:</label>
+            <span class="fake-input">{{ factors.temperature }}</span>
+          </div>
+        {% endif %}
+        {% if factors.cough %}
+          <div class="form-row">
+            <label>{% trans "Description of cough" %}:</label>
+            <span class="fake-input">{{ factors.cough }}</span>
+          </div>
+        {% endif %}
+        {% if factors.shortness_of_breath%}
+          <div class="form-row">
+            <label>{% trans "Description of shortness of breath" %}:</label>
+            <span class="fake-input">{{ factors.shortness_of_breath }}</span>
+          </div>
+        {% endif %}
+        {% if object.patientfactors.pregnant %}
+          <div class="form-row">
+            <span class="fake-input">{% trans "Patient is pregnant or expecting to become pregnant" %}</span>
+          </div>
+        {% endif %}
+        {% if object.patientfactors.contact %}
+          <div class="form-row">
+            <span class="fake-input">{% trans "Contact with a sick person" %}</span>
+          </div>
+        {% endif %}
+        {% if object.patientfactors.smokeorvape %}
+          <div class="form-row">
+            <span class="fake-input">{% trans "The patient smokes or vapes" %}</span>
+          </div>
+        {% endif %}
+        {% if risks.respiratory %}
+          <div class="form-row">
+            <span class="fake-input">{% trans "Respiratory condition, e.g., COPD, asthma" %}</span>
+          </div>
+        {% endif %}
+        {% if risks.heart %}
+          <div class="form-row">
+            <span class="fake-input">{% trans "Heart condition" %}</span>
+          </div>
+        {% endif %}
+        {% if risks.diabetes %}
+          <div class="form-row">
+            <span class="fake-input">{% trans "Diabetes" %}</span>
+          </div>
+        {% endif %}
+        {% if risks.chronic_condition %}
+          <div class="form-row">
+            <span class="fake-input">{% trans "Other chronic condition, e.g., kidney failure, liver failure" %}</span>
+          </div>
+        {% endif %}
+        {% if risks.immunocompromised %}
+          <div class="form-row">
+            <span class="fake-input">{% trans "Immunocompromised" %}</span>
+          </div>
+        {% endif %}
+        {% if object.patientfactors.cancer %}
+          <div class="form-row">
+            <span class="fake-input">{% trans "The patient is being treated for cancer" %}</span>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    <div class="module aligned">
+      <h2 class="subhead">{% trans "Contact Information" %}</h2>
+      {% if object.patientfactors.patient.contactperson.forwhom != "self" %}
+
+        <div class="form-row">
+          <label>{% trans "Contact Person" %}:</label>
+          <span class="fake-input">{{ object.patientfactors.patient.contactperson }}</span>
+        </div>
+      {% endif %}
+      <div class="form-row">
+        <label>{% trans "Phone number" %}:</label>
+        <span class="fake-input">{{ object.patientfactors.patient.contactperson.phonenumber }}</span>
+      </div>
+      {% if object.patientfactors.patient.contactperson.emailaddress %}
+        <div class="form-row">
+          <label>{% trans "Email address" %}:</label> 
+          <span class="fake-input">{{ object.patientfactors.patient.contactperson.emailaddress }}</span>
+        </div>
+      {% endif %}
+    </div>
+    {% if logs %}
+      <div class="module">
+        <table>
+          <caption>{% trans "Assessment History" %}</caption>
+          <thead>
+            <tr>
+              <th>{% trans "Comments" %}</th>
+              <th>{% trans "User" %}</th>
+              <th>{% trans "Date" %}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for log in logs %}
+              <tr>
+                <td>{{ log.comments|linebreaksbr }}</td>
+                <td>{% firstof log.user.get_short_name log.user.get_username %}</td>
+                <td>{{ log.ctime }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endif %}
   </div>
 {% endblock %}

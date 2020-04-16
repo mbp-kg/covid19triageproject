@@ -22,6 +22,10 @@ from workinghours.api import is_open
 from ..forms import AssessmentForm
 from ..models import Assessment
 from ..models import AssessmentLog
+from ..models import Patient
+from ..models import PatientFactors
+from ..models import Risk
+from ..models import Symptom
 from ..scoring import calculate_score
 
 
@@ -83,6 +87,48 @@ class AssessmentView(
             patient=str(self.object.patientfactors.patient)
         )
         context["pagetitle"] = context["title"] = title
+        context["logs"] = self.object.logs.order_by("-ctime")
+        factors = {
+            "cough": self.object.patientfactors.symptoms.filter(
+                name=Symptom.Possible.COUGH
+            ).exists()
+            and str(
+                PatientFactors.Cough._value2label_map_.get(
+                    self.object.patientfactors.cough
+                )
+            )
+            or None,
+            "shortness_of_breath": self.object.patientfactors.symptoms.filter(
+                name=Symptom.Possible.SHORTNESS_OF_BREATH
+            ).exists()
+            and self.object.patientfactors.sobtextbypfv()
+            or None,
+            "temperature": self.object.patientfactors.symptoms.filter(
+                name=Symptom.Possible.FEVER
+            ).exists()
+            and str(self.object.patientfactors.normalized_temperature())
+            or None,
+        }
+        context["factors"] = factors
+        context["patients_gender"] = str(Patient.MedicalGender._value2label_map_.get(self.object.patientfactors.patient.gender))
+        risks = {
+            "respiratory": self.object.patientfactors.risks.filter(
+                name=Risk.Possible.RESPIRATORY
+            ).exists(),
+            "heart": self.object.patientfactors.risks.filter(
+                name=Risk.Possible.HEART
+            ).exists(),
+            "diabetes": self.object.patientfactors.risks.filter(
+                name=Risk.Possible.DIABETES
+            ).exists(),
+            "chronic_condition": self.object.patientfactors.risks.filter(
+                name=Risk.Possible.CHRONIC_CONDITION
+            ).exists(),
+            "immunocompromised": self.object.patientfactors.risks.filter(
+                name=Risk.Possible.IMMUNOCOMPROMISED
+            ).exists(),
+        }
+        context["risks"] = risks
         return context
 
     def form_invalid(self, form):

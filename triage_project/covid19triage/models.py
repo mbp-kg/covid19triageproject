@@ -276,6 +276,19 @@ class PatientFactors(models.Model):
             return tempc
         return self.temperature
 
+    def sobtextbypfv(self):
+        "Return the ShortnessOfBreath label for the PFV"
+        if self.version.version > 1:
+            return str(
+                PatientFactors.ShortnessOfBreathV2._value2label_map_.get(
+                    self.shortnessofbreath
+                )
+            )
+        else:
+            return ShortnessOfBreath._value2label_map_.get(
+                short.shortnessofbreath
+            )
+
     class Meta:
         verbose_name_plural = _("PatientFactors")
 
