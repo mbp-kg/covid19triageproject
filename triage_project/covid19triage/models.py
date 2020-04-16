@@ -95,7 +95,9 @@ class AssessmentLog(models.Model):
     A doctor's opinion of a PatientFactors (symptoms and risk factors)
     """
 
-    assessment = models.ForeignKey(Assessment, on_delete=models.PROTECT,)
+    assessment = models.ForeignKey(
+        Assessment, on_delete=models.PROTECT, related_name="logs"
+    )
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
     )
