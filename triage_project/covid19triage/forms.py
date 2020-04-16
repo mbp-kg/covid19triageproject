@@ -28,6 +28,28 @@ class AssessmentForm(forms.ModelForm):
     owner = forms.ModelChoiceField(get_user_model().objects.all())
     version = forms.IntegerField(widget=forms.HiddenInput(),)
 
+    def clean(self):
+        cleaned_data = super().clean()
+
+        # Ugly hack to clobber the submitted version.  It needs to be
+        # updated on page load.
+        if "version" in self.errors:
+            datacopy = self.data.copy()
+            datacopy["version"] = str(self.instance.version)
+            self.data = datacopy
+
+        return cleaned_data
+
+    def clean_version(self):
+        newversion = self.cleaned_data.get("version", None)
+        if self.instance.version != newversion:
+            raise forms.ValidationError(
+                _(
+                    "The assessment changed since you loaded the page.  Please try your changes again."
+                )
+            )
+        return newversion
+
     class Meta:
         fields = (
             "status",
@@ -35,16 +57,6 @@ class AssessmentForm(forms.ModelForm):
             "version",
         )
         model = Assessment
-
-        def clean_version(self):
-            newversion = self.cleaned_data.get("version", None)
-            if self.instance.version != newversion:
-                raise forms.ValidationError(
-                    _(
-                        "The assessment has changed since you loaded the page.  Please try again."
-                    )
-                )
-            return newversion
 
 
 class ContactInformationForm(forms.ModelForm):

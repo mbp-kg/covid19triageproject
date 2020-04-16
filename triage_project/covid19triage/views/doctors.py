@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from braces.views import MultiplePermissionsRequiredMixin
 from django.contrib.admin.forms import AdminAuthenticationForm
+from django.contrib.messages.api import error
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
@@ -53,14 +54,16 @@ def logout(request):
     return LogoutView.as_view(**defaults)(request)
 
 
-class AssessmentView(MultiplePermissionsRequiredMixin, ModelFormMixin, DetailView):
+class AssessmentView(
+    MultiplePermissionsRequiredMixin, ModelFormMixin, DetailView
+):
     """
     Display an Assessment
     """
 
     extra_context = {
-      "pagetitle": _("Assessment"),
-      "title": _("Assessment"),
+        "pagetitle": _("Assessment"),
+        "title": _("Assessment"),
     }
     form_class = AssessmentForm
     model = Assessment
@@ -76,14 +79,20 @@ class AssessmentView(MultiplePermissionsRequiredMixin, ModelFormMixin, DetailVie
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        title = _("Assessment for {patient}").format(patient=str(self.object.patientfactors.patient))
+        title = _("Assessment for {patient}").format(
+            patient=str(self.object.patientfactors.patient)
+        )
         context["pagetitle"] = context["title"] = title
         return context
 
+    def form_invalid(self, form):
+        if "version" in form.errors:
+            for verror in form.errors.get("version"):
+                error(self.request, verror)
+        return super().form_invalid(form)
+
     def form_valid(self, form):
-        oldassessment = Assessment.objects.get(
-            pk=int(self.kwargs.get("pk"))
-        )
+        oldassessment = Assessment.objects.get(pk=int(self.kwargs.get("pk")))
         newassessment = form.save(commit=False)
         if oldassessment.version == newassessment.version:
             newassessment.save()
