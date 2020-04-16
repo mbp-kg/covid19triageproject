@@ -72,6 +72,7 @@ class ContactInformationForm(forms.ModelForm):
     emailaddress = forms.CharField(
         label=_("E-mail address"),
         help_text=_("Please enter your e-mail address."),
+        required=False,
         widget=forms.TextInput(attrs={"placeholder": "example@example.com"},),
     )
     forwhom = forms.ChoiceField(
