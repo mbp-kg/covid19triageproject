@@ -119,7 +119,12 @@ class AssessmentView(
             alog.user = self.request.user
             alog.comments = "\n".join(loglines)
             alog.save()
+        if "_continue" in self.request.POST:
+            return redirect(self.object.get_absolute_url())
         return redirect(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse("covid19triage:doctorsindex")
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()

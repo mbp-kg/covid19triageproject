@@ -1,0 +1,69 @@
+{% extends "covid19triage/base.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" type="text/css" href="{% static "covid19triage/css/forms.css" %}">
+{% endblock %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+    <a href="{% url 'covid19triage:index' %}">{% trans 'Home' %}</a>
+    &rsaquo;
+    <a href="{% url 'covid19triage:doctorsindex' %}">{% trans 'Assessments' %}</a>
+    {% if title %} &rsaquo; {{ title }}{% endif %}
+    </div>
+{% endblock %}
+
+{% block content %}
+  <div class="content-main">
+    <form method="post">
+      {% csrf_token %}
+      <fieldset class="module aligned">
+        <div class="form-row">
+          <label>{% trans "Patient" %}:</label>
+          <span class="fake-input">{{ object.patientfactors.patient }}</span>
+        </div>
+        <div class="form-row">
+          <label>{% trans "Date of Birth" %}:</label>
+          <span class="fake-input">{{ object.patientfactors.patient.dob }} ({{ object.patientfactors.patient.dob|timesince }})</span>
+        </div>
+        {% if object.patientfactors.patient.contactperson.forwhom != "self" %}
+
+          <div class="form-row">
+            <label>{% trans "Contact Person" %}:</label>
+            <span class="fake-input">{{ object.patientfactors.patient.contactperson }}</span>
+          </div>
+        {% endif %}
+        <div class="form-row">
+          <label>{% trans "Phone number" %}:</label>
+          <span class="fake-input">{{ object.patientfactors.patient.contactperson.phonenumber }}</span>
+        </div>
+        {% if object.patientfactors.patient.contactperson.emailaddress %}
+          <div class="form-row">
+            <label>{% trans "Email address" %}:</label> 
+            <span class="fake-input">{{ object.patientfactors.patient.contactperson.emailaddress }}</span>
+          </div>
+        {% endif %}
+        <div class="form-row">
+          <label>{% trans "Score" %}:</label>
+          <span class="fake-input">{{ object.score }}</span>
+        </div>
+        <div class="form-row">
+          {{ form.owner.errors }}
+          {{ form.owner.label_tag }}
+          {{ form.owner }}
+        </div>
+        <div class="form-row">
+          {{ form.status.errors }}
+          {{ form.status.label_tag}}
+          {{ form.status}}
+        </div>
+        {{ form.version }}
+        <div class="submit-row">
+          <input type="submit" value="{% trans "Save and continue editing" %}" name="_continue" />
+          <input type="submit" value="{% trans "Save" %}" class="default" name="_save" />
+        </div>
+      </fieldset>
+    </form>
+  </div>
+{% endblock %}
