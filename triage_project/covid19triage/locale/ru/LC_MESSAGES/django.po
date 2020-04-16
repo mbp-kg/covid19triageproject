@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: covid19triageproject 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-03 04:34+0000\n"
+"POT-Creation-Date: 2020-04-16 01:59+0000\n"
 "PO-Revision-Date: 2020-03-29 15:34+0000\n"
 "Last-Translator: Troy Farrell <troy.farrell@mbp.kg>\n"
 "Language-Team: Troy Farrell <troy.farrell@mbp.kg>\n"
@@ -19,299 +19,390 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: forms.py:20 forms.py:141
+#: forms.py:25 models.py:50 templates/covid19triage/doctors/index.html:20
+msgid "Status"
+msgstr ""
+
+#: forms.py:26
+msgid "Optionally change the status of this assessment"
+msgstr ""
+
+#: forms.py:44
+msgid ""
+"The assessment has changed since you loaded the page.  Please try again."
+msgstr ""
+
+#: forms.py:55 forms.py:176
 msgctxt "placeholder for first name"
 msgid "John"
 msgstr "Иван"
 
-#: forms.py:22
+#: forms.py:57
 msgid "First Name"
 msgstr "Имя"
 
-#: forms.py:23
+#: forms.py:58
 msgid "Please enter your first or given name."
 msgstr "Пожалуйста, введите имя."
 
-#: forms.py:26 forms.py:147
+#: forms.py:61 forms.py:182
 msgctxt "placeholder for last name"
 msgid "Doe"
 msgstr "Иванов"
 
-#: forms.py:28
+#: forms.py:63
 msgid "Last Name"
 msgstr "Фамилия"
 
-#: forms.py:29
+#: forms.py:64
 msgid "Please enter your last or family name."
 msgstr "Пожалуйста, введите фамилию."
 
-#: forms.py:33
+#: forms.py:68
 msgid "Phone Number"
 msgstr "Номер телефона"
 
-#: forms.py:34
+#: forms.py:69
 msgid "Please enter a phone number where we can reach you."
 msgstr ""
 "Пожалуйста, введите номер телефона, по которому мы сможем связаться с вами."
 
-#: forms.py:38
+#: forms.py:73
 msgid "E-mail address"
 msgstr "Адрес электронной почты"
 
-#: forms.py:39
+#: forms.py:74
 msgid "Please enter your e-mail address."
 msgstr "Пожалуйста, введитье адрес электронной почты."
 
-#: forms.py:43
+#: forms.py:78
 msgid "Are you answering for yourself?"
 msgstr "Вы отвечаете/заполняете для себя?"
 
-#: forms.py:44 models.py:27
+#: forms.py:79 models.py:126
 msgid "Who is the patient?"
 msgstr "Кто пациент?"
 
-#: forms.py:67
+#: forms.py:102
 msgid "Does the patient have any of the following symptoms?"
 msgstr "У пациента есть один из перечисленных симптомов?"
 
-#: forms.py:75 models.py:97
+#: forms.py:110 models.py:196
 msgid "Patientʼs highest temperature within 24 hours"
 msgstr "Самая высокая температура пациента в течение последних 24 часов"
 
-#: forms.py:79
+#: forms.py:114
 msgid "How would the patient describe the patientʼs cough?"
 msgstr "Как бы пациент описал свой кашель?"
 
-#: forms.py:80
+#: forms.py:115
 msgid "Is it intense?"
 msgstr "Это интенсивно?"
 
-#: forms.py:85
+#: forms.py:120
 msgid "How would the patient describe the patientʼs shortness of breath?"
 msgstr "Как бы пациент описал свою одышку?"
 
-#: forms.py:87
+#: forms.py:122
 msgid "Is it severe?"
 msgstr "Это остро?"
 
-#: forms.py:91
+#: forms.py:126
 msgid "Is the patient pregnant or expecting to become pregnant?"
 msgstr "Пациентка беременна или планирует беременность?"
 
-#: forms.py:95
+#: forms.py:130
 msgid "Has the patient been in contact with someone who is sick?"
 msgstr "Был ли пациент в контакте с заболевшим человеком?"
 
-#: forms.py:99
+#: forms.py:134
 msgid "Does the patient smoke or vape or use e-cigarettes?"
 msgstr "Пациент курит сигареты или вейп или использует электронные сигареты?"
 
-#: forms.py:105
+#: forms.py:140
 msgid "Does the patient have any of the following conditions?"
 msgstr "У пациента есть один из перечисленных симптомов?"
 
-#: forms.py:109
+#: forms.py:144
 msgid "Is the patient currently under treatment for cancer?"
 msgstr "Пациент в настоящее время лечится от рака?"
 
-#: forms.py:143
+#: forms.py:178
 msgid "Patientʼs First Name"
 msgstr "Имя"
 
-#: forms.py:144
+#: forms.py:179
 msgid "Please enter the patientʼs first or given name."
 msgstr "Пожалуйста, введите имя пациента."
 
-#: forms.py:149
+#: forms.py:184
 msgid "Patientʼs Last Name"
 msgstr "Фамилия"
 
-#: forms.py:150
+#: forms.py:185
 msgid "Please enter the patientʼs last or family name."
 msgstr "Пожалуйста, введите фамилию пациента"
 
-#: forms.py:154
+#: forms.py:189
 msgid "Patientʼs Gender"
 msgstr "Пол пациента"
 
-#: forms.py:155
+#: forms.py:190
 msgid "Please enter the patientʼs medical gender."
 msgstr "Пожалуйста, введите пол пациента"
 
-#: forms.py:159
+#: forms.py:194
 msgid "Patientʼs Date of Birth"
 msgstr "Пожалуйста, введите дату рождения пациента"
 
-#: forms.py:160
+#: forms.py:195
 msgid "Please enter the patientʼs date of birth."
 msgstr "Пожалуйста, введите дату рождения пациента"
 
-#: models.py:14
-msgid "For myself"
-msgstr "Для себя"
-
-#: models.py:15
-msgid "For someone else"
-msgstr "Для другого"
-
-#: models.py:17 models.py:52
-msgid "First name"
-msgstr "Имя"
-
-#: models.py:18 models.py:53
-msgid "Last name"
-msgstr "Фамилия"
-
-#: models.py:20
-msgid "Phone number"
-msgstr "Номер телефона"
-
-#: models.py:23
-msgid "Email address"
-msgstr "Адрес электронной почты"
-
-#: models.py:28
-msgid "Is the contact person answering for herself or himself?"
-msgstr "Ответственное лицо отвечает за себя?"
-
-#: models.py:44
-msgid "Female"
-msgstr "Женщина"
-
-#: models.py:45
-msgid "Male"
-msgstr "Мужчина"
-
-#: models.py:49
-msgid "Contact Person"
+#: forms.py:212
+msgid "Best date to call"
 msgstr ""
 
-#: models.py:55
-msgid "Gender"
-msgstr "Пол"
+#: forms.py:213
+msgid "Please suggest the best date for the doctor to call."
+msgstr ""
 
-#: models.py:57
-msgid "Date of Birth"
-msgstr "Дата рождения"
+#: forms.py:217
+msgid "Best time to call"
+msgstr ""
 
-#: models.py:76
-msgid "No cough"
-msgstr "Нет кашля"
+#: forms.py:218
+msgid "Please suggest the best time for the doctor to call."
+msgstr ""
 
-#: models.py:77
-msgid "Wet cough"
-msgstr "Влажный кашель"
+#: models.py:32
+msgid "Complete – testing"
+msgstr ""
 
-#: models.py:78
-msgid "Dry cough"
-msgstr "Сухой кашель"
+#: models.py:35
+msgid "Complete – No further action"
+msgstr ""
 
-#: models.py:81 models.py:86
-msgid "No shortness of breath"
-msgstr "Нет одышки"
+#: models.py:39
+msgid "Complete – Patient referred for treatment"
+msgstr ""
 
-#: models.py:82
-msgid "Moderate shortness of breath"
-msgstr "Умеренная одышка"
+#: models.py:43
+msgid "Active – Awaiting patient contact"
+msgstr ""
 
-#: models.py:83 models.py:88
-msgid "Severe shortness of breath"
-msgstr "Тяжёлая одышка"
+#: models.py:45
+msgid "Active – Claimed"
+msgstr ""
 
-#: models.py:87
-msgid "Mild shortness of breath"
-msgstr "Легкая одышка"
+#: models.py:46
+msgid "Active – Unclaimed"
+msgstr ""
 
-#: models.py:91
-msgid "Patient"
-msgstr "Пациент"
+#: models.py:51
+msgid "Status of the assessment"
+msgstr ""
 
-#: models.py:102
-msgid "Description of cough"
-msgstr "Описание кашля"
-
-#: models.py:107
-msgid "Description of shortness of breath"
-msgstr "Описание одышки"
-
-#: models.py:111
-msgid "Patient is pregnant or expecting to become pregnant"
-msgstr "Пациентка беременна или планирует беременность?"
-
-#: models.py:114
-msgid "Contact with a sick person"
-msgstr "Контакт с больным/заболевшим человеком"
-
-#: models.py:117
-msgid "The patient smokes or vapes"
-msgstr "Пациент курит сигареты или электронные сигареты"
-
-#: models.py:121
-msgid "The patient is being treated for cancer"
-msgstr "Пациент получает лечение от рака"
-
-#: models.py:127
+#: models.py:64 models.py:226
 msgid "Version"
 msgstr "Версия"
 
-#: models.py:180
+#: models.py:65
+msgid "Version is incremented with each change."
+msgstr ""
+
+#: models.py:68 templates/covid19triage/doctors/assessment.html:48
+#: templates/covid19triage/doctors/index.html:19
+msgid "Score"
+msgstr ""
+
+#: models.py:102
+msgid "Comments"
+msgstr ""
+
+#: models.py:113
+msgid "For myself"
+msgstr "Для себя"
+
+#: models.py:114
+msgid "For someone else"
+msgstr "Для другого"
+
+#: models.py:116 models.py:151
+msgid "First name"
+msgstr "Имя"
+
+#: models.py:117 models.py:152
+msgid "Last name"
+msgstr "Фамилия"
+
+#: models.py:119 templates/covid19triage/doctors/assessment.html:38
+msgid "Phone number"
+msgstr "Номер телефона"
+
+#: models.py:122 templates/covid19triage/doctors/assessment.html:43
+msgid "Email address"
+msgstr "Адрес электронной почты"
+
+#: models.py:127
+msgid "Is the contact person answering for herself or himself?"
+msgstr "Ответственное лицо отвечает за себя?"
+
+#: models.py:143
+msgid "Female"
+msgstr "Женщина"
+
+#: models.py:144
+msgid "Male"
+msgstr "Мужчина"
+
+#: models.py:148 templates/covid19triage/doctors/assessment.html:33
+msgid "Contact Person"
+msgstr ""
+
+#: models.py:154
+msgid "Gender"
+msgstr "Пол"
+
+#: models.py:156 templates/covid19triage/doctors/assessment.html:27
+msgid "Date of Birth"
+msgstr "Дата рождения"
+
+#: models.py:175
+msgid "No cough"
+msgstr "Нет кашля"
+
+#: models.py:176
+msgid "Wet cough"
+msgstr "Влажный кашель"
+
+#: models.py:177
+msgid "Dry cough"
+msgstr "Сухой кашель"
+
+#: models.py:180 models.py:185
+msgid "No shortness of breath"
+msgstr "Нет одышки"
+
+#: models.py:181
+msgid "Moderate shortness of breath"
+msgstr "Умеренная одышка"
+
+#: models.py:182 models.py:187
+msgid "Severe shortness of breath"
+msgstr "Тяжёлая одышка"
+
+#: models.py:186
+msgid "Mild shortness of breath"
+msgstr "Легкая одышка"
+
+#: models.py:190 templates/covid19triage/doctors/assessment.html:23
+#: templates/covid19triage/doctors/index.html:18
+msgid "Patient"
+msgstr "Пациент"
+
+#: models.py:201
+msgid "Description of cough"
+msgstr "Описание кашля"
+
+#: models.py:206
+msgid "Description of shortness of breath"
+msgstr "Описание одышки"
+
+#: models.py:210
+msgid "Patient is pregnant or expecting to become pregnant"
+msgstr "Пациентка беременна или планирует беременность?"
+
+#: models.py:213
+msgid "Contact with a sick person"
+msgstr "Контакт с больным/заболевшим человеком"
+
+#: models.py:216
+msgid "The patient smokes or vapes"
+msgstr "Пациент курит сигареты или электронные сигареты"
+
+#: models.py:220
+msgid "The patient is being treated for cancer"
+msgstr "Пациент получает лечение от рака"
+
+#: models.py:278
 msgid "PatientFactors"
 msgstr "ПациентФакторы"
 
-#: models.py:189
+#: models.py:287
 msgid "Version of the PatientFactors questions"
 msgstr "Версия вопросов ПациентФакторы"
 
-#: models.py:192
+#: models.py:290
 msgid "Description of the changes in this version"
 msgstr "Описание изменений в этой версии"
 
-#: models.py:204
+#: models.py:314
 msgid "Respiratory condition, e.g., COPD, asthma"
 msgstr "Заболевания дыхательной системы: ХОБЛ, астма и т.д"
 
-#: models.py:206
+#: models.py:316
 msgid "Heart condition"
 msgstr "Сердечно-сосудистые заболевания"
 
-#: models.py:207
+#: models.py:317
 msgid "Diabetes"
 msgstr "Сахарный диабет"
 
-#: models.py:210
+#: models.py:320
 msgid "Other chronic condition, e.g., kidney failure, liver failure"
 msgstr "Другие хронические заболевания: почечная/печеночная недостаточность"
 
-#: models.py:212
+#: models.py:322
 msgid "Immunocompromised"
 msgstr "Иммунодефицитные состояния"
 
-#: models.py:228
+#: models.py:338
 msgid "Temperature at or above 38°C (100.4°F)"
 msgstr "Температура 38°C  и выше"
 
-#: models.py:229
+#: models.py:339
 msgid "Cough"
 msgstr "Кашель"
 
-#: models.py:230
+#: models.py:340
 msgid "Shortness of breath"
 msgstr "Одышка"
 
 #: templates/covid19triage/base.html:36
+msgid "Welcome,"
+msgstr "Добро пожаловать"
+
+#: templates/covid19triage/base.html:41
+#: templates/covid19triage/doctors/assessment.html:12 views/doctors.py:144
+msgid "Assessments"
+msgstr "Анкетирование"
+
+#: templates/covid19triage/base.html:44
+msgid "Change password"
+msgstr ""
+
+#: templates/covid19triage/base.html:46
+msgid "Log out"
+msgstr ""
+
+#: templates/covid19triage/base.html:55
 #: templates/covid19triage/contactinfo.html:10
+#: templates/covid19triage/doctors/assessment.html:10
 #: templates/covid19triage/patientfactors.html:12
 #: templates/covid19triage/patientinfo.html:10
 msgid "Home"
 msgstr "Главная"
 
 #: templates/covid19triage/contactinfo.html:17
+#: templates/covid19triage/login.html:19
 #: templates/covid19triage/patientfactors.html:19
 #: templates/covid19triage/patientinfo.html:17
 msgid "Please correct the error below."
 msgstr "Пожалуйста, исправьте ошибку ниже."
 
 #: templates/covid19triage/contactinfo.html:17
+#: templates/covid19triage/login.html:19
 #: templates/covid19triage/patientfactors.html:19
 #: templates/covid19triage/patientinfo.html:17
 msgid "Please correct the errors below."
@@ -323,6 +414,59 @@ msgstr "Пожалуйста, исправьте ошибки ниже."
 msgctxt "Next button label"
 msgid "Next »"
 msgstr "Далее »"
+
+#: templates/covid19triage/doctors/assessment.html:63
+#: templates/covid19triage/result.html:67
+msgid "Save"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:6
+msgid "My Active Assessments"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:7 views/doctors.py:137
+#, fuzzy
+#| msgid "COVID-19 Assessment"
+msgid "My Assessments"
+msgstr "COVID-19 анкетирование"
+
+#: templates/covid19triage/doctors/index.html:8 views/doctors.py:139
+msgid "Unclaimed Assessments"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:9 views/doctors.py:136
+msgid "Active Assessments"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:10 views/doctors.py:138
+#, fuzzy
+#| msgid "COVID-19 Assessment"
+msgid "Completed Assessments"
+msgstr "COVID-19 анкетирование"
+
+#: templates/covid19triage/doctors/index.html:15
+#, fuzzy
+#| msgid "COVID-19 Assessment"
+msgid "Open Assessments"
+msgstr "COVID-19 анкетирование"
+
+#: templates/covid19triage/doctors/index.html:21
+msgid "Owner"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:22
+msgctxt "date and time patient complete questions"
+msgid "Created"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:23
+msgctxt "date and time a doctor last updated the assessment"
+msgid "Updated"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:64
+msgid "There are no matching assessments."
+msgstr ""
 
 #: templates/covid19triage/index.html:23
 msgctxt "Continue in $CURRENT_LANGUAGE: продолжайте на русском"
@@ -405,9 +549,28 @@ msgstr ""
 "безопасности нашего общества.    </p>\n"
 " "
 
-#: templates/covid19triage/intro.html:23 templates/covid19triage/result.html:58
+#: templates/covid19triage/intro.html:23
 msgid "Next"
 msgstr "Далее"
+
+#: templates/covid19triage/loggedout.html:6
+msgid "You have been logged out."
+msgstr ""
+
+#: templates/covid19triage/login.html:35
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
+#: templates/covid19triage/login.html:55
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: templates/covid19triage/login.html:59 views/doctors.py:37
+msgid "Log in"
+msgstr ""
 
 #: templates/covid19triage/patientfactors.html:39
 msgid "Do you have any of the following symptoms?"
@@ -529,20 +692,18 @@ msgid ""
 "serious symptoms and you need to consult a doctor by phone.\n"
 "        </p>\n"
 "        <p>\n"
-"          Please select a time to consult with a doctor.  We conduct "
-"appointments in the clinic while conducting telephone consultations with "
-"doctors for your convenience and to prevent new infections.\n"
+"          Please suggest a date and time to consult with a doctor.  The "
+"consultant will call you back to conduct a state assessment and to give you "
+"further instructions.\n"
+"        </p>\n"
+"        <p>\n"
+"          We conduct appointments in the clinic while conducting telephone "
+"consultations with doctors for your convenience and to prevent new "
+"infections.\n"
 "        </p>\n"
 "        <p>\n"
 "          Thank you for your attention to yourself and to the health of the "
 "people around you.\n"
-"        </p>\n"
-"        <p>\n"
-"          Please click below to be in line for our telephone consultation.\n"
-"        </p>\n"
-"        <p>\n"
-"          The consultant will call back to conduct a state assessment and to "
-"complete the consultation will give further instructions.\n"
 "        </p>\n"
 "      "
 msgstr ""
@@ -572,7 +733,7 @@ msgstr ""
 "        </p>\n"
 "      "
 
-#: templates/covid19triage/result.html:62
+#: templates/covid19triage/result.html:72
 msgid ""
 "\n"
 "        <p>\n"
@@ -610,41 +771,114 @@ msgstr ""
 "        </p>\n"
 " "
 
-#: views.py:27 views/doctors.py:27 views/public.py:27
-msgid "COVID-19 Assessment"
-msgstr "COVID-19 анкетирование"
+#: urls.py:26
+msgid "contactinfo"
+msgstr "контактныеданные"
 
-#: views.py:33 views/doctors.py:33 views/public.py:33
+#: urls.py:31
+msgid "doctors"
+msgstr "врачи"
+
+#: urls.py:36
+msgid "doctors/assessments"
+msgstr "врачи/анкеты"
+
+#: urls.py:41
+msgid "doctors/assessments/completed"
+msgstr "врачи/анкеты/заполненные"
+
+#: urls.py:46
+msgid "doctors/assessments/my"
+msgstr "врачи/анкеты/мои"
+
+#: urls.py:51
+msgid "doctors/assessments/my/active"
+msgstr "врачи/анкеты/мои/действующие"
+
+#: urls.py:56
+msgid "doctors/assessments/unclaimed"
+msgstr "врачи/анкеты/безхозные"
+
+#: urls.py:61
+#, fuzzy
+#| msgid "doctors/assessments"
+msgid "doctors/assessments/<int:pk>"
+msgstr "врачи/анкеты"
+
+#: urls.py:66
+msgid "intro"
+msgstr "предисловие"
+
+#: urls.py:67
+msgid "login"
+msgstr "войти"
+
+#: urls.py:68
+msgid "logout"
+msgstr "выйти"
+
+#: urls.py:70
+msgid "patientinfo"
+msgstr "данныепациентa"
+
+#: urls.py:75
+msgid "patientfactors"
+msgstr "пациентфакторы"
+
+#: urls.py:79
+msgid "result"
+msgstr "результат"
+
+#: views/doctors.py:62 views/doctors.py:63
+#, fuzzy
+#| msgid "Assessments"
+msgid "Assessment"
+msgstr "Анкетирование"
+
+#: views/doctors.py:79
+#, python-brace-format
+msgid "Assessment for {patient}"
+msgstr ""
+
+#: views/public.py:31
 msgid "Eldik Family Medicine Clinic is currently open."
 msgstr "Клиника семейной медицины «Элдик» в данное время работает."
 
-#: views.py:35 views/doctors.py:35 views/public.py:35
+#: views/public.py:33
 msgid "Eldik Family Medicine Clinic is currently closed."
 msgstr "Клиника семейной медицины «Элдик» в данное время закрыт."
 
-#: views.py:36 views/doctors.py:36 views/public.py:36
+#: views/public.py:37
+msgid "COVID-19 Assessment"
+msgstr "COVID-19 анкетирование"
+
+#: views/public.py:43
 msgid "Language"
 msgstr "Язык"
 
-#: views.py:45 views/doctors.py:45 views/public.py:45
+#: views/public.py:52
 msgid "Welcome"
 msgstr "Добро пожаловать"
 
-#: views.py:54 views/doctors.py:54 views/public.py:54
-msgid "Result"
-msgstr "Результат"
-
-#: views.py:84 views/doctors.py:84 views/public.py:84
+#: views/public.py:65
 msgid "Contact Information"
 msgstr "Контактные данные"
 
-#: views.py:103 views/doctors.py:103 views/public.py:103
+#: views/public.py:84
 msgid "Symptoms and Risk Factors"
 msgstr "Симптомы и факторы риска"
 
-#: views.py:144 views/doctors.py:144 views/public.py:144
+#: views/public.py:132
 msgid "Patient Information"
 msgstr "Информация пациента"
+
+#: views/public.py:177 views/public.py:208
+msgid "Result"
+msgstr "Результат"
+
+#: views/public.py:230
+msgid "Your suggested date and time have been saved."
+msgstr ""
 
 #: widgets.py:10
 msgctxt "empty option for select button"

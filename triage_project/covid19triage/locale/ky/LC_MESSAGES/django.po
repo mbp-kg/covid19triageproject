@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: covid19triageproject 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-03 04:34+0000\n"
+"POT-Creation-Date: 2020-04-16 01:59+0000\n"
 "PO-Revision-Date: 2020-03-29 15:34+0000\n"
 "Last-Translator: Troy Farrell <troy.farrell@mbp.kg>\n"
 "Language-Team: Troy Farrell <troy.farrell@mbp.kg>\n"
@@ -18,298 +18,393 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:20 forms.py:141
+#: forms.py:25 models.py:50 templates/covid19triage/doctors/index.html:20
+msgid "Status"
+msgstr ""
+
+#: forms.py:26
+msgid "Optionally change the status of this assessment"
+msgstr ""
+
+#: forms.py:44
+msgid ""
+"The assessment has changed since you loaded the page.  Please try again."
+msgstr ""
+
+#: forms.py:55 forms.py:176
 msgctxt "placeholder for first name"
 msgid "John"
 msgstr "Асан"
 
-#: forms.py:22
+#: forms.py:57
 msgid "First Name"
 msgstr "Аты"
 
-#: forms.py:23
+#: forms.py:58
 msgid "Please enter your first or given name."
 msgstr "Атыңызды жазыңыз."
 
-#: forms.py:26 forms.py:147
+#: forms.py:61 forms.py:182
 msgctxt "placeholder for last name"
 msgid "Doe"
 msgstr "Асанов"
 
-#: forms.py:28
+#: forms.py:63
 msgid "Last Name"
 msgstr "фамилиясы"
 
-#: forms.py:29
+#: forms.py:64
 msgid "Please enter your last or family name."
 msgstr "Фамилияңызды жазыңыз."
 
-#: forms.py:33
+#: forms.py:68
 msgid "Phone Number"
 msgstr "Телефон номери"
 
-#: forms.py:34
+#: forms.py:69
 msgid "Please enter a phone number where we can reach you."
 msgstr "Байланышуу үчүн телефон номериңизди жазыңыз."
 
-#: forms.py:38
+#: forms.py:73
 msgid "E-mail address"
 msgstr "Электрондук почтанын дареги"
 
-#: forms.py:39
+#: forms.py:74
 msgid "Please enter your e-mail address."
 msgstr "Электрондук почтаңыздын дарегин жазыңыз."
 
-#: forms.py:43
+#: forms.py:78
 msgid "Are you answering for yourself?"
 msgstr "Сиз сурамжылоону өзүңүз үчүн өтөсүзбү?"
 
-#: forms.py:44 models.py:27
+#: forms.py:79 models.py:126
 msgid "Who is the patient?"
 msgstr "Бейтап ким?"
 
-#: forms.py:67
+#: forms.py:102
 msgid "Does the patient have any of the following symptoms?"
 msgstr "Бейтапта төмөнкү симптомдор барбы?"
 
-#: forms.py:75 models.py:97
+#: forms.py:110 models.py:196
 msgid "Patientʼs highest temperature within 24 hours"
 msgstr "Акыркы 24 саатта бейтаптын дене табынын көтөрүлүшү"
 
-#: forms.py:79
+#: forms.py:114
 msgid "How would the patient describe the patientʼs cough?"
-msgstr "Бейтптын жөтөлү кандай?"
+msgstr "Бейтаптын жөтөлү кандай?"
 
-#: forms.py:80
+#: forms.py:115
 msgid "Is it intense?"
 msgstr "Жөтөл катуубу?"
 
-#: forms.py:85
+#: forms.py:120
 msgid "How would the patient describe the patientʼs shortness of breath?"
 msgstr "Бейтаптын демигүүсү кандай?"
 
-#: forms.py:87
+#: forms.py:122
 msgid "Is it severe?"
 msgstr "Демигүү оорбу?"
 
-#: forms.py:91
+#: forms.py:126
 msgid "Is the patient pregnant or expecting to become pregnant?"
 msgstr "Бейтап кош бойлуу у же жакынкы убакытта күтүүдөбү?"
 
-#: forms.py:95
+#: forms.py:130
 msgid "Has the patient been in contact with someone who is sick?"
 msgstr "Бейтап ооруган адам менен контактта болдубу?"
 
-#: forms.py:99
+#: forms.py:134
 msgid "Does the patient smoke or vape or use e-cigarettes?"
 msgstr "Бейтап тамеки, вейп же электрондук тамеки чегеби?"
 
-#: forms.py:105
+#: forms.py:140
 msgid "Does the patient have any of the following conditions?"
 msgstr "Бейтапта төмөнкү өнөкөт оорулары барбы?"
 
-#: forms.py:109
+#: forms.py:144
 msgid "Is the patient currently under treatment for cancer?"
 msgstr "Бейтап азыркы учурда ракка каршы дарыланабы?"
 
-#: forms.py:143
+#: forms.py:178
 msgid "Patientʼs First Name"
 msgstr "Аты"
 
-#: forms.py:144
+#: forms.py:179
 msgid "Please enter the patientʼs first or given name."
 msgstr "Бейтаптын атын жазыңыз"
 
-#: forms.py:149
+#: forms.py:184
 msgid "Patientʼs Last Name"
 msgstr "фамилиясы"
 
-#: forms.py:150
+#: forms.py:185
 msgid "Please enter the patientʼs last or family name."
 msgstr "Бейтаптын фамилиясын жазыңыз"
 
-#: forms.py:154
+#: forms.py:189
 msgid "Patientʼs Gender"
 msgstr "Жынысы"
 
-#: forms.py:155
+#: forms.py:190
 msgid "Please enter the patientʼs medical gender."
 msgstr "Бейтаптын жынысын жазыңыз"
 
-#: forms.py:159
+#: forms.py:194
 msgid "Patientʼs Date of Birth"
 msgstr "Туулган күнүңүз"
 
-#: forms.py:160
+#: forms.py:195
 msgid "Please enter the patientʼs date of birth."
 msgstr "Бейтаптын туулган күнүн жазыңыз"
 
-#: models.py:14
-msgid "For myself"
-msgstr "Өзүм үчүн"
+#: forms.py:212
+msgid "Best date to call"
+msgstr ""
 
-#: models.py:15
-msgid "For someone else"
-msgstr "Башка адам үчүн"
+#: forms.py:213
+msgid "Please suggest the best date for the doctor to call."
+msgstr ""
 
-#: models.py:17 models.py:52
-msgid "First name"
-msgstr "Аты"
+#: forms.py:217
+msgid "Best time to call"
+msgstr ""
 
-#: models.py:18 models.py:53
-msgid "Last name"
-msgstr "фамилиясы"
+#: forms.py:218
+msgid "Please suggest the best time for the doctor to call."
+msgstr ""
 
-#: models.py:20
-msgid "Phone number"
-msgstr "Телефон номери"
+#: models.py:32
+msgid "Complete – testing"
+msgstr ""
 
-#: models.py:23
-msgid "Email address"
-msgstr "Электрондук почтанын дареги"
+#: models.py:35
+msgid "Complete – No further action"
+msgstr ""
 
-#: models.py:28
-msgid "Is the contact person answering for herself or himself?"
-msgstr "Сиз сурамжылоону өзүңүз үчүн өтүп жатасызбы же башка адамгабы?"
+#: models.py:39
+msgid "Complete – Patient referred for treatment"
+msgstr ""
 
-#: models.py:44
-msgid "Female"
-msgstr "Аял"
+#: models.py:43
+msgid "Active – Awaiting patient contact"
+msgstr ""
 
 #: models.py:45
-msgid "Male"
-msgstr "Киши"
+msgid "Active – Claimed"
+msgstr ""
 
-#: models.py:49
-msgid "Contact Person"
-msgstr "Байланыш үчүн адам"
+#: models.py:46
+msgid "Active – Unclaimed"
+msgstr ""
 
-#: models.py:55
-msgid "Gender"
-msgstr "Жыныс"
+#: models.py:51
+msgid "Status of the assessment"
+msgstr ""
 
-#: models.py:57
-msgid "Date of Birth"
-msgstr "Туулган күн"
-
-#: models.py:76
-msgid "No cough"
-msgstr "Жөтөл жок"
-
-#: models.py:77
-msgid "Wet cough"
-msgstr "какырык менен жөтөл"
-
-#: models.py:78
-msgid "Dry cough"
-msgstr "Кургак жөтөл"
-
-#: models.py:81 models.py:86
-msgid "No shortness of breath"
-msgstr "Демигүү жок"
-
-#: models.py:82
-msgid "Moderate shortness of breath"
-msgstr "Жеңил демигүү"
-
-#: models.py:83 models.py:88
-msgid "Severe shortness of breath"
-msgstr "Оор демигүү"
-
-#: models.py:87
-msgid "Mild shortness of breath"
-msgstr "Жеңил демигүү"
-
-#: models.py:91
-msgid "Patient"
-msgstr "Бейтап"
-
-#: models.py:102
-msgid "Description of cough"
-msgstr "Жөтөлүү кандай"
-
-#: models.py:107
-msgid "Description of shortness of breath"
-msgstr "Демигүү кандай"
-
-#: models.py:111
-msgid "Patient is pregnant or expecting to become pregnant"
-msgstr "Бейтап кош бойлуу у же жакынкы убакытта күтүүдөбү?"
-
-#: models.py:114
-msgid "Contact with a sick person"
-msgstr "Ооруган адам менен контакт"
-
-#: models.py:117
-msgid "The patient smokes or vapes"
-msgstr "Бейтап тамеки же вейп чегет"
-
-#: models.py:121
-msgid "The patient is being treated for cancer"
-msgstr "Бейтап азыркы учурда ракка каршы дарыланат"
-
-#: models.py:127
+#: models.py:64 models.py:226
 msgid "Version"
 msgstr "Версия"
 
-#: models.py:180
+#: models.py:65
+msgid "Version is incremented with each change."
+msgstr ""
+
+#: models.py:68 templates/covid19triage/doctors/assessment.html:48
+#: templates/covid19triage/doctors/index.html:19
+msgid "Score"
+msgstr ""
+
+#: models.py:102
+msgid "Comments"
+msgstr ""
+
+#: models.py:113
+msgid "For myself"
+msgstr "Өзүм үчүн"
+
+#: models.py:114
+msgid "For someone else"
+msgstr "Башка адам үчүн"
+
+#: models.py:116 models.py:151
+msgid "First name"
+msgstr "Аты"
+
+#: models.py:117 models.py:152
+msgid "Last name"
+msgstr "фамилиясы"
+
+#: models.py:119 templates/covid19triage/doctors/assessment.html:38
+msgid "Phone number"
+msgstr "Телефон номери"
+
+#: models.py:122 templates/covid19triage/doctors/assessment.html:43
+msgid "Email address"
+msgstr "Электрондук почтанын дареги"
+
+#: models.py:127
+msgid "Is the contact person answering for herself or himself?"
+msgstr "Сиз сурамжылоону өзүңүз үчүн өтүп жатасызбы же башка адамгабы?"
+
+#: models.py:143
+msgid "Female"
+msgstr "Аял"
+
+#: models.py:144
+msgid "Male"
+msgstr "Киши"
+
+#: models.py:148 templates/covid19triage/doctors/assessment.html:33
+msgid "Contact Person"
+msgstr "Байланыш үчүн адам"
+
+#: models.py:154
+msgid "Gender"
+msgstr "Жыныс"
+
+#: models.py:156 templates/covid19triage/doctors/assessment.html:27
+msgid "Date of Birth"
+msgstr "Туулган күн"
+
+#: models.py:175
+msgid "No cough"
+msgstr "Жөтөл жок"
+
+#: models.py:176
+msgid "Wet cough"
+msgstr "какырык менен жөтөл"
+
+#: models.py:177
+msgid "Dry cough"
+msgstr "Кургак жөтөл"
+
+#: models.py:180 models.py:185
+msgid "No shortness of breath"
+msgstr "Демигүү жок"
+
+#: models.py:181
+msgid "Moderate shortness of breath"
+msgstr "Жеңил демигүү"
+
+#: models.py:182 models.py:187
+msgid "Severe shortness of breath"
+msgstr "Оор демигүү"
+
+#: models.py:186
+msgid "Mild shortness of breath"
+msgstr "Жеңил демигүү"
+
+#: models.py:190 templates/covid19triage/doctors/assessment.html:23
+#: templates/covid19triage/doctors/index.html:18
+msgid "Patient"
+msgstr "Бейтап"
+
+#: models.py:201
+msgid "Description of cough"
+msgstr "Жөтөлүү кандай"
+
+#: models.py:206
+msgid "Description of shortness of breath"
+msgstr "Демигүү кандай"
+
+#: models.py:210
+msgid "Patient is pregnant or expecting to become pregnant"
+msgstr "Бейтап кош бойлуубу же жакынкы убакытта пландап жатабы?"
+
+#: models.py:213
+msgid "Contact with a sick person"
+msgstr "Ооруган адам менен контакт"
+
+#: models.py:216
+msgid "The patient smokes or vapes"
+msgstr "Бейтап тамеки же вейп чегет"
+
+#: models.py:220
+msgid "The patient is being treated for cancer"
+msgstr "Бейтап азыркы учурда ракка каршы дарыланат"
+
+#: models.py:278
 msgid "PatientFactors"
 msgstr "БейтапФакторлор"
 
-#: models.py:189
+#: models.py:287
 msgid "Version of the PatientFactors questions"
 msgstr "БейтапФакторлор суроолордун версиясы"
 
-#: models.py:192
+#: models.py:290
 msgid "Description of the changes in this version"
 msgstr "Бул версиядагы өзгөрүүлөрдүн сүрөттөөсү"
 
-#: models.py:204
+#: models.py:314
 msgid "Respiratory condition, e.g., COPD, asthma"
 msgstr "Дем алуу органдардын оорулары (ХОБЛ, бронх астмасы ж.б.)"
 
-#: models.py:206
+#: models.py:316
 msgid "Heart condition"
 msgstr "Жүрөк ооруулары"
 
-#: models.py:207
+#: models.py:317
 msgid "Diabetes"
 msgstr "Кант диабети"
 
-#: models.py:210
+#: models.py:320
 msgid "Other chronic condition, e.g., kidney failure, liver failure"
-msgstr "Башка өнөкөт оорулар (боор, бөйрөк жетишсиздик)"
+msgstr "Башка өнөкөт оорулар (боор, бөйрөк жетишсиздиги ж.б.)"
 
-#: models.py:212
+#: models.py:322
 msgid "Immunocompromised"
-msgstr "Иммунитет жетишсиздигинен"
+msgstr ""
+"Иммунитет жетишсиздик абалы (ВИЧ/СПИД, метотрексат же глюкокортикострероид "
+"менен дарылоо)"
 
-#: models.py:228
+#: models.py:338
 msgid "Temperature at or above 38°C (100.4°F)"
 msgstr "Дене табтын көтөрүлүшү 38°С градус же андан жогору"
 
-#: models.py:229
+#: models.py:339
 msgid "Cough"
 msgstr "Жөтөл"
 
-#: models.py:230
+#: models.py:340
 msgid "Shortness of breath"
 msgstr "Демигүү"
 
 #: templates/covid19triage/base.html:36
+msgid "Welcome,"
+msgstr "Кош келиңиздер"
+
+#: templates/covid19triage/base.html:41
+#: templates/covid19triage/doctors/assessment.html:12 views/doctors.py:144
+#, fuzzy
+#| msgid "COVID-19 Assessment"
+msgid "Assessments"
+msgstr "COVID-19 Сурамжылоо"
+
+#: templates/covid19triage/base.html:44
+msgid "Change password"
+msgstr ""
+
+#: templates/covid19triage/base.html:46
+msgid "Log out"
+msgstr ""
+
+#: templates/covid19triage/base.html:55
 #: templates/covid19triage/contactinfo.html:10
+#: templates/covid19triage/doctors/assessment.html:10
 #: templates/covid19triage/patientfactors.html:12
 #: templates/covid19triage/patientinfo.html:10
 msgid "Home"
 msgstr "Башкы бетке"
 
 #: templates/covid19triage/contactinfo.html:17
+#: templates/covid19triage/login.html:19
 #: templates/covid19triage/patientfactors.html:19
 #: templates/covid19triage/patientinfo.html:17
 msgid "Please correct the error below."
 msgstr "Төмөндөгү катаны оңдоп коюңуз."
 
 #: templates/covid19triage/contactinfo.html:17
+#: templates/covid19triage/login.html:19
 #: templates/covid19triage/patientfactors.html:19
 #: templates/covid19triage/patientinfo.html:17
 msgid "Please correct the errors below."
@@ -321,6 +416,59 @@ msgstr "Төмөндөгү каталарды оңдоп коюңуз."
 msgctxt "Next button label"
 msgid "Next »"
 msgstr "Кийинки »"
+
+#: templates/covid19triage/doctors/assessment.html:63
+#: templates/covid19triage/result.html:67
+msgid "Save"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:6
+msgid "My Active Assessments"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:7 views/doctors.py:137
+#, fuzzy
+#| msgid "COVID-19 Assessment"
+msgid "My Assessments"
+msgstr "COVID-19 Сурамжылоо"
+
+#: templates/covid19triage/doctors/index.html:8 views/doctors.py:139
+msgid "Unclaimed Assessments"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:9 views/doctors.py:136
+msgid "Active Assessments"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:10 views/doctors.py:138
+#, fuzzy
+#| msgid "COVID-19 Assessment"
+msgid "Completed Assessments"
+msgstr "COVID-19 Сурамжылоо"
+
+#: templates/covid19triage/doctors/index.html:15
+#, fuzzy
+#| msgid "COVID-19 Assessment"
+msgid "Open Assessments"
+msgstr "COVID-19 Сурамжылоо"
+
+#: templates/covid19triage/doctors/index.html:21
+msgid "Owner"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:22
+msgctxt "date and time patient complete questions"
+msgid "Created"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:23
+msgctxt "date and time a doctor last updated the assessment"
+msgid "Updated"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:64
+msgid "There are no matching assessments."
+msgstr ""
 
 #: templates/covid19triage/index.html:23
 msgctxt "Continue in $CURRENT_LANGUAGE: продолжайте на русском"
@@ -339,19 +487,19 @@ msgstr "Беттин же кол-буттарын көгөрүшү(цианоз)
 
 #: templates/covid19triage/index.html:29
 msgid "Seizures"
-msgstr "туталак"
+msgstr "тарамыш тырышуу (судороги)"
 
 #: templates/covid19triage/index.html:30
 msgid ""
 "Symptoms of stroke (asymmetry of the face, paralysis of extremities, "
 "impaired speech)"
 msgstr ""
-"инсульт белгилери (жүздүн асимметриясы, кол-бут паралич, сүйлөө "
-"жөндөмдүүлүгүнүн начарлашы)"
+"инсульт белгилери (жүздүн асимметриясы, кол-буттардын шал болуп калуусу, "
+"сүйлөө жөндөмдүүлүгүнүн начарлашы)"
 
 #: templates/covid19triage/index.html:31
 msgid "Disorientation or fainting"
-msgstr "сезимди жоготуу/баш аламандык, эстен тануу"
+msgstr "сезимди жоготуу, баш аламандык, эстен тануу"
 
 #: templates/covid19triage/index.html:32
 msgid ""
@@ -359,7 +507,7 @@ msgid ""
 "lower jaw)"
 msgstr ""
 "стенокардия белгилери (сол колго, ийинге, жаакка берген көкүрөктүн сол "
-"тарабында ооруу)"
+"тарабында оорушу)."
 
 #: templates/covid19triage/intro.html:10
 msgid ""
@@ -406,9 +554,28 @@ msgstr ""
 "    </p>\n"
 " "
 
-#: templates/covid19triage/intro.html:23 templates/covid19triage/result.html:58
+#: templates/covid19triage/intro.html:23
 msgid "Next"
 msgstr "Кийинки"
+
+#: templates/covid19triage/loggedout.html:6
+msgid "You have been logged out."
+msgstr ""
+
+#: templates/covid19triage/login.html:35
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
+#: templates/covid19triage/login.html:55
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: templates/covid19triage/login.html:59 views/doctors.py:37
+msgid "Log in"
+msgstr ""
 
 #: templates/covid19triage/patientfactors.html:39
 msgid "Do you have any of the following symptoms?"
@@ -428,7 +595,7 @@ msgstr "Демигүүңүз кандай?"
 
 #: templates/covid19triage/patientfactors.html:88
 msgid "Are you pregnant or expecting to become pregnant?"
-msgstr "Сиз кош бойлуусузбу же жакынкы убакытта күтүүдөсүзбү?"
+msgstr "Сиз кош бойлуусузбу же жакынкы убакытта пландап жатасызбы?"
 
 #: templates/covid19triage/patientfactors.html:101
 msgid "Have you been in contact with someone who is sick?"
@@ -497,8 +664,8 @@ msgid ""
 msgstr ""
 "\n"
 "        <p>\n"
-"          Тестинин жыйынтыгы сиздин дарыгерге телефон аркылуу кайрылууга "
-"кажети жок экендигин көрсөттү.\n"
+"          Тестинин жыйынтыгы дарыгерге телефон аркылуу кайрылуу кажети жок "
+"экендигин көрсөттү.\n"
 "        </p>\n"
 "        <p>\n"
 "          «Элдик» клиникасы COVID-19 алдын алуу үчүн бардык жарандарга "
@@ -506,13 +673,15 @@ msgstr ""
 "        </p>\n"
 "        <ul>\n"
 "          <li>зарылдыгы жок үйдөн чыкпаңыз</li>\n"
-"          <li>адамдар ортосундагы аралык 1.5 метрден кем эмес</li>\n"
-"          <li>колдорду жуу же спирттүү антисептиктерди колдонуу</li>\n"
-"          <li>жашаган жерди жана буюмдарды дезинфекциялоо</li>\n"
+"          <li>адамдар ортосундагы 1.5 метрден кем эмес аралыкты сактаңыз</"
+"li>\n"
+"          <li>колдоруңузду жууңуз же спирттүү антисептиктерди колдонуңуз</"
+"li>\n"
+"          <li>жашаган жериңизди жана буюмдарыңызды дезинфекциялаңыз</li>\n"
 "        </ul>\n"
 "        <p>\n"
 "          Сиздин абалыңыз начарлап 38 градустан жогорку температура, катуу "
-"жөтөл, дем алуу оорлоп баратса дарыгерге чалыңыз.\n"
+"жөтөлүп, дем алууңуз оорлоп баратса дарыгерге кайрылыңыз.\n"
 "        </p>\n"
 "        <p>\n"
 "          Өзүңүзгө жана айланадагы адамдарга кам көрүүңүз үчүн рахмат.\n"
@@ -527,20 +696,18 @@ msgid ""
 "serious symptoms and you need to consult a doctor by phone.\n"
 "        </p>\n"
 "        <p>\n"
-"          Please select a time to consult with a doctor.  We conduct "
-"appointments in the clinic while conducting telephone consultations with "
-"doctors for your convenience and to prevent new infections.\n"
+"          Please suggest a date and time to consult with a doctor.  The "
+"consultant will call you back to conduct a state assessment and to give you "
+"further instructions.\n"
+"        </p>\n"
+"        <p>\n"
+"          We conduct appointments in the clinic while conducting telephone "
+"consultations with doctors for your convenience and to prevent new "
+"infections.\n"
 "        </p>\n"
 "        <p>\n"
 "          Thank you for your attention to yourself and to the health of the "
 "people around you.\n"
-"        </p>\n"
-"        <p>\n"
-"          Please click below to be in line for our telephone consultation.\n"
-"        </p>\n"
-"        <p>\n"
-"          The consultant will call back to conduct a state assessment and to "
-"complete the consultation will give further instructions.\n"
 "        </p>\n"
 "      "
 msgstr ""
@@ -560,7 +727,7 @@ msgstr ""
 "        </p>\n"
 "      "
 
-#: templates/covid19triage/result.html:62
+#: templates/covid19triage/result.html:72
 msgid ""
 "\n"
 "        <p>\n"
@@ -580,42 +747,137 @@ msgid ""
 "        </p>\n"
 "      "
 msgstr ""
+"\n"
+"        <p>\n"
+"          Тесттин жыйынтыгы боюнча сизге сөзсүз түрдө дарыгерге баруу же "
+"абалыңыз оорлоп баратса тез жардам (103) чакыруу сунушталат.\n"
+"        </p>\n"
+"        <p>\n"
+"          «Элдик» үй-бүлөлүк медицина клиникасына кабыл алууга жазылгыңыз "
+"келсе <a href=\"tel:+996776652079\">0 (776) 652-079</a> же <a href=\"tel:"
+"+996312652079\">0 (312) 652-079</a> номери боюнча коңгуроо кылыңыз.  "
+"Клиниканын иштөө убактысы: дүйшөмбү - жума күндөрү 09:00-15:00, ишемби "
+"09:00-13:00.\n"
+"        </p>\n"
+"        <p>\n"
+"          Өзүңүздүн жана айланадагы адамдарга кам көрүүңүз үчүн рахмат.\n"
+"        </p>\n"
+"      "
 
-#: views.py:27 views/doctors.py:27 views/public.py:27
-msgid "COVID-19 Assessment"
+#: urls.py:26
+#, fuzzy
+#| msgid "Contact Information"
+msgid "contactinfo"
+msgstr "Байланыш үчүн маалымат"
+
+#: urls.py:31
+msgid "doctors"
+msgstr ""
+
+#: urls.py:36
+msgid "doctors/assessments"
+msgstr ""
+
+#: urls.py:41
+msgid "doctors/assessments/completed"
+msgstr ""
+
+#: urls.py:46
+msgid "doctors/assessments/my"
+msgstr ""
+
+#: urls.py:51
+msgid "doctors/assessments/my/active"
+msgstr ""
+
+#: urls.py:56
+msgid "doctors/assessments/unclaimed"
+msgstr ""
+
+#: urls.py:61
+msgid "doctors/assessments/<int:pk>"
+msgstr ""
+
+#: urls.py:66
+msgid "intro"
+msgstr ""
+
+#: urls.py:67
+msgid "login"
+msgstr ""
+
+#: urls.py:68
+msgid "logout"
+msgstr ""
+
+#: urls.py:70
+#, fuzzy
+#| msgid "Patient"
+msgid "patientinfo"
+msgstr "Бейтап"
+
+#: urls.py:75
+#, fuzzy
+#| msgid "PatientFactors"
+msgid "patientfactors"
+msgstr "БейтапФакторлор"
+
+#: urls.py:79
+#, fuzzy
+#| msgid "Result"
+msgid "result"
+msgstr "Жыйынтык"
+
+#: views/doctors.py:62 views/doctors.py:63
+#, fuzzy
+#| msgid "COVID-19 Assessment"
+msgid "Assessment"
 msgstr "COVID-19 Сурамжылоо"
 
-#: views.py:33 views/doctors.py:33 views/public.py:33
+#: views/doctors.py:79
+#, python-brace-format
+msgid "Assessment for {patient}"
+msgstr ""
+
+#: views/public.py:31
 msgid "Eldik Family Medicine Clinic is currently open."
 msgstr "«Элдик» үй-бүлөлүк дарыгерлер клиникасы азыр ачык."
 
-#: views.py:35 views/doctors.py:35 views/public.py:35
+#: views/public.py:33
 msgid "Eldik Family Medicine Clinic is currently closed."
 msgstr "«Элдик» үй-бүлөлүк дарыгерлер клиникасы азыр жабык."
 
-#: views.py:36 views/doctors.py:36 views/public.py:36
+#: views/public.py:37
+msgid "COVID-19 Assessment"
+msgstr "COVID-19 Сурамжылоо"
+
+#: views/public.py:43
 msgid "Language"
 msgstr "Тил"
 
-#: views.py:45 views/doctors.py:45 views/public.py:45
+#: views/public.py:52
 msgid "Welcome"
 msgstr "Кош келиңиздер"
 
-#: views.py:54 views/doctors.py:54 views/public.py:54
-msgid "Result"
-msgstr "Жыйынтык"
-
-#: views.py:84 views/doctors.py:84 views/public.py:84
+#: views/public.py:65
 msgid "Contact Information"
 msgstr "Байланыш үчүн маалымат"
 
-#: views.py:103 views/doctors.py:103 views/public.py:103
+#: views/public.py:84
 msgid "Symptoms and Risk Factors"
-msgstr "Симптомдор жана кооптуу факторло"
+msgstr "Симптомдор жана кооптуу факторлор"
 
-#: views.py:144 views/doctors.py:144 views/public.py:144
+#: views/public.py:132
 msgid "Patient Information"
 msgstr "Бейтап жөнүндө маалымат"
+
+#: views/public.py:177 views/public.py:208
+msgid "Result"
+msgstr "Жыйынтык"
+
+#: views/public.py:230
+msgid "Your suggested date and time have been saved."
+msgstr ""
 
 #: widgets.py:10
 msgctxt "empty option for select button"

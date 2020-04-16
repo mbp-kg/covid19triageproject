@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: covid19triageproject 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-03 04:34+0000\n"
+"POT-Creation-Date: 2020-04-16 01:59+0000\n"
 "PO-Revision-Date: 2020-03-29 15:34+0000\n"
 "Last-Translator: Troy Farrell <troy.farrell@mbp.kg>\n"
 "Language-Team: Troy Farrell <troy.farrell@mbp.kg>\n"
@@ -18,307 +18,400 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: forms.py:20 forms.py:141
+#: forms.py:25 models.py:50 templates/covid19triage/doctors/index.html:20
+msgid "Status"
+msgstr ""
+
+#: forms.py:26
+msgid "Optionally change the status of this assessment"
+msgstr ""
+
+#: forms.py:44
+msgid ""
+"The assessment has changed since you loaded the page.  Please try again."
+msgstr ""
+
+#: forms.py:55 forms.py:176
 msgctxt "placeholder for first name"
 msgid "John"
 msgstr "길동"
 
-#: forms.py:22
+#: forms.py:57
 msgid "First Name"
 msgstr "이름"
 
-#: forms.py:23
+#: forms.py:58
 msgid "Please enter your first or given name."
 msgstr "이름을 적어주세요"
 
-#: forms.py:26 forms.py:147
+#: forms.py:61 forms.py:182
 msgctxt "placeholder for last name"
 msgid "Doe"
 msgstr "홍"
 
-#: forms.py:28
+#: forms.py:63
 msgid "Last Name"
 msgstr "성"
 
-#: forms.py:29
+#: forms.py:64
 msgid "Please enter your last or family name."
 msgstr "성을 적어주세요"
 
-#: forms.py:33
+#: forms.py:68
 msgid "Phone Number"
 msgstr "전화번호"
 
-#: forms.py:34
+#: forms.py:69
 msgid "Please enter a phone number where we can reach you."
 msgstr "연락이 가능한 전화번호를 남겨주세요"
 
-#: forms.py:38
+#: forms.py:73
 msgid "E-mail address"
 msgstr "이메일 주소"
 
-#: forms.py:39
+#: forms.py:74
 msgid "Please enter your e-mail address."
 msgstr "이메일 주소를 입력해주세요"
 
-#: forms.py:43
+#: forms.py:78
 msgid "Are you answering for yourself?"
 msgstr ""
 "문진표 대상자가 본인 입니까? (상대방을 대신해 작성시 대상자정보 입력바람)"
 
-#: forms.py:44 models.py:27
+#: forms.py:79 models.py:126
 msgid "Who is the patient?"
 msgstr "문진표 대상자가 누구입니까?"
 
-#: forms.py:67
+#: forms.py:102
 msgid "Does the patient have any of the following symptoms?"
 msgstr "상대방이 아래 사항중 해당되는 증상이 있습니까?"
 
-#: forms.py:75 models.py:97
+#: forms.py:110 models.py:196
 msgid "Patientʼs highest temperature within 24 hours"
 msgstr "상대방의 24시간 이내의 최고 체온을 입력해주세요"
 
-#: forms.py:79
+#: forms.py:114
 msgid "How would the patient describe the patientʼs cough?"
 msgstr "기침의 양상이 어떠한가요?"
 
-#: forms.py:80
+#: forms.py:115
 msgid "Is it intense?"
 msgstr "지속적인가요?"
 
-#: forms.py:85
+#: forms.py:120
 msgid "How would the patient describe the patientʼs shortness of breath?"
 msgstr "상대방의 호흡곤란 양상은 어떤가요?"
 
-#: forms.py:87
+#: forms.py:122
 msgid "Is it severe?"
 msgstr "호흡곤란이 심한가요?"
 
-#: forms.py:91
+#: forms.py:126
 msgid "Is the patient pregnant or expecting to become pregnant?"
 msgstr "상대방이 현재 임신중인가요 아님 임신 계획중인가요?"
 
-#: forms.py:95
+#: forms.py:130
 msgid "Has the patient been in contact with someone who is sick?"
 msgstr "상대방이 최근 아픈 사람과의 접촉이 있었나요?"
 
-#: forms.py:99
+#: forms.py:134
 msgid "Does the patient smoke or vape or use e-cigarettes?"
 msgstr "상대방이 흡연(담배,전자담배 등) 중인가요?"
 
-#: forms.py:105
+#: forms.py:140
 msgid "Does the patient have any of the following conditions?"
 msgstr "상대방이 아래 사항중 해당되는 증상이 있나요?"
 
-#: forms.py:109
+#: forms.py:144
 msgid "Is the patient currently under treatment for cancer?"
 msgstr "상대방이 현재 암 치료를 받고 있는중인가요?"
 
 # This text only says "Date of Birth" because "Patientʼs" is not a helpful
 # modifier in the Korean text.
-#: forms.py:143
+#: forms.py:178
 msgid "Patientʼs First Name"
 msgstr "이름"
 
-#: forms.py:144
+#: forms.py:179
 msgid "Please enter the patientʼs first or given name."
 msgstr "대상자의 이름을 입력하세요"
 
 # This text only says "Date of Birth" because "Patientʼs" is not a helpful
 # modifier in the Korean text.
-#: forms.py:149
+#: forms.py:184
 msgid "Patientʼs Last Name"
 msgstr "성"
 
-#: forms.py:150
+#: forms.py:185
 msgid "Please enter the patientʼs last or family name."
 msgstr "대상자의 성을 입력하세요"
 
 # This text only says "Date of Birth" because "Patientʼs" is not a helpful
 # modifier in the Korean text.
-#: forms.py:154
+#: forms.py:189
 msgid "Patientʼs Gender"
 msgstr "성별"
 
-#: forms.py:155
+#: forms.py:190
 msgid "Please enter the patientʼs medical gender."
 msgstr "대상자의 성별을 입력하세요"
 
 # This text only says "Date of Birth" because "Patientʼs" is not a helpful
 # modifier in the Korean text.
-#: forms.py:159
+#: forms.py:194
 msgid "Patientʼs Date of Birth"
 msgstr "생년월일"
 
-#: forms.py:160
+#: forms.py:195
 msgid "Please enter the patientʼs date of birth."
 msgstr "상대방의 생년월일을 입력하세요"
 
-#: models.py:14
-msgid "For myself"
-msgstr "본인"
+#: forms.py:212
+msgid "Best date to call"
+msgstr "상담 날짜"
 
-#: models.py:15
-msgid "For someone else"
-msgstr "상대방"
+#: forms.py:213
+msgid "Please suggest the best date for the doctor to call."
+msgstr ""
 
-#: models.py:17 models.py:52
-msgid "First name"
-msgstr "이름"
+#: forms.py:217
+msgid "Best time to call"
+msgstr "상담 시간"
 
-#: models.py:18 models.py:53
-msgid "Last name"
-msgstr "성"
+#: forms.py:218
+msgid "Please suggest the best time for the doctor to call."
+msgstr ""
 
-#: models.py:20
-msgid "Phone number"
-msgstr "전화번호"
+#: models.py:32
+msgid "Complete – testing"
+msgstr ""
 
-#: models.py:23
-msgid "Email address"
-msgstr "이메일 주소"
+#: models.py:35
+msgid "Complete – No further action"
+msgstr ""
 
-#: models.py:28
-msgid "Is the contact person answering for herself or himself?"
-msgstr "작성자가 본인인가요?"
+#: models.py:39
+msgid "Complete – Patient referred for treatment"
+msgstr ""
 
-#: models.py:44
-msgid "Female"
-msgstr "여성"
+#: models.py:43
+msgid "Active – Awaiting patient contact"
+msgstr ""
 
 #: models.py:45
-msgid "Male"
-msgstr "남성"
+msgid "Active – Claimed"
+msgstr ""
 
-#: models.py:49
-msgid "Contact Person"
-msgstr "담당자"
+#: models.py:46
+msgid "Active – Unclaimed"
+msgstr ""
 
-#: models.py:55
-msgid "Gender"
-msgstr "성별"
+#: models.py:51
+msgid "Status of the assessment"
+msgstr ""
 
-#: models.py:57
-msgid "Date of Birth"
-msgstr "생년월일"
-
-#: models.py:76
-msgid "No cough"
-msgstr "기침 없음"
-
-#: models.py:77
-msgid "Wet cough"
-msgstr "젖은기침"
-
-#: models.py:78
-msgid "Dry cough"
-msgstr "마른기침"
-
-#: models.py:81 models.py:86
-msgid "No shortness of breath"
-msgstr "호흡곤란 없음"
-
-#: models.py:82
-msgid "Moderate shortness of breath"
-msgstr "약간의 호흡곤란"
-
-#: models.py:83 models.py:88
-msgid "Severe shortness of breath"
-msgstr "심한 호흡곤란"
-
-#: models.py:87
-msgid "Mild shortness of breath"
-msgstr "약한 호흡곤란"
-
-#: models.py:91
-msgid "Patient"
-msgstr "환자"
-
-#: models.py:102
-msgid "Description of cough"
-msgstr "기침의 양상"
-
-#: models.py:107
-msgid "Description of shortness of breath"
-msgstr "호흡곤란의 양상"
-
-#: models.py:111
-msgid "Patient is pregnant or expecting to become pregnant"
-msgstr "대상자가 현재 임신중인가요 아님 임신 계획중인가요?"
-
-#: models.py:114
-msgid "Contact with a sick person"
-msgstr "아픈사람과 접촉"
-
-#: models.py:117
-msgid "The patient smokes or vapes"
-msgstr "흡연중(담배,전자담배 등)"
-
-#: models.py:121
-msgid "The patient is being treated for cancer"
-msgstr "상대방이 현재 암 치료를 받고 있는중인가요?"
-
-#: models.py:127
+#: models.py:64 models.py:226
 msgid "Version"
 msgstr "버전"
 
-#: models.py:180
+#: models.py:65
+msgid "Version is incremented with each change."
+msgstr ""
+
+#: models.py:68 templates/covid19triage/doctors/assessment.html:48
+#: templates/covid19triage/doctors/index.html:19
+msgid "Score"
+msgstr ""
+
+#: models.py:102
+msgid "Comments"
+msgstr ""
+
+#: models.py:113
+msgid "For myself"
+msgstr "본인"
+
+#: models.py:114
+msgid "For someone else"
+msgstr "상대방"
+
+#: models.py:116 models.py:151
+msgid "First name"
+msgstr "이름"
+
+#: models.py:117 models.py:152
+msgid "Last name"
+msgstr "성"
+
+#: models.py:119 templates/covid19triage/doctors/assessment.html:38
+msgid "Phone number"
+msgstr "전화번호"
+
+#: models.py:122 templates/covid19triage/doctors/assessment.html:43
+msgid "Email address"
+msgstr "이메일 주소"
+
+#: models.py:127
+msgid "Is the contact person answering for herself or himself?"
+msgstr "작성자가 본인인가요?"
+
+#: models.py:143
+msgid "Female"
+msgstr "여성"
+
+#: models.py:144
+msgid "Male"
+msgstr "남성"
+
+#: models.py:148 templates/covid19triage/doctors/assessment.html:33
+msgid "Contact Person"
+msgstr "담당자"
+
+#: models.py:154
+msgid "Gender"
+msgstr "성별"
+
+#: models.py:156 templates/covid19triage/doctors/assessment.html:27
+msgid "Date of Birth"
+msgstr "생년월일"
+
+#: models.py:175
+msgid "No cough"
+msgstr "기침 없음"
+
+#: models.py:176
+msgid "Wet cough"
+msgstr "젖은기침"
+
+#: models.py:177
+msgid "Dry cough"
+msgstr "마른기침"
+
+#: models.py:180 models.py:185
+msgid "No shortness of breath"
+msgstr "호흡곤란 없음"
+
+#: models.py:181
+msgid "Moderate shortness of breath"
+msgstr "약간의 호흡곤란"
+
+#: models.py:182 models.py:187
+msgid "Severe shortness of breath"
+msgstr "심한 호흡곤란"
+
+#: models.py:186
+msgid "Mild shortness of breath"
+msgstr "약한 호흡곤란"
+
+#: models.py:190 templates/covid19triage/doctors/assessment.html:23
+#: templates/covid19triage/doctors/index.html:18
+msgid "Patient"
+msgstr "환자"
+
+#: models.py:201
+msgid "Description of cough"
+msgstr "기침의 양상"
+
+#: models.py:206
+msgid "Description of shortness of breath"
+msgstr "호흡곤란의 양상"
+
+#: models.py:210
+msgid "Patient is pregnant or expecting to become pregnant"
+msgstr "대상자가 현재 임신중인가요 아님 임신 계획중인가요?"
+
+#: models.py:213
+msgid "Contact with a sick person"
+msgstr "아픈사람과 접촉"
+
+#: models.py:216
+msgid "The patient smokes or vapes"
+msgstr "흡연중(담배,전자담배 등)"
+
+#: models.py:220
+msgid "The patient is being treated for cancer"
+msgstr "상대방이 현재 암 치료를 받고 있는중인가요?"
+
+#: models.py:278
 msgid "PatientFactors"
 msgstr "환자요소"
 
-#: models.py:189
+#: models.py:287
 msgid "Version of the PatientFactors questions"
 msgstr "환자요소 질문버전"
 
-#: models.py:192
+#: models.py:290
 msgid "Description of the changes in this version"
 msgstr "현재버전의 변경표현 "
 
-#: models.py:204
+#: models.py:314
 msgid "Respiratory condition, e.g., COPD, asthma"
 msgstr "호흡기질환(만성폐쇄성폐질환, 천식 등)"
 
-#: models.py:206
+#: models.py:316
 msgid "Heart condition"
 msgstr "심장 질환"
 
-#: models.py:207
+#: models.py:317
 msgid "Diabetes"
 msgstr "당뇨병"
 
-#: models.py:210
+#: models.py:320
 msgid "Other chronic condition, e.g., kidney failure, liver failure"
 msgstr "그 외 다른 만성 질환(신부전, 간부전 등)"
 
-#: models.py:212
+#: models.py:322
 msgid "Immunocompromised"
 msgstr "면역결핍질환"
 
-#: models.py:228
+#: models.py:338
 msgid "Temperature at or above 38°C (100.4°F)"
 msgstr "체온 38도 이상"
 
-#: models.py:229
+#: models.py:339
 msgid "Cough"
 msgstr "기침"
 
-#: models.py:230
+#: models.py:340
 msgid "Shortness of breath"
 msgstr "호흡곤란"
 
 #: templates/covid19triage/base.html:36
+msgid "Welcome,"
+msgstr "환영합니다"
+
+#: templates/covid19triage/base.html:41
+#: templates/covid19triage/doctors/assessment.html:12 views/doctors.py:144
+#, fuzzy
+#| msgid "COVID-19 Assessment"
+msgid "Assessments"
+msgstr "코로나 문진표"
+
+#: templates/covid19triage/base.html:44
+msgid "Change password"
+msgstr ""
+
+#: templates/covid19triage/base.html:46
+msgid "Log out"
+msgstr ""
+
+#: templates/covid19triage/base.html:55
 #: templates/covid19triage/contactinfo.html:10
+#: templates/covid19triage/doctors/assessment.html:10
 #: templates/covid19triage/patientfactors.html:12
 #: templates/covid19triage/patientinfo.html:10
 msgid "Home"
 msgstr "홈"
 
 #: templates/covid19triage/contactinfo.html:17
+#: templates/covid19triage/login.html:19
 #: templates/covid19triage/patientfactors.html:19
 #: templates/covid19triage/patientinfo.html:17
 msgid "Please correct the error below."
 msgstr "아래 필수항목을 입력하세요"
 
 #: templates/covid19triage/contactinfo.html:17
+#: templates/covid19triage/login.html:19
 #: templates/covid19triage/patientfactors.html:19
 #: templates/covid19triage/patientinfo.html:17
 msgid "Please correct the errors below."
@@ -330,6 +423,59 @@ msgstr "아래 오류사항을 확인하십시요"
 msgctxt "Next button label"
 msgid "Next »"
 msgstr "다음 »"
+
+#: templates/covid19triage/doctors/assessment.html:63
+#: templates/covid19triage/result.html:67
+msgid "Save"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:6
+msgid "My Active Assessments"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:7 views/doctors.py:137
+#, fuzzy
+#| msgid "COVID-19 Assessment"
+msgid "My Assessments"
+msgstr "코로나 문진표"
+
+#: templates/covid19triage/doctors/index.html:8 views/doctors.py:139
+msgid "Unclaimed Assessments"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:9 views/doctors.py:136
+msgid "Active Assessments"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:10 views/doctors.py:138
+#, fuzzy
+#| msgid "COVID-19 Assessment"
+msgid "Completed Assessments"
+msgstr "코로나 문진표"
+
+#: templates/covid19triage/doctors/index.html:15
+#, fuzzy
+#| msgid "COVID-19 Assessment"
+msgid "Open Assessments"
+msgstr "코로나 문진표"
+
+#: templates/covid19triage/doctors/index.html:21
+msgid "Owner"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:22
+msgctxt "date and time patient complete questions"
+msgid "Created"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:23
+msgctxt "date and time a doctor last updated the assessment"
+msgid "Updated"
+msgstr ""
+
+#: templates/covid19triage/doctors/index.html:64
+msgid "There are no matching assessments."
+msgstr ""
 
 #: templates/covid19triage/index.html:23
 msgctxt "Continue in $CURRENT_LANGUAGE: продолжайте на русском"
@@ -410,9 +556,28 @@ msgstr ""
 "    </p>\n"
 " "
 
-#: templates/covid19triage/intro.html:23 templates/covid19triage/result.html:58
+#: templates/covid19triage/intro.html:23
 msgid "Next"
 msgstr "다음"
+
+#: templates/covid19triage/loggedout.html:6
+msgid "You have been logged out."
+msgstr ""
+
+#: templates/covid19triage/login.html:35
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
+#: templates/covid19triage/login.html:55
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: templates/covid19triage/login.html:59 views/doctors.py:37
+msgid "Log in"
+msgstr ""
 
 #: templates/covid19triage/patientfactors.html:39
 msgid "Do you have any of the following symptoms?"
@@ -530,20 +695,18 @@ msgid ""
 "serious symptoms and you need to consult a doctor by phone.\n"
 "        </p>\n"
 "        <p>\n"
-"          Please select a time to consult with a doctor.  We conduct "
-"appointments in the clinic while conducting telephone consultations with "
-"doctors for your convenience and to prevent new infections.\n"
+"          Please suggest a date and time to consult with a doctor.  The "
+"consultant will call you back to conduct a state assessment and to give you "
+"further instructions.\n"
+"        </p>\n"
+"        <p>\n"
+"          We conduct appointments in the clinic while conducting telephone "
+"consultations with doctors for your convenience and to prevent new "
+"infections.\n"
 "        </p>\n"
 "        <p>\n"
 "          Thank you for your attention to yourself and to the health of the "
 "people around you.\n"
-"        </p>\n"
-"        <p>\n"
-"          Please click below to be in line for our telephone consultation.\n"
-"        </p>\n"
-"        <p>\n"
-"          The consultant will call back to conduct a state assessment and to "
-"complete the consultation will give further instructions.\n"
 "        </p>\n"
 "      "
 msgstr ""
@@ -557,9 +720,13 @@ msgstr ""
 "최소화 하기 위해 콜상담을 동시에 실시 하고 있으며 상담이후 적절한 방안을 안내"
 "해 드릴 예정입니다.\n"
 "        </p>\n"
+"        <p>\n"
+"          상담을 원하실 경우 날짜와 시간대를 선택해 주시면 의료진이 연락을 드"
+"릴 예정이오니 이용가능한 시간을 설정해 주시기 바랍니다.\n"
+"        </p>\n"
 " "
 
-#: templates/covid19triage/result.html:62
+#: templates/covid19triage/result.html:72
 msgid ""
 "\n"
 "        <p>\n"
@@ -593,41 +760,116 @@ msgstr ""
 "        </p>\n"
 " "
 
-#: views.py:27 views/doctors.py:27 views/public.py:27
-msgid "COVID-19 Assessment"
+#: urls.py:26
+msgid "contactinfo"
+msgstr "연락처"
+
+#: urls.py:31
+msgid "doctors"
+msgstr "의사를위해"
+
+#: urls.py:36
+msgid "doctors/assessments"
+msgstr "의사를위해/assessments"
+
+#: urls.py:41
+msgid "doctors/assessments/completed"
+msgstr "의사를위해/assessments/completed"
+
+#: urls.py:46
+msgid "doctors/assessments/my"
+msgstr "의사를위해/assessments/my"
+
+#: urls.py:51
+msgid "doctors/assessments/my/active"
+msgstr "의사를위해/assessments/my/active"
+
+#: urls.py:56
+msgid "doctors/assessments/unclaimed"
+msgstr "의사를위해/assessments/unclaimed"
+
+#: urls.py:61
+#, fuzzy
+#| msgid "doctors/assessments"
+msgid "doctors/assessments/<int:pk>"
+msgstr "의사를위해/assessments"
+
+#: urls.py:66
+msgid "intro"
+msgstr ""
+
+#: urls.py:67
+msgid "login"
+msgstr "로그인"
+
+#: urls.py:68
+msgid "logout"
+msgstr "로그아웃"
+
+#: urls.py:70
+#, fuzzy
+#| msgid "Patient"
+msgid "patientinfo"
+msgstr "환자"
+
+#: urls.py:75
+msgid "patientfactors"
+msgstr "환자요소"
+
+#: urls.py:79
+msgid "result"
+msgstr "결과"
+
+#: views/doctors.py:62 views/doctors.py:63
+#, fuzzy
+#| msgid "COVID-19 Assessment"
+msgid "Assessment"
 msgstr "코로나 문진표"
 
-#: views.py:33 views/doctors.py:33 views/public.py:33
+#: views/doctors.py:79
+#, python-brace-format
+msgid "Assessment for {patient}"
+msgstr ""
+
+#: views/public.py:31
 msgid "Eldik Family Medicine Clinic is currently open."
 msgstr "엘딕병원은 현재 근무중입니다"
 
-#: views.py:35 views/doctors.py:35 views/public.py:35
+#: views/public.py:33
 msgid "Eldik Family Medicine Clinic is currently closed."
 msgstr "엘딕병원은 현재 근무시간이 아닙니다"
 
-#: views.py:36 views/doctors.py:36 views/public.py:36
+#: views/public.py:37
+msgid "COVID-19 Assessment"
+msgstr "코로나 문진표"
+
+#: views/public.py:43
 msgid "Language"
 msgstr "언어"
 
-#: views.py:45 views/doctors.py:45 views/public.py:45
+#: views/public.py:52
 msgid "Welcome"
 msgstr "환영합니다"
 
-#: views.py:54 views/doctors.py:54 views/public.py:54
-msgid "Result"
-msgstr "결과"
-
-#: views.py:84 views/doctors.py:84 views/public.py:84
+#: views/public.py:65
 msgid "Contact Information"
 msgstr "연락처"
 
-#: views.py:103 views/doctors.py:103 views/public.py:103
+#: views/public.py:84
 msgid "Symptoms and Risk Factors"
 msgstr "증상 및 감염 고위험군"
 
-#: views.py:144 views/doctors.py:144 views/public.py:144
+#: views/public.py:132
 msgid "Patient Information"
 msgstr "환자 정보"
+
+#: views/public.py:177 views/public.py:208
+msgid "Result"
+msgstr "결과"
+
+#: views/public.py:230
+msgid "Your suggested date and time have been saved."
+msgstr ""
 
 #: widgets.py:10
 msgctxt "empty option for select button"
