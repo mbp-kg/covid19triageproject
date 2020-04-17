@@ -139,6 +139,12 @@
           <span class="fake-input">{{ object.patientfactors.patient.contactperson.emailaddress }}</span>
         </div>
       {% endif %}
+      {% for pdt in object.proposeddatetime_set.all %}
+        <div class="form-row">
+          <label>{% trans "Proposed Date and Time For a Phone Consultation" %}</label>
+          <span class="fake-input">{{ pdt.date }} {{ pdt.time }}</span>
+        </div>
+      {% endfor %}
     </div>
     {% if logs %}
       <div class="module">
