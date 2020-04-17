@@ -308,7 +308,7 @@ class PatientFactorsVersion(models.Model):
 
 class ProposedDateTime(models.Model):
     """
-    Text from the patient, suggesting a date and time for an assessment
+    Text from the patient, suggesting a date and time for a phone consultation
     """
 
     assessment = models.ForeignKey(Assessment, on_delete=models.CASCADE)
