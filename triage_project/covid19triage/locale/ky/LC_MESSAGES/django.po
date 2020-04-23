@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: covid19triageproject 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-16 17:26+0000\n"
+"POT-Creation-Date: 2020-04-23 03:49+0000\n"
 "PO-Revision-Date: 2020-03-29 15:34+0000\n"
 "Last-Translator: Troy Farrell <troy.farrell@mbp.kg>\n"
 "Language-Team: Troy Farrell <troy.farrell@mbp.kg>\n"
@@ -216,7 +216,7 @@ msgstr ""
 msgid "Score"
 msgstr ""
 
-#: models.py:104 templates/covid19triage/doctors/assessment.html:149
+#: models.py:104 templates/covid19triage/doctors/assessment.html:155
 msgid "Comments"
 msgstr ""
 
@@ -436,17 +436,21 @@ msgstr "Симптомдор жана кооптуу факторлор"
 msgid "Contact Information"
 msgstr "Байланыш үчүн маалымат"
 
-#: templates/covid19triage/doctors/assessment.html:146
+#: templates/covid19triage/doctors/assessment.html:144
+msgid "Proposed Date and Time For a Phone Consultation"
+msgstr ""
+
+#: templates/covid19triage/doctors/assessment.html:152
 #, fuzzy
 #| msgid "COVID-19 Assessment"
 msgid "Assessment History"
 msgstr "COVID-19 Сурамжылоо"
 
-#: templates/covid19triage/doctors/assessment.html:150
+#: templates/covid19triage/doctors/assessment.html:156
 msgid "User"
 msgstr ""
 
-#: templates/covid19triage/doctors/assessment.html:151
+#: templates/covid19triage/doctors/assessment.html:157
 msgid "Date"
 msgstr ""
 
